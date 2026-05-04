@@ -11,7 +11,7 @@ const ResponsiveMenu = ({open}) => {
                 exit={{opacity: 0, x: -100}}
                 className="absolute top-20 left-0 w-full h-screen z-20"
                 >
-                <div className="text-xl font-semibold py-10 m-6 rounded-3xl">
+                <div className="text-xl font-semibold py-10 m-6 rounded-3xl bg-white">
                     <ul className="flex flex-col justify-center items-center gap-10">
                         <li>Shop</li>
                         <li>On Sale</li>

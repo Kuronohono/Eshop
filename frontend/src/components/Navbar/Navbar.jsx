@@ -27,18 +27,21 @@ const Navbar = () => {
   return (
   <>
     <nav className="w-full">
-        <div className="container h-12 mt-15.5 mx-auto gap-10 flex items-center ">
+        <div className="container justify-between h-12 mt-15.5 pr-2 sm:pr-4 mx-auto gap-2 sm:gap-10 flex items-center">
             
-            {/*Mobile Hamburger Menu Section */}
-                <div className="min-[1280px]:hidden" onClick={() =>
-                    setOpen(!open)}>
-                    <RxHamburgerMenu  className="text-4xl"/>
+           <div className="flex items-center gap-4 sm:gap-8">
+                {/*Mobile Hamburger Menu Section */}
+                    <div className="min-[1280px]:hidden ml-5" onClick={() =>
+                        setOpen(!open)}>
+                        <RxHamburgerMenu  className="text-4xl"/>
+                    </div>
+                
+                { /*Logo Section */}
+                <div className="font-integralcf text-[25px] sm:text-[32px] flex items-center gap-2 font-bold">
+                    <p>SHOP.CO</p>
                 </div>
-            
-            { /*Logo Section */}
-            <div className="font-integralcf text-[32px] flex items-center gap-2 font-bold py-8 ">
-                <p>SHOP.CO</p>
-            </div>
+
+           </div>
 
             { /*Menu Section */}
             <div className="hidden min-[1280px]:block">

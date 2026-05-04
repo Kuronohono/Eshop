@@ -14,10 +14,25 @@
     font-style: normal;
 }
 
+@font-face{
+    font-family: 'SatoshiBold';
+    src: url("./assets/fonts/Satoshi-Variable.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
 @theme{
     --font-integralcf: 'IntegralCF', sans-serif;
 }
 
 @theme{
     --font-satoshi: 'Satoshi', sans-serif;
+}
+
+@theme{
+    --font-satoshibold: 'SatoshiBold', sans-serif;
+}
+
+.brand-logo{
+    @apply h-10 invert object-cover cursor-pointer hover:opacity-80 transition-all duration-200 active:scale-95;
 }
