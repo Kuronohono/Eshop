@@ -1,10 +1,38 @@
 import React from 'react'
-import HeroImg from "../../assets/hero_page_main.jpg"
+import HeroImg from "../../assets/hero_page_img.jpg"
 import Versace from "../../assets/Versace.png"
 import Zara from "../../assets/zara.png"
 import Gucci from "../../assets/gucci.png"
 import Prada from "../../assets/prada.png"
 import CalvinKlein from "../../assets/calvin_klein.png"
+
+const Brands = [
+    {
+        id: 1,
+        name: "Versace",
+        image: Versace
+    },
+    {
+        id: 2,
+        name: "Zara",
+        image: Zara
+    },
+    {
+        id: 3,
+        name: "Gucci",
+        image: Gucci
+    },
+    {
+        id: 4,
+        name: "Prada",
+        image: Prada
+    },
+    {
+        id: 5,
+        name: "Calvin Klein",
+        image: CalvinKlein
+    },
+]
 
 const Hero = () => {
   return (
@@ -27,12 +55,12 @@ const Hero = () => {
                     </p>
 
                     {/* Button and Info Section */}
-                    <button className=" font-satoshi bg-black w-full h-13 max-w-[320px] sm:max-w-[350px] lg:max-w-52.5 mt-4 rounded-[62px] text-white
+                    <button className=" font-satoshi bg-black w-full h-13 max-w-[370px] sm:max-w-[350px] lg:max-w-52.5 mt-4 rounded-[62px] text-white
                      py-3.5 lg:px-13.5 gap-3 hover:bg-[#202020] cursor-pointer transition-all active:scale-95">
                     Shop Now</button>
 
                     {/*Stats */}
-                    <div className="flex flex-wrap lg:flex-nowrap justify-center items-center gap-8 mt-8">
+                    <div className="flex flex-wrap lg:flex-nowrap justify-center items-center md:items-start gap-8 mt-8">
                         <div>
                             <p className="font-satoshibold text-[24px] lg:text-[40px] font-bold leading-tight">200+</p>
                             <p className="font-satoshi text-[12px] lg:text-[16px] opacity-60">International Brands</p>
@@ -42,7 +70,7 @@ const Hero = () => {
                             <p className="font-satoshibold text-[24px] lg:text-[40px] font-bold leading-tight">2,000+</p>
                             <p className="font-satoshi text-[12px] lg:text-[16px] opacity-60">High-Quality Products</p>
                         </div>
-                        <div className="hidden xl:block w-px h-12 bg-black opacity-10" />
+                        <div className="hidden xl:block w-px h-12 bg-black opacity-10 " />
                         <div>
                             <p className="font-satoshibold text-[24px] lg:text-[40px] font-bold leading-tight">30,000+</p>
                             <p className="font-satoshi text-[12px] lg:text-[16px] opacity-60">Happy Customers</p>
@@ -52,18 +80,20 @@ const Hero = () => {
 
                 </div>
             {/* Hero Image */}
-                <div className="flex-[50] overflow-hidden h-[448px] xl:h-[663px]">
-                    <img src={HeroImg} alt="" className=" w-full object-contain origin-top scale-90"/>
+                <div className="flex-[50] overflow-hidden lg:h-[663px]">
+                    <img src={HeroImg} alt="" className="h-full w-full object-contain object-top origin-top"/>
                 </div>
 
             </div>
-            <div className="flex w-full bg-black h-[122px] items-center pl-8 pr-15 justify-between">
-                <img src={Versace} alt="" className="brand-logo w-[230px]" />
-                <img src={Zara} alt="" className="brand-logo w-[100px]"/>
-                <img src={Gucci} alt="" className="brand-logo w-[190px]"/>
-                <img src={Prada} alt="" className="brand-logo w-[220px]"/>
-                <img src={CalvinKlein} alt="" className="brand-logo w-[200px]"/>
+
+            <div className="flex flex-wrap bg-black w-full min-h-[122px] items-center justify-center md:justify-between gap-6 gap-y-6 py-6 px-2 md:px-20">
+                <img src={Versace} alt=""     className="brand-logo w-[120px]  h-[25px] md:w-[220px] md:h-[50px]" />
+                <img src={Zara} alt=""        className="brand-logo w-[65px]  h-[30px] md:w-[130px] md:h-[50px]"/>
+                <img src={Gucci} alt=""       className="brand-logo w-[110px]  h-[28px] md:w-[220px] md:h-[36px]"/>
+                <img src={Prada} alt=""       className="brand-logo w-[127px]  h-[25px] md:w-[220px] md:h-[50px]"/>
+                <img src={CalvinKlein} alt="" className="brand-logo w-[135px] h-[25px] md:w-[200px] md:h-[40px]"/>
             </div>
+
         </section>
   )
 }
