@@ -96,12 +96,16 @@ const Navbar = () => {
                     <button className="text-2xl hover:bg-[#e6e6e6] rounded-full p-2 min-[1280px]:hidden cursor-pointer transition-all active:scale-95">
                         <IoSearch size={24}/>
                     </button>
-                    <button className="text-2xl hover:bg-[#e6e6e6] rounded-full p-2 cursor-pointer transition-all active:scale-95">
-                        <FiShoppingCart size={24}/>
-                    </button>
-                    <button className="text-2xl hover:bg-[#e6e6e6] rounded-full p-2 cursor-pointer transition-all active:scale-95">
-                        <RiAccountCircleLine size={24} />
-                    </button>
+                    <Link to={"/Cart"}>
+                        <button className="text-2xl hover:bg-[#e6e6e6] rounded-full p-2 cursor-pointer transition-all active:scale-95" >
+                            <FiShoppingCart size={24}/>
+                        </button>
+                    </Link>
+                     <Link to={"/login"}>
+                        <button className="text-2xl hover:bg-[#e6e6e6] rounded-full p-2 cursor-pointer transition-all active:scale-95" >
+                            <RiAccountCircleLine size={24} />
+                        </button>
+                    </Link>
                 </div>
 
             

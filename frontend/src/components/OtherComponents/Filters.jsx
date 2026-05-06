@@ -1,5 +1,7 @@
 import React from 'react'
 import { IoMdOptions } from "react-icons/io";
+import PriceRangeSlider from './PriceRangeSlider';
+import ColorButtonGroup from './ColorButtonGroup';
 
 const Filter_Types = [
 {
@@ -55,11 +57,15 @@ const Filters = () => {
 
         <div>
             <h1 className="filter_header">Price</h1>
+
+            
         </div>
 
         <div className="h-px bg-[#F0F0F0] mx-auto w-full" />
 
         {/* Colors Section */}
+
+        <ColorButtonGroup/>
 
         <div>
             <h1 className="filter_header">Colors</h1>

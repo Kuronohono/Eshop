@@ -126,11 +126,6 @@ const Products = () => {
             <div className="flex pl-[7%] pt-8 md:pt-15">
             <h1 className="home_banner">Our Happy Customers</h1>
             </div>
-
-        {/*Footer */}
-        <div>
-            <Footer/>
-        </div>
         
 
     </div>

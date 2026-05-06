@@ -96,5 +96,9 @@
 }
 
 .price_slider{
-    @apply flex items-center justify-center z-1 gap-2 pt-10px;
+    @apply flex items-center justify-center z-1 gap-2 pt-[10px];
+}
+
+.authen_input{
+    @apply border rounded-md;
 }

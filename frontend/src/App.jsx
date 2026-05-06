@@ -7,6 +7,10 @@ import Brands from './components/pages/Brands'
 import OnSale from './components/pages/OnSale'
 import NewArrivals from './components/pages/NewArrivals'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import Cart from './components/pages/Cart'
+import Footer from './components/OtherComponents/Footer'
+import Login from './components/pages/Login'
+import Register from './components/pages/Register'
 
 const App = () => {
   return (
@@ -18,7 +22,11 @@ const App = () => {
       <Route path="/on_sale" element={<OnSale/>}/>
       <Route path="/new_arrivals" element={<NewArrivals/>}/>
       <Route path="/brands" element={<Brands/>}/>
+      <Route path="/cart" element={<Cart/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/register" element={<Register/>}/>
     </Routes>
+    <Footer/>
     </BrowserRouter>
   );
 };
