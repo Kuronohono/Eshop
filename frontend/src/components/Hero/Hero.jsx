@@ -60,7 +60,7 @@ const Hero = () => {
                     Shop Now</button>
 
                     {/*Stats */}
-                    <div className="flex flex-wrap lg:flex-nowrap justify-center items-center md:items-start gap-8 mt-8">
+                    <div className="flex flex-wrap lg:flex-nowrap justify-center md:justify-start items-center md:items-start gap-8 mt-8">
                         <div>
                             <p className="font-satoshibold text-[24px] lg:text-[40px] font-bold leading-tight">200+</p>
                             <p className="font-satoshi text-[12px] lg:text-[16px] opacity-60">International Brands</p>

@@ -9,6 +9,7 @@ import Img7 from "../../assets/placeholder_imgs/bermuda_shorts.png"
 import Img8 from "../../assets/placeholder_imgs/faded_skinny.png"
 import CardComponent from '../CardComponent/CardComponent'
 import BrowseStylePanel from '../OtherComponents/BrowseStylePanel'
+import Footer from '../OtherComponents/Footer'
 
 const NewArrivalsProductsData = [
 {
@@ -86,7 +87,7 @@ const Products = () => {
         
         {/* New Arrivals Header Section */}
         <div className="flex items-center justify-center pt-8 md:pt-15">
-            <h1 className="font-integralcf text-[32px] md:text-[48px]">New Arrivals</h1>
+            <h1 className="home_banner">New Arrivals</h1>
         </div>
 
         {/* New Arrivals Card Section */}
@@ -99,7 +100,7 @@ const Products = () => {
 
          {/* Top Selling Header Section */}
         <div className="flex items-center justify-center pt-8 md:pt-15">
-            <h1 className="font-integralcf text-[32px] md:text-[48px]">Top Selling</h1>
+            <h1 className="home_banner">Top Selling</h1>
         </div>
 
         {/* Top Selling Card Section */}
@@ -110,8 +111,8 @@ const Products = () => {
 
         {/* Browse By Dress Style Section*/}
         <div className="flex flex-col items-center justify-center bg-[#F0F0F0] mx-auto w-[85%] rounded-[40px] ">
-            <div className="pt-8 md:pt-15">
-                <h1 className="font-integralcf text-[32px] md:text-[48px]">Browse by dress style</h1>
+            <div className="pt-8 md:pt-15 flex flex-wrap items-center justify-center px-10">
+                <h1 className="home_banner text-center">Browse by dress style</h1>
             </div>
 
             {/*Dress Styles */}
@@ -122,9 +123,14 @@ const Products = () => {
 
         {/* Our Happy Customers Section */}
         
-            <div className="flex md:pl-[100px] pt-8 md:pt-15">
-            <h1 className="font-integralcf text-[32px] md:text-[48px]">Our Happy Customers</h1>
+            <div className="flex pl-[7%] pt-8 md:pt-15">
+            <h1 className="home_banner">Our Happy Customers</h1>
             </div>
+
+        {/*Footer */}
+        <div>
+            <Footer/>
+        </div>
         
 
     </div>

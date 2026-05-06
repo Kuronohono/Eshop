@@ -11,8 +11,8 @@ const CardComponent = ({products}) => {
                 products?.map((product) =>(
                     <div key={product?.id}>
                         {/* Product Image */}
-                        <div className="flex flex-col gap-2">
-                            <img src={product?.img} alt="product" className=" w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-2xl"/>
+                        <div className="flex flex-col gap-2 hover:scale-105 transition-all active:scale-100 cursor-pointer">
+                            <img src={product?.img} alt="product" className=" w-full h-[200px] md:h-[300px] object-cover rounded-2xl"/>
                             <div className="flex flex-col gap-1">
                                 <h3 className="font-satoshibold text-16px md:text-[20px]">{product?.title}</h3>
                                 <div className="flex items-center gap-2 md:gap-4">

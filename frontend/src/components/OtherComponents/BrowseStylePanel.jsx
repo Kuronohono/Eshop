@@ -32,9 +32,9 @@ const DressStyle = [
 ]
 const BrowseStylePanel = () => {
   return (
-    <div className="grid grid-cols-5 gap-4 p-6 mx-10">
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-4 p-6 mx-10 py-15">
       {DressStyle.map((style) => (
-        <div key={style.id} className={`relative rounded-[20px] overflow-hidden ${ style.flex === 3 ? "col-span-3" : "col-span-2"} cursor-pointer hover:scale-103 transition-all`}>
+        <div key={style.id} className={`style_card ${style.flex === 3 ? "style_card-lg" : "style_card-md"}`}>
           <img src={style.img} className="w-full h-[290px] object-cover" />
           <p className="absolute top-4 left-4 text-[24px] font-bold text-black">
             {style.title}

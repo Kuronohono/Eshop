@@ -15,6 +15,13 @@
 }
 
 @font-face{
+    font-family: 'SatoshiSemiBold';
+    src: url("./assets/fonts/Satoshi-Variable.ttf") format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face{
     font-family: 'SatoshiBold';
     src: url("./assets/fonts/Satoshi-Variable.ttf") format('truetype');
     font-weight: 700;
@@ -27,6 +34,10 @@
 
 @theme{
     --font-satoshi: 'Satoshi', sans-serif;
+}
+
+@theme{
+    --font-satoshi: 'SatoshiSemiBold', sans-serif;
 }
 
 @theme{
@@ -43,4 +54,31 @@
 
 .view_all_btn{
     @apply font-satoshi text-[14px] md:text-[16px] rounded-[62px] border border-[rgba(0,0,0,0.1)] py-[16px] px-[65px] w-full sm:max-w-[350px] lg:max-w-52.5 hover:bg-[#f5f5f5] cursor-pointer transition-all active:scale-95 max-w-[370px] md:w-[250];
+}
+
+.home_banner{
+    @apply font-integralcf text-[32px] md:text-[48px];
+}
+
+.style_card{
+    @apply relative rounded-[20px] overflow-hidden cursor-pointer hover:scale-103 transition-all;
+}
+
+.style_card-md {
+    @apply col-span-1 md:col-span-2;
+}
+
+.style_card-lg {
+    @apply col-span-1 md:col-span-3;
+}
+
+.footer_options{
+    @apply font-satoshi opacity-50 text-[14px] md:text-[16px] cursor-pointer active:opacity-20 hover:opacity-40;
+}
+
+.social_icon_btn{
+    @apply bg-white px-[2%] py-[2%] rounded-xl cursor-pointer active:scale-110 hover:scale-105 transition-all;
+}
+.social_icon_btn_dark{
+    @apply bg-black px-[2%] py-[2%] rounded-xl cursor-pointer active:scale-110 hover:scale-105 transition-all;
 }
