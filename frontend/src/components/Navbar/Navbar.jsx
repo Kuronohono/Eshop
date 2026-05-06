@@ -6,19 +6,20 @@ import { RiAccountCircleLine } from "react-icons/ri";
 import { IoIosArrowDown } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ResponsiveMenu from './ResponsiveMenu'
+import {Link} from "react-router-dom"
 
 const Menu = [
-    { id: 1, name: "On Sale", link: "/#on_sale" },
-    { id: 2, name: "New Arrivals", link: "/#new_arrivals" },
-    { id: 3, name: "Brands", link: "/#brands" }
+    { id: 1, name: "On Sale", link: "/on_sale" },
+    { id: 2, name: "New Arrivals", link: "/new_arrivals" },
+    { id: 3, name: "Brands", link: "/brands" }
 ]
 
 const ShopLinks = [
-    { id: 1, name: "T-shirts", link: ""},
-    { id: 2, name: "Shorts", link: ""},
-    { id: 3, name: "Shirts", link: ""},
-    { id: 4, name: "Hoodie", link: ""},
-    { id: 5, name: "Jeans", link: ""},
+    { id: 1, name: "T-shirts", link: "/T-shirts"},
+    { id: 2, name: "Shorts", link: "/Shorts"},
+    { id: 3, name: "Shirts", link: "/Shirts"},
+    { id: 4, name: "Hoodie", link: "/Hoodies"},
+    { id: 5, name: "Jeans", link: "/Jeans"},
 ]
 
 const Navbar = () => {
@@ -37,8 +38,8 @@ const Navbar = () => {
                     </div>
                 
                 { /*Logo Section */}
-                <div className="font-integralcf text-[25px] sm:text-[32px] flex items-center gap-2 font-bold">
-                    <p>SHOP.CO</p>
+                <div className="font-integralcf text-[25px] sm:text-[32px] flex items-center gap-2 font-bold hover:bg-[#F0F0F0] active:bg-[#f5f5f5]" >
+                    <Link to={"/Home"}>SHOP.CO</Link>
                 </div>
 
            </div>
@@ -63,9 +64,9 @@ const Navbar = () => {
                                 <ul>
                                     {ShopLinks.map((data) => (
                                         <li key={data.id}>
-                                            <a href={data.link} className="inline-block w-full 
+                                            <Link to={data.link} className="inline-block w-full 
                                             rounded-md p-2 hover:bg-[#F2F0F1]">
-                                                {data.name}</a>
+                                                {data.name}</Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -75,7 +76,7 @@ const Navbar = () => {
 
                     {Menu.map((item) => (
                         <li key={item.id}>
-                            <a className="text-[16px] hover:bg-[#F2F0F1] rounded-lg p-1"href={item.link}>{item.name}</a>
+                            <Link className="text-[16px] hover:bg-[#F2F0F1] rounded-lg p-1" to={item.link}>{item.name}</Link>
                         </li>
                     ))}
                 </ul>
@@ -111,33 +112,6 @@ const Navbar = () => {
         <ResponsiveMenu open={open}/>
   </>
   )
-    
-    /*
-
-    <div className=" ml-25 mt-15.5 w-310 h-12">
-      <ul className="flex items-center gap-10 w-full">
-        <div className="font-integralcf text-[32px]"> SHOP.CO</div>
-        {Menu.map((data) => (
-          <li key={data.id}>
-            <a className="text-[16px] "href={data.link}>{data.name}</a>
-          </li>
-        ))}
-        <div className="w-[50%]">
-            <div className="flex items-center rounded-[62px] my-3 mx-4 h-12 bg-[#F0F0F0] gap-3 px-4">
-                <IoSearch className="opacity-40" size={24}/>
-                <input type="text" placeholder="Search for products..."
-                className="border-none bg-[#F0F0F0] outline-none w-full"/>
-            </div>
-        </div>
-        <div className="flex gap-3.5">
-            <FiShoppingCart size={24}/>
-        <RiAccountCircleLine size={24} />
-        </div>
-      </ul>
-     
-    </div>
-     */
-  
 }
 
 export default Navbar

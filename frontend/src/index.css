@@ -82,3 +82,19 @@
 .social_icon_btn_dark{
     @apply bg-black px-[2%] py-[2%] rounded-xl cursor-pointer active:scale-110 hover:scale-105 transition-all;
 }
+
+.screen-adapt{
+    @apply mt-5 md:mt-8 w-full px-8 sm:px-6 md:px-20 ;
+}
+
+.filter_type{
+    @apply flex items-center justify-between cursor-pointer hover:bg-[#eeeeee] rounded-md px-1;
+}
+
+.filter_header{
+    @apply font-satoshibold text-[20px];
+}
+
+.price_slider{
+    @apply flex items-center justify-center z-1 gap-2 pt-10px;
+}
