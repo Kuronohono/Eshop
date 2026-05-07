@@ -1,19 +1,19 @@
 package com.deloitte.eshop.entity;
 
 public enum ProductType {
-    T_SHIRTS("T-Shirts"),
-    SHORTS("Shorts"),
-    SHIRTS("Shirts"),
+    T_SHIRT("T-Shirts"),
+    SHORT("Shorts"),
+    SHIRT("Shirts"),
     HOODIE("Hoodie"),
-    JEANS("Jeans");
+    JEAN("Jeans");
 
     private final String displayType;
 
-    ProductType(String displayType){
+    ProductType(String displayType) {
         this.displayType = displayType;
     }
 
-    public String getDisplayType(){
+    public String getDisplayType() {
         return displayType;
     }
 }

@@ -1,0 +1,57 @@
+package com.deloitte.eshop.entity;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.annotations.UuidGenerator;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "product_variants", uniqueConstraints = @UniqueConstraint(name = "variant_product_color_size", columnNames = {
+        "product_id", "color", "size" }))
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ProductVariant {
+
+    @Id
+    @UuidGenerator
+    @Column(name = "id", unique = true, updatable = false)
+    private String id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "color")
+    private Colors color;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Sizes size;
+
+    @Column(nullable = false)
+    private int stock;
+
+}

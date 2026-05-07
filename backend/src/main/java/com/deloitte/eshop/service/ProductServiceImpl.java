@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
@@ -25,7 +25,14 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product addProduct(Product product) {
+        product.getVariants().forEach(variant -> variant.setProduct(product));
         return productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> addProducts(List<Product> products) {
+        products.forEach(product -> product.getVariants().forEach(variant -> variant.setProduct(product)));
+        return (List<Product>) productRepository.saveAll(products);
     }
 
     @Override
@@ -36,6 +43,6 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public String deleteProduct(Product product) {
         productRepository.delete(product);
-        return "Product Deleted Successfully for productId: "+product.getId();
+        return "Product Deleted Successfully for productId: " + product.getId();
     }
 }

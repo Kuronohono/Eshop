@@ -55,8 +55,7 @@ const Hero = () => {
                     </p>
 
                     {/* Button and Info Section */}
-                    <button className=" font-satoshi bg-black w-full h-13 max-w-[370px] sm:max-w-[350px] lg:max-w-52.5 mt-4 rounded-[62px] text-white
-                     py-3.5 lg:px-13.5 gap-3 hover:bg-[#202020] cursor-pointer transition-all active:scale-95">
+                    <button className="black_button">
                     Shop Now</button>
 
                     {/*Stats */}

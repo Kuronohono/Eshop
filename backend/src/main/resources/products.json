@@ -1,0 +1,195 @@
+[
+  {
+    "name": "Gradient Graphic T-shirt",
+    "description": "A vibrant gradient graphic t-shirt with colorful print design.",
+    "price": 145.0,
+    "discount": 0,
+    "stock": 50,
+    "gender": "MEN",
+    "productType": "T_SHIRT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["gradient-graphic-tshirt.jpg"],
+    "variants": [
+      { "color": "WHITE", "size": "SMALL", "stock": 10 },
+      { "color": "RED", "size": "MEDIUM", "stock": 15 },
+      { "color": "GREEN", "size": "LARGE", "stock": 15 },
+      { "color": "PURPLE", "size": "XLARGE", "stock": 10 },
+      { "color": "LIGHT_BLUE", "size": "XLARGE", "stock": 5 }
+    ]
+  },
+  {
+    "name": "Polo with Tipping Details",
+    "description": "A classic polo shirt with contrasting tipping details on collar and cuffs.",
+    "price": 180.0,
+    "discount": 0,
+    "stock": 50,
+    "gender": "MEN",
+    "productType": "SHIRT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["polo-tipping-details.jpg"],
+    "variants": [
+      { "color": "PINK", "size": "SMALL", "stock": 10 },
+      { "color": "BLUE", "size": "MEDIUM", "stock": 15 },
+      { "color": "ORANGE", "size": "LARGE", "stock": 4 }
+    ]
+  },
+  {
+    "name": "Black Striped T-shirt",
+    "description": "A classic baseball-style t-shirt with vertical pinstripes and contrast raglan sleeves.",
+    "price": 120.0,
+    "discount": 30,
+    "stock": 50,
+    "gender": "MEN",
+    "productType": "T_SHIRT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["black-striped-tshirt.jpg"],
+    "variants": [
+      { "color": "WHITE", "size": "SMALL", "stock": 10 },
+      { "color": "GREEN", "size": "MEDIUM", "stock": 15 },
+      { "color": "BLACK", "size": "LARGE", "stock": 15 },
+      { "color": "PINK", "size": "XLARGE", "stock": 10 }
+    ]
+  },
+  {
+    "name": "Skinny Fit Jeans",
+    "description": "Slim-cut distressed skinny fit jeans in classic blue denim.",
+    "price": 260.0,
+    "discount": 20,
+    "stock": 40,
+    "gender": "MEN",
+    "productType": "JEAN",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["skinny-fit-jeans.jpg"],
+    "variants": [
+      { "color": "BLUE", "size": "SMALL", "stock": 8 },
+      { "color": "YELLOW", "size": "MEDIUM", "stock": 12 },
+      { "color": "RED", "size": "LARGE", "stock": 12 },
+      { "color": "BLUE", "size": "XLARGE", "stock": 8 }
+    ]
+  },
+  {
+    "name": "Checkered Shirt",
+    "description": "A relaxed-fit long sleeve shirt in a bold red and navy plaid check pattern.",
+    "price": 180.0,
+    "discount": 0,
+    "stock": 50,
+    "gender": "MEN",
+    "productType": "SHIRT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["checkered-shirt.jpg"],
+    "variants": [
+      { "color": "RED", "size": "SMALL", "stock": 10 },
+      { "color": "BLUE", "size": "MEDIUM", "stock": 15 },
+      { "color": "LIGHT_BLUE", "size": "LARGE", "stock": 15 }
+    ]
+  },
+  {
+    "name": "Sleeve Striped T-shirt",
+    "description": "A bold raglan t-shirt with vertical orange stripes and contrasting black sleeves.",
+    "price": 160.0,
+    "discount": 30,
+    "stock": 50,
+    "gender": "MEN",
+    "productType": "T_SHIRT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["sleeve-striped-tshirt.jpg"],
+    "variants": [
+      { "color": "ORANGE", "size": "SMALL", "stock": 10 },
+      { "color": "BLUE", "size": "MEDIUM", "stock": 15 },
+      { "color": "PURPLE", "size": "LARGE", "stock": 15 },
+      { "color": "PINK", "size": "XLARGE", "stock": 10 }
+    ]
+  },
+  {
+    "name": "Vertical Striped Shirt",
+    "description": "A mandarin collar long sleeve shirt with subtle vertical green stripes.",
+    "price": 232.0,
+    "discount": 20,
+    "stock": 45,
+    "gender": "MEN",
+    "productType": "SHIRT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["vertical-striped-shirt.jpg"],
+    "variants": [
+      { "color": "GREEN", "size": "SMALL", "stock": 8 },
+      { "color": "YELLOW", "size": "MEDIUM", "stock": 15 }
+    ]
+  },
+  {
+    "name": "Courage Graphic T-shirt",
+    "description": "An oversized graphic t-shirt in burnt orange with bold graffiti-style lettering.",
+    "price": 145.0,
+    "discount": 0,
+    "stock": 50,
+    "gender": "MEN",
+    "productType": "T_SHIRT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["courage-graphic-tshirt.jpg"],
+    "variants": [
+      { "color": "ORANGE", "size": "SMALL", "stock": 10 },
+      { "color": "BLUE", "size": "MEDIUM", "stock": 15 },
+      { "color": "RED", "size": "LARGE", "stock": 15 },
+      { "color": "GREEN", "size": "XLARGE", "stock": 10 }
+    ]
+  },
+  {
+    "name": "Loose Fit Bermuda Shorts",
+    "description": "Relaxed fit distressed bermuda shorts in light blue denim.",
+    "price": 80.0,
+    "discount": 0,
+    "stock": 40,
+    "gender": "MEN",
+    "productType": "SHORT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["bermuda-shorts.jpg"],
+    "variants": [
+      { "color": "BLUE", "size": "SMALL", "stock": 8 },
+      { "color": "GREEN", "size": "MEDIUM", "stock": 12 }
+    ]
+  },
+  {
+    "name": "T-shirt with Tape Details",
+    "description": "A minimalist black t-shirt with branded tape detail along the sleeve hem.",
+    "price": 120.0,
+    "discount": 0,
+    "stock": 50,
+    "gender": "MEN",
+    "productType": "T_SHIRT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["tshirt-tape-details.jpg"],
+    "variants": [
+      { "color": "BLACK", "size": "SMALL", "stock": 10 },
+      { "color": "WHITE", "size": "MEDIUM", "stock": 15 },
+      { "color": "RED", "size": "LARGE", "stock": 15 },
+      { "color": "LIGHT_BLUE", "size": "XLARGE", "stock": 10 }
+    ]
+  },
+  {
+    "name": "Faded Skinny Jeans",
+    "description": "Slim-cut skinny jeans in faded black denim with a modern washed finish.",
+    "price": 210.0,
+    "discount": 0,
+    "stock": 40,
+    "gender": "MEN",
+    "productType": "JEAN",
+    "dressStyle": "CASUAL",
+    "productBrand": "Other",
+    "imageUrls": ["faded-skinny-jeans.jpg"],
+    "variants": [
+      { "color": "BLACK", "size": "SMALL", "stock": 8 },
+      { "color": "YELLOW", "size": "MEDIUM", "stock": 12 },
+      { "color": "RED", "size": "LARGE", "stock": 12 },
+      { "color": "PURPLE", "size": "XLARGE", "stock": 8 }
+    ]
+  }
+]

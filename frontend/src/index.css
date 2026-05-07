@@ -102,3 +102,37 @@
 .authen_input{
     @apply border rounded-md;
 }
+
+.input_outerDiv{
+    @apply flex items-center justify-center rounded-[62px] my-3 h-12 bg-[#F0F0F0] px-2;
+}
+
+.input_field{
+    @apply border-none bg-[#F0F0F0] outline-none w-full;
+}
+
+.black_button{
+    @apply font-satoshi bg-black w-full h-13 max-w-92.5 sm:max-w-[350px] lg:max-w-52.5 mt-4 rounded-[62px] text-white
+                     py-3.5 lg:px-13.5 gap-3 hover:bg-[#202020] cursor-pointer transition-all active:scale-95;
+}
+
+.auth_button{
+    @apply font-satoshi bg-black w-full h-13 mt-4 rounded-[62px] text-white
+                     py-3.5 lg:px-13.5 gap-3 hover:bg-[#202020] cursor-pointer transition-all active:scale-95;
+}
+
+.auth_paragraph{
+    @apply text-[14px] md:text-[16px];
+}
+
+.login_option_btn{
+    @apply flex flex-row gap-3 rounded-[10px] w-full px-2 py-2 border border-gray-600 cursor-pointer hover:bg-[#F0F0F0] transition-all active:scale-100 hover:scale-105;
+}
+
+.cart_item_title{
+    @apply font-satoshibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px];
+}
+
+.cart_item_details{
+    @apply font-satoshi text-[12px] md:text-[14px] lg:text-[16px];
+}

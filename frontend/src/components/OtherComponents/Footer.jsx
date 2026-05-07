@@ -20,13 +20,13 @@ const Footer = () => {
             
             <div className="flex flex-col justify-center w-full md:pl-[30%]">
 
-                <div className="flex items-center justify-center rounded-[62px] my-3 h-12 bg-[#F0F0F0] px-2">
+                <div className="input_outerDiv">
                     <TiMail className="opacity-40 mr-2" size={24}/>
                     <input type="email" placeholder="Enter your email address"
-                    className="border-none bg-[#F0F0F0] outline-none w-full"/>
+                    className="input_field"/>
                 </div>
 
-                <button className="flex items-center justify-center bg-[#F0F0F0] my-3 rounded-[62px] px-4 py-3">Subscribe to Newsletter</button>
+                <button className="flex items-center justify-center bg-[#F0F0F0] my-3 rounded-[62px] px-4 py-3 cursor-pointer active:scale-100 hover:scale-103 transition-all">Subscribe to Newsletter</button>
 
             </div>
 

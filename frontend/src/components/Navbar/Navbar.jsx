@@ -51,7 +51,7 @@ const Navbar = () => {
 
                     {/*Shop Dropdown Section*/}
                         <li className="group relative cursor-pointer">
-                            <a href="#" className= "flex items-center gap-[2px] py-2">
+                            <Link to={"/shop"} className= "flex items-center gap-[2px] py-2">
                                 Shop
                                 <span>
                                     <IoIosArrowDown 
@@ -59,7 +59,7 @@ const Navbar = () => {
                                     duration-200
                                     group-hover:rotate-180"/>
                                 </span>
-                            </a>
+                            </Link>
                             <div className="absolute z-[9999] hidden group-hover:block w-[150px] rounded-md bg-white p-2 text-black">
                                 <ul>
                                     {ShopLinks.map((data) => (
