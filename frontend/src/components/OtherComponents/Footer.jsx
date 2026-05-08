@@ -12,7 +12,7 @@ import GooglePay from "../../assets/payment_imgs/GooglePay.png"
 
 const Footer = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full">
+    <div className="flex flex-col items-center justify-center w-full mt-[20%] sm:mt-[10%] md:mt-[10%]">
         {/* Newsletter Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 w-[85%] gap-5 bg-black px-[5%] py-[5%] md:px-[5%] md:py-[1%] rounded-[20px] items-center relative z-10 mb-[-90px]">
             

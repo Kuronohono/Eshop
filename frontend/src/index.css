@@ -136,3 +136,7 @@
 .cart_item_details{
     @apply font-satoshi text-[12px] md:text-[14px] lg:text-[16px];
 }
+
+.color_style{
+    @apply relative w-9.25 h-9.25 rounded-full cursor-pointer transition-transform active:scale-95 focus:outline-none border-2;
+}

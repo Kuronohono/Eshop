@@ -6,7 +6,7 @@ import { FaFacebook } from "react-icons/fa";
 const Login = () => {
   return (
     //Outer Form
-    <div className="flex w-full items-center justify-center mt-[10%] mb-[20%] sm:mt-[7%] md:mt-[5%] sm:mb-[10%] md:mb-[10%]">
+    <div className="flex w-full items-center justify-center mt-[10%] sm:mt-[7%] md:mt-[5%]">
 
         {/* Login Form */}
         <div className="flex flex-col gap-3 items-center border px-[5%] py-[10%] sm:py-[7%] md:py-[3%] rounded-[20px] border-gray-400 bg-[#fbfbfb]">

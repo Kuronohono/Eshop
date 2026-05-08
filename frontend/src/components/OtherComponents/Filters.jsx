@@ -24,8 +24,16 @@ const Filter_Types = [
     id: 5,
     name: "Jeans"
 }
-
 ]
+
+const DressStyles = [
+    { id:6, name:"Casual"},
+    { id:7, name:"Formal"},
+    { id:8, name:"Party"},
+    { id:9, name:"Gym"}
+]
+
+
 
 const Filters = () => {
   return (
@@ -65,11 +73,11 @@ const Filters = () => {
 
         {/* Colors Section */}
 
-        <ColorButtonGroup/>
-
         <div>
             <h1 className="filter_header">Colors</h1>
         </div>
+
+         <ColorButtonGroup/>
 
         <div className="h-px bg-[#F0F0F0] mx-auto w-full" />
 
@@ -86,6 +94,20 @@ const Filters = () => {
         <div>
             <h1 className="filter_header">Dress Style</h1>
         </div>
+
+        <div className="flex flex-col gap-2">
+            {
+                DressStyles.map((type) => (
+                    <button key={type.id} className="filter_type">
+                        <h1 className="font-satoshi text-[16px] opacity-40">{type.name}</h1>
+                        <p className="opacity-60">{'>'}</p>
+                    </button>
+                ))
+            }
+        </div>
+
+        {/* Apply Filter Button */}
+            <button className="auth_button w-full">Apply Filter</button>
 
 
     </div>
