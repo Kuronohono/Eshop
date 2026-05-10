@@ -83,7 +83,7 @@ const TopSellingData = [
 
 const Products = () => {
   return (
-    <div className="flex flex-col justify-center gap-10" >
+    <div className="srceen-adapt" >
         
         {/* New Arrivals Header Section */}
         <div className="flex items-center justify-center pt-8 md:pt-15">
@@ -92,8 +92,9 @@ const Products = () => {
 
         {/* New Arrivals Card Section */}
         <div className="flex flex-col items-center justify-center w-full gap-10">
-            <CardComponent products={NewArrivalsProductsData}/>
+            {/*<CardComponent products={NewArrivalsProductsData}/> */}
             <button className="view_all_btn" >View All</button>
+            
         </div>
 
          <div className="h-px w-4/5 bg-black opacity-10 mx-auto" />
@@ -105,18 +106,18 @@ const Products = () => {
 
         {/* Top Selling Card Section */}
         <div className="flex flex-col items-center justify-center w-full gap-10">
-            <CardComponent products={TopSellingData}/>
+            {/*<CardComponent products={TopSellingData}/> */}
             <button className="view_all_btn" >View All</button>
         </div>
 
         {/* Browse By Dress Style Section*/}
         <div className="flex flex-col items-center justify-center bg-[#F0F0F0] mx-auto w-[85%] rounded-[40px] ">
-            <div className="pt-8 md:pt-15 flex flex-wrap items-center justify-center px-10">
-                <h1 className="home_banner text-center">Browse by dress style</h1>
+            <div className="pt-8 md:pt-15 flex flex-wrap items-center justify-center">
+                <h1 className="home_banner text-center px-[10%] lg:px-[0%]">Browse by dress style</h1>
             </div>
 
             {/*Dress Styles */}
-            <div className="flex items-center">
+            <div className="flex items-center py-[5%] 2xl:w-full justify-center">
                 <BrowseStylePanel/>
             </div>
         </div>

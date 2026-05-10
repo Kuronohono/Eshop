@@ -60,18 +60,6 @@
     @apply font-integralcf text-[32px] md:text-[48px];
 }
 
-.style_card{
-    @apply relative rounded-[20px] overflow-hidden cursor-pointer hover:scale-103 transition-all;
-}
-
-.style_card-md {
-    @apply col-span-1 md:col-span-2;
-}
-
-.style_card-lg {
-    @apply col-span-1 md:col-span-3;
-}
-
 .footer_options{
     @apply font-satoshi opacity-50 text-[14px] md:text-[16px] cursor-pointer active:opacity-20 hover:opacity-40;
 }
@@ -151,4 +139,49 @@
 
 .page_header{
     @apply font-satoshibold text-[24px] md:text-[32px];
+}
+
+.slider_component{
+    @apply flex items-center justify-center gap-5 overflow-y-hidden py-4 px-2;
+}
+
+.slider_component::-webkit-scrollbar {
+    display:none
+}
+
+/*----------------Browse Style Component----------------*/
+
+.browse_style_comp {
+    @apply grid 
+    grid-cols-2 gap-4
+    lg:grid-cols-5 lg:gap-5;
+}
+
+.style_img {
+    @apply object-cover w-full aspect-[4/3]
+    lg:h-[290px] lg:aspect-auto
+    2xl:h-[500px];
+}
+
+.style_card {
+    @apply relative rounded-[20px] overflow-hidden cursor-pointer hover:scale-103 active:scale-100 transition-all;
+}
+
+.style_card-md {
+    @apply col-span-1 lg:col-span-2;
+}
+
+.style_card-lg {
+    @apply col-span-2 lg:col-span-3;
+}
+
+.browse_style_par{
+    @apply absolute top-4 left-4 text-[24px] 2xl:text-[36px] font-bold text-black;
+}
+
+/*---------------Brands Page---------------*/
+
+
+.brand_image{
+    @apply object-cover w-75 h-50 sm:w-100 sm:h-65 md:w-120 md:h-85 lg:w-100 lg:h-75 2xl:w-110 2xl:h-90 rounded-[20px] cursor-pointer;
 }
