@@ -84,11 +84,11 @@
 }
 
 .screen-adapt{
-    @apply mt-5 md:mt-8 w-full px-8 sm:px-6 md:px-20 ;
+    @apply flex flex-col mt-5 md:mt-8 w-full px-[6%] sm:px-[7%] md:px-[6%] lg:px-[7%] xl:px-[7%] 2xl:px-[12%] ;
 }
 
 .filter_type{
-    @apply flex items-center justify-between cursor-pointer hover:bg-[#eeeeee] rounded-md px-1;
+    @apply flex items-center justify-between cursor-pointer hover:bg-[#eeeeee] rounded-md px-1 py-1;
 }
 
 .filter_header{
@@ -139,4 +139,16 @@
 
 .color_style{
     @apply relative w-9.25 h-9.25 rounded-full cursor-pointer transition-transform active:scale-95 focus:outline-none border-2;
+}
+
+.item_container{
+    @apply flex flex-col border rounded-[20px] border-black/20;
+}
+
+.profile_menu_icon{
+    @apply size-5;
+}
+
+.page_header{
+    @apply font-satoshibold text-[24px] md:text-[32px];
 }

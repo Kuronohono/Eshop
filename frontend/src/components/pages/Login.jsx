@@ -50,6 +50,7 @@ const Login = () => {
 
                     <p className="auth_paragraph">Don't have an account?</p>
                     <Link to={"/register"} className="auth_paragraph text-blue-400">Sign Up</Link>
+                     <Link to={"/my_account"} className="auth_paragraph text-blue-400">User Page</Link>
                 </div>
                 
             </div>

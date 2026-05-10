@@ -8,7 +8,7 @@ import Img5 from "../../assets/placeholder_imgs/vertical_striped.png"
 import Img6 from "../../assets/placeholder_imgs/courage_shirt.png"
 import Img7 from "../../assets/placeholder_imgs/bermuda_shorts.png"
 import Img8 from "../../assets/placeholder_imgs/faded_skinny.png"
-import CartProduct from '../Object_components/CartProduct'
+import CartProduct from '../OtherComponents/Object_components/CartProduct'
 
 const CartProducts = [
 {
@@ -73,7 +73,7 @@ const Cart = () => {
 
                 {/* Your Cart */}
 
-                <div className="flex flex-col sm:w-3/5 border rounded-[20px] border-black/10 divide-y divide-black/10">
+                <div className="item_container divide-y divide-black/10">
                     {
                         CartProducts.map((product) => (
                             <div key={product.id} className="flex mx-[3%] py-[4%] md:py-[3%]">
@@ -84,7 +84,7 @@ const Cart = () => {
                     
                 </div>
                 {/* Order Summary */}
-                <div className="flex flex-col gap-4 border px-2 py-2 sm:w-2/5 rounded-md self-start">
+                <div className="item_container self-start">
                     <h2>Order Summary</h2>
                     <p>Subtotal</p>
                     <p>Discount</p>

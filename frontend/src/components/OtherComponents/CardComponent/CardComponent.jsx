@@ -1,7 +1,6 @@
 import React from 'react'
-import StarRating from '../OtherComponents/StarRating'
-import ProductPrice from '../OtherComponents/ProductPrice'
-
+import StarRating from '../ProductComponents/StarRating'
+import ProductPrice from '../ProductComponents/ProductPrice'
 
 const CardComponent = ({products}) => {
   return (

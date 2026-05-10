@@ -12,6 +12,7 @@ import Footer from './components/OtherComponents/Footer'
 import Login from './components/pages/Login'
 import Register from './components/pages/Register'
 import ShopPage from './components/pages/ShopPage'
+import UserProfilePage from './components/pages/MyAccountPage'
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/shop" element={<ShopPage/>}/>
+      <Route path="/my_account" element={<UserProfilePage/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

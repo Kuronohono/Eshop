@@ -7,7 +7,7 @@ import Img5 from "../../assets/placeholder_imgs/vertical_striped.png"
 import Img6 from "../../assets/placeholder_imgs/courage_shirt.png"
 import Img7 from "../../assets/placeholder_imgs/bermuda_shorts.png"
 import Img8 from "../../assets/placeholder_imgs/faded_skinny.png"
-import CardComponent from '../CardComponent/CardComponent'
+import CardComponent from '../OtherComponents/CardComponent/CardComponent'
 import BrowseStylePanel from '../OtherComponents/BrowseStylePanel'
 import Footer from '../OtherComponents/Footer'
 
