@@ -44,6 +44,10 @@
     --font-satoshibold: 'SatoshiBold', sans-serif;
 }
 
+.screen-adapt{
+    @apply flex flex-col mt-5 md:mt-8 w-full px-[6%] sm:px-[7%] md:px-[6%] lg:px-[7%] xl:px-[7%] 2xl:px-[12%] ;
+}
+
 .brand-logo{
     @apply invert object-cover cursor-pointer hover:opacity-80 transition-all duration-200 active:scale-95;
 }
@@ -57,7 +61,7 @@
 }
 
 .home_banner{
-    @apply font-integralcf text-[32px] md:text-[48px];
+    @apply font-integralcf text-[32px] lg:text-[48px];
 }
 
 .footer_options{
@@ -65,14 +69,10 @@
 }
 
 .social_icon_btn{
-    @apply bg-white px-[2%] py-[2%] rounded-xl cursor-pointer active:scale-110 hover:scale-105 transition-all;
+    @apply bg-white px-[2%] py-[2%] rounded-full cursor-pointer active:scale-110 hover:scale-105 transition-all;
 }
 .social_icon_btn_dark{
-    @apply bg-black px-[2%] py-[2%] rounded-xl cursor-pointer active:scale-110 hover:scale-105 transition-all;
-}
-
-.screen-adapt{
-    @apply flex flex-col mt-5 md:mt-8 w-full px-[6%] sm:px-[7%] md:px-[6%] lg:px-[7%] xl:px-[7%] 2xl:px-[12%] ;
+    @apply bg-black px-[2%] py-[2%] rounded-full cursor-pointer active:scale-110 hover:scale-105 transition-all;
 }
 
 .filter_type{
@@ -153,14 +153,19 @@
 
 .browse_style_comp {
     @apply grid 
-    grid-cols-2 gap-4
-    lg:grid-cols-5 lg:gap-5;
+    grid-cols-1 gap-3 w-full px-[10%]
+    sm:gap-4
+    md:grid-cols-2
+    lg:grid-cols-5 lg:gap-5
+    2xl:gap-8;
 }
 
 .style_img {
-    @apply object-cover w-full aspect-[4/3]
-    lg:h-[290px] lg:aspect-auto
-    2xl:h-[500px];
+    @apply object-cover w-full h-45
+    sm:h-52
+    md:h-60
+    lg:h-72.5 lg:aspect-auto
+    2xl:h-125;
 }
 
 .style_card {
@@ -172,7 +177,7 @@
 }
 
 .style_card-lg {
-    @apply col-span-2 lg:col-span-3;
+    @apply col-span-1 lg:col-span-3;
 }
 
 .browse_style_par{
@@ -184,4 +189,49 @@
 
 .brand_image{
     @apply object-cover w-75 h-50 sm:w-100 sm:h-65 md:w-120 md:h-85 lg:w-100 lg:h-75 2xl:w-110 2xl:h-90 rounded-[20px] cursor-pointer;
+}
+
+
+/*---------------Category Page----------------*/
+.results_span{
+    @apply font-satoshi text-black/50 text-[14px] lg:text-[16px];
+}
+
+/*---------------Dual Price Slider----------------*/
+.slider-thumb-left::-webkit-slider-thumb,
+.slider-thumb-right::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: auto;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: #000;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slider-thumb-left::-webkit-slider-runnable-track,
+.slider-thumb-right::-webkit-slider-runnable-track {
+    height: 4px;
+    background: transparent;
+}
+
+.slider-thumb-left::-moz-range-thumb,
+.slider-thumb-right::-moz-range-thumb {
+    pointer-events: auto;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    background: #000;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slider-thumb-left::-moz-range-track,
+.slider-thumb-right::-moz-range-track {
+    height: 4px;
+    background: transparent;
 }

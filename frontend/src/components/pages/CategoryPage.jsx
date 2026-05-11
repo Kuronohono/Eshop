@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams} from 'react-router-dom'
 import Breadcrumb from '../OtherComponents/Breadcrumb'
 import Filters from '../OtherComponents/FilterComponents/Filters'
+import ComboBox from '../OtherComponents/ComboBox';
 
 const CategoryPage = () => {
     const {category} = useParams()
+    const [sortValue, setSortValue] = useState("popular")
+    const sortOptions = [
+        { value: "popular", label: "Most Popular" },
+        { value: "newest", label: "Newest" },
+        { value: "price-low-high", label: "Price: Low to High" },
+        { value: "price-high-low", label: "Price: High to Low" },
+        { value: "rating", label: "Top Rated" },
+    ]
 
   return (
     <div className="screen-adapt">
@@ -22,16 +31,22 @@ const CategoryPage = () => {
                 <Filters/>
 
                 {/*Results Section Columns */}
-                <div className="flex col-span-3 ">
+                <div className="flex col-span-3 justify-between ">
                     
-                    <div className="flex justify-between">
+
                         <h1 className="page_header">{category}</h1>
 
-                        <div>
-                            <span>Showing<span>1-10</span> of <span> 100</span> Products</span>
+                        <div className="flex gap-2">
+                            <span className="results_span">Showing <span>1-10</span> of <span> 100</span> Products</span>
+                            <span className="results_span">Sort by:</span>
+                            <ComboBox
+                                value={sortValue}
+                                onChange={setSortValue}
+                                options={sortOptions}
+                            />
                         </div>
-                        </div>
-                    </div>
+                        
+                </div>
 
             </div>
         </div>
