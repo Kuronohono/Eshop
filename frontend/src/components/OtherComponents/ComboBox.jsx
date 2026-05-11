@@ -20,10 +20,10 @@ const ComboBox = ({
   );
 
   return (
-    <select
+    <select 
       value={value}
       onChange={(event) => onChange?.(event.target.value)}
-      className={`font-satoshi text-[14px] lg:text-[16px] bg-transparent text-black cursor-pointer outline-none ${className}`}
+      className={`font-satoshi text-[14px] lg:text-[16px] leading-none h-5 bg-transparent text-black cursor-pointer outline-none align-middle ${className}`}
       aria-label="Sort products"
     >
       {safeOptions.map((option) => (

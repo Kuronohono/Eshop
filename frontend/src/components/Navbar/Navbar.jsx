@@ -7,6 +7,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ResponsiveMenu from './ResponsiveMenu'
 import {Link} from "react-router-dom"
+import ShopMenu from './ShopMenu';
 
 const Menu = [
     { id: 1, name: "On Sale", link: "/on_sale" },
@@ -50,28 +51,7 @@ const Navbar = () => {
                 <ul className="flex items-center gap-6 ">
 
                     {/*Shop Dropdown Section*/}
-                        <li className="group relative cursor-pointer">
-                            <Link to={"/shop"} className= "flex items-center gap-[2px] py-2">
-                                Shop
-                                <span>
-                                    <IoIosArrowDown 
-                                    className="transition-all
-                                    duration-200
-                                    group-hover:rotate-180"/>
-                                </span>
-                            </Link>
-                            <div className="absolute z-[9999] hidden group-hover:block w-[150px] rounded-md bg-white p-2 text-black">
-                                <ul>
-                                    {ShopLinks.map((data) => (
-                                        <li key={data.id}>
-                                            <Link to={data.link} className="inline-block w-full 
-                                            rounded-md p-2 hover:bg-[#F2F0F1]">
-                                                {data.name}</Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </li>
+                        <ShopMenu/>
 
 
                     {Menu.map((item) => (

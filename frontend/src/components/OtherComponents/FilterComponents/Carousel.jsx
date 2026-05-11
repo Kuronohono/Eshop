@@ -16,7 +16,7 @@ const Carousel = ({ items = fallbackItems }) => {
   return (
     <div className="w-full max-w-7xl mx-auto">
       <div
-        className="flex flex-nowrap gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pb-2 touch-pan-x"
+        className="flex flex-nowrap gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pt-3 pb-3 pl-3 pr-2 touch-pan-x"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",

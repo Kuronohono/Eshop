@@ -85,12 +85,12 @@ const Hero = () => {
 
             </div>
 
-            <div className="flex flex-wrap bg-black w-full min-h-[122px] items-center justify-center md:justify-between gap-6 gap-y-6 py-6 px-2 md:px-20">
-                <img src={Versace} alt=""     className="brand-logo w-[120px]  h-[25px] md:w-[220px] md:h-[50px]" />
-                <img src={Zara} alt=""        className="brand-logo w-[65px]  h-[30px] md:w-[130px] md:h-[50px]"/>
-                <img src={Gucci} alt=""       className="brand-logo w-[110px]  h-[28px] md:w-[220px] md:h-[36px]"/>
-                <img src={Prada} alt=""       className="brand-logo w-[127px]  h-[25px] md:w-[220px] md:h-[50px]"/>
-                <img src={CalvinKlein} alt="" className="brand-logo w-[135px] h-[25px] md:w-[200px] md:h-[40px]"/>
+            <div className="brand_container">
+                <img src={Versace} alt=""     className="brand-logo" />
+                <img src={Zara} alt=""        className="brand-logo"/>
+                <img src={Gucci} alt=""       className="brand-logo"/>
+                <img src={Prada} alt=""       className="brand-logo"/>
+                <img src={CalvinKlein} alt="" className="brand-logo"/>
             </div>
 
         </section>

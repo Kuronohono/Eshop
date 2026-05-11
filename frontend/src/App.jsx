@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
-import Products from './components/Products/Products'
+import Products from './components/pages/HomePage'
 import CategoryPage from './components/pages/CategoryPage'
 import Brands from './components/pages/Brands'
 import OnSale from './components/pages/OnSale'
@@ -20,7 +20,7 @@ const App = () => {
     <Navbar/>
     <Routes>
       <Route path="/Home" element={<><Hero /><Products/></>}/>
-      <Route path="/:category" element={<CategoryPage/>}/>
+      <Route path=":gender/:category" element={<CategoryPage/>}/>
       <Route path="/on_sale" element={<OnSale/>}/>
       <Route path="/new_arrivals" element={<NewArrivals/>}/>
       <Route path="/brands" element={<Brands/>}/>

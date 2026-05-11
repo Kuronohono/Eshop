@@ -45,11 +45,34 @@
 }
 
 .screen-adapt{
-    @apply flex flex-col mt-5 md:mt-8 w-full px-[6%] sm:px-[7%] md:px-[6%] lg:px-[7%] xl:px-[7%] 2xl:px-[12%] ;
+    @apply flex flex-col items-center justify-center mt-5 md:mt-8 w-full px-[6%] sm:px-[7%] md:px-[6%] lg:px-[7%] xl:px-[7%] 2xl:px-[12%] ;
+}
+
+/*------------ Hero Page----------------*/
+.brand_container{
+    @apply flex flex-wrap bg-black w-full items-center justify-center gap-x-6 gap-y-3 py-8 lg:py-10 px-4
+    md:flex-nowrap md:justify-between md:px-16 lg:px-20
 }
 
 .brand-logo{
-    @apply invert object-cover cursor-pointer hover:opacity-80 transition-all duration-200 active:scale-95;
+    @apply  object-contain cursor-pointer hover:opacity-80 transition-all duration-200 active:scale-95 h-[20px] w-auto
+    sm:h-[30px] md:h-[40px];
+}
+
+@media (max-width: 767px) {
+    .brand_container .brand-logo:nth-child(-n+3) {
+        width: 26%;
+        max-width: 98px;
+    }
+
+    .brand_container .brand-logo:nth-child(n+4) {
+        width: 38%;
+        max-width: 132px;
+    }
+
+    .brand_container .brand-logo:nth-child(4) {
+        max-width: 116px;
+    }
 }
 
 .star_rate{
@@ -100,8 +123,8 @@
 }
 
 .black_button{
-    @apply font-satoshi bg-black w-full h-13 max-w-92.5 sm:max-w-[350px] lg:max-w-52.5 mt-4 rounded-[62px] text-white
-                     py-3.5 lg:px-13.5 gap-3 hover:bg-[#202020] cursor-pointer transition-all active:scale-95;
+    @apply font-satoshi bg-black w-full h-13 max-w-92.5 sm:max-w-[350px] lg:max-w-52.5 rounded-[62px] mt-4 text-white
+                    py-3.5 lg:px-13.5 gap-3 hover:bg-[#202020] cursor-pointer transition-all active:scale-95;
 }
 
 .auth_button{
@@ -117,6 +140,7 @@
     @apply flex flex-row gap-3 rounded-[10px] w-full px-2 py-2 border border-gray-600 cursor-pointer hover:bg-[#F0F0F0] transition-all active:scale-100 hover:scale-105;
 }
 
+/*----------- Cart -----------------*/
 .cart_item_title{
     @apply font-satoshibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px];
 }
@@ -125,6 +149,31 @@
     @apply font-satoshi text-[12px] md:text-[14px] lg:text-[16px];
 }
 
+.cart_header{
+    @apply font-satoshibold text-[20px] lg:text-[24px];
+}
+
+.cart_details{
+    @apply font-satoshi text-[16px] lg:text-[20px] opacity-60;
+}
+
+.cart_details_data{
+     @apply font-satoshibold text-[16px] lg:text-[20px];
+}
+
+.cart_details_data_disc{
+     @apply font-satoshibold text-[16px] lg:text-[20px] text-red-600;
+}
+
+.cart_coupon_btn{
+    @apply font-satoshi text-[14px] lg:text-[16px] bg-black text-white px-[6%] rounded-[30px] h-12 hover:bg-[#202020] cursor-pointer transition-all active:scale-95;
+}
+
+.cart_checkout_btn{
+    @apply flex items-center justify-center bg-black w-full rounded-[40px] text-[14px] lg:text-[16px] text-white py-4 gap-2 hover:bg-[#202020] cursor-pointer transition-all active:scale-95 mb-5;
+}
+
+/*-------------------------------------*/
 .color_style{
     @apply relative w-9.25 h-9.25 rounded-full cursor-pointer transition-transform active:scale-95 focus:outline-none border-2;
 }
@@ -235,3 +284,14 @@
     height: 4px;
     background: transparent;
 }
+
+/*-----------Navigation Menu--------------*/
+.nav_genderheader{
+    @apply font-satoshibold pl-2;
+}
+
+.nav_catImage{
+    @apply rounded-[2%] w-[200px] h-[100px] ;
+}
+
+

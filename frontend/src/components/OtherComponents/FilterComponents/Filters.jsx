@@ -39,7 +39,7 @@ const DressStyles = [
 
 const Filters = () => {
   return (
-    <div className="flex flex-col border border-[#F0F0F0] rounded-[20px] px-6 py-6 gap-4 divide-y divide-black/10">
+    <div className="hidden lg:block flex h-fit w-full flex-col border border-[#F0F0F0] rounded-[20px] px-6 py-6 gap-4 divide-y divide-black/10">
 
         {/* Headline and icon */}
         <div className="flex items-center justify-between pb-3">
