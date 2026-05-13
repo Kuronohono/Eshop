@@ -27,12 +27,12 @@ const ShopMenu = () => {
     onMouseEnter={() => setIsOpen(true)}
     onMouseLeave={() => setIsOpen(false)}>
         
-        <li className="flex items-center gap-0.5 py-2 hover">
+        <div className="flex items-center gap-0.5 py-2 hover">
             Shop
             <span>
                 <IoIosArrowDown className={`transition-all duration-200 ${isOpen ? "rotate-180" : ""}`}/>
             </span>
-        </li>
+        </div>
 
         {isOpen && (
             <div className="fixed z-[9999] left-0 w-screen bg-white text-black shadow-md">

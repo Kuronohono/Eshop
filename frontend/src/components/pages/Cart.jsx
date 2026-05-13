@@ -61,7 +61,7 @@ const CartProducts = [
 const Cart = () => {
   return (
     <div className="screen-adapt">
-        <div className="flex flex-col mb-[10%]">
+        <div className="flex flex-col mb-[10%] w-full">
 
             <div className="h-px bg-black opacity-10 mx-auto w-full" />
 

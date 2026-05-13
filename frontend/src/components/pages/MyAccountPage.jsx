@@ -35,11 +35,10 @@ const UserProfilePage = () => {
   const selectedItem = MenuItems.find((item) => item.id === selected);
 
   return (
-    <div className="screen-adapt gap-5">
-
-      <div className="h-px bg-black opacity-10 mx w-full" />
+    <div className="screen-adapt">
+      <div className="h-px bg-black opacity-10 mb-10 w-full" />
       
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 w-full mx-auto">
 
         {/*Profile Information Panel */}
         <div className="col-span-1 item_container py-[10%] md:py-[20%] px-[5%] gap-10 items-center ">

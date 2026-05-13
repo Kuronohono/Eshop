@@ -295,3 +295,15 @@
 }
 
 
+/*--------------- Product Page ---------------*/
+.product_header{
+    @apply font-integralcf text-[24px] sm:text-[28px] md:text-[35px] lg:text-[40px];
+}
+
+.product_description{
+    @apply font-satoshi text-[14px] lg:text-[16px] text-black/60;
+}
+
+.product_select_option{
+    @apply font-satoshi text-black/50 text-[14px] lg:text-[16px];
+}

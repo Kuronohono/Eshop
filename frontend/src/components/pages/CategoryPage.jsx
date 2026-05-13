@@ -111,8 +111,9 @@ const CategoryPage = () => {
     const {category} = useParams()
     const [sortValue, setSortValue] = useState("popular")
     const [page, setPage] = useState(1)
-
-    const totalProducts = ProdutsData.length
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const totalProducts = products.length
     const totalPages = Math.max(1, Math.ceil(totalProducts / PAGE_SIZE))
 
     useEffect(() => {
@@ -123,8 +124,21 @@ const CategoryPage = () => {
         setPage((p) => Math.max(1, Math.min(p, totalPages)))
     }, [totalPages])
 
+    useEffect(() => {
+        fetch("http://localhost:8085/products")
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data)
+                setLoading(false)
+            })
+            .catch(err => {
+                console.error(err)
+                setLoading(false)
+            })
+    }, [])
+
     const startIndex = (page - 1) * PAGE_SIZE
-    const pageItems = ProdutsData.slice(startIndex, startIndex + PAGE_SIZE)
+    const pageItems = products.slice(startIndex, startIndex + PAGE_SIZE)
     const rangeStart = totalProducts === 0 ? 0 : startIndex + 1
     const rangeEnd = Math.min(page * PAGE_SIZE, totalProducts)
     const sortOptions = [
@@ -190,13 +204,17 @@ const CategoryPage = () => {
 
                     {/* Products */}
                     <div className="grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 lg:gap-7 mt-5">
-                        {
-                            pageItems.map((product, index) => (
+                       {loading ? (
+                        <p>Loading...</p>
+                       )
+                       :(
+                            pageItems.map((product,index) =>(
                                 <div key={`${startIndex + index}-${product.id}`}>
                                     <CardComponent product={product} />
                                 </div>
                             ))
-                        }
+                       )}
+
                     </div>
 
                     <div className="h-px bg-black opacity-10 mx-auto w-full mt-10 mb-5" />
