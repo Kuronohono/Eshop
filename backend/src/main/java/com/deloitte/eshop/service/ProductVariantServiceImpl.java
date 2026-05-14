@@ -1,9 +1,10 @@
 package com.deloitte.eshop.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.deloitte.eshop.entity.Colors;
 import com.deloitte.eshop.entity.ProductVariant;
 import com.deloitte.eshop.entity.Sizes;
 import com.deloitte.eshop.repo.ProductVariantRepository;
@@ -37,25 +38,33 @@ public class ProductVariantServiceImpl implements ProductVariantService {
 
     @Override
     public List<ProductVariant> getProductVariantsByProductId(String product_id) {
-        return (List<ProductVariant>) productVariantRepository.findAll();
+        return productVariantRepository.findByProductId(product_id);
     }
 
     @Override
-    public List<Colors> getProductVariantColors(String product_id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProductVariantColors'");
+    public List<String> getProductVariantColors(String product_id) {
+        return productVariantRepository.findByProductId(product_id)
+                .stream()
+                .map(ProductVariant::getColor)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Integer> getProductVariantsStock(String product_id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProductVariantsStock'");
+        return productVariantRepository.findByProductId(product_id)
+                .stream()
+                .map(ProductVariant::getStock)
+                .collect(Collectors.toList());
+
     }
 
     @Override
     public List<Sizes> getProductVariantsSizes(String product_id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProductVariantsSizes'");
+        return productVariantRepository.findByProductId(product_id)
+                .stream()
+                .map(ProductVariant::getSize)
+                .collect(Collectors.toList());
     }
 
 }

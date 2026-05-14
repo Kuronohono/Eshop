@@ -1,7 +1,6 @@
 package com.deloitte.eshop.config;
 
 import com.deloitte.eshop.entity.Brands;
-import com.deloitte.eshop.entity.Colors;
 import com.deloitte.eshop.entity.DressStyle;
 import com.deloitte.eshop.entity.Gender;
 import com.deloitte.eshop.entity.Product;
@@ -66,7 +65,7 @@ public class ProductsJsonDataLoader implements ApplicationRunner {
         if (dto.variants() != null) {
             for (VariantJsonDto v : dto.variants()) {
                 variants.add(ProductVariant.builder()
-                        .color(Colors.valueOf(v.color()))
+                        .color(v.color())
                         .size(Sizes.valueOf(v.size()))
                         .stock(v.stock())
                         .build());

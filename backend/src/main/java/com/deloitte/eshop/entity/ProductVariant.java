@@ -43,9 +43,8 @@ public class ProductVariant {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "color")
-    private Colors color;
+    private String color;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

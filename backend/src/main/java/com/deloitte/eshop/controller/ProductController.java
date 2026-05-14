@@ -1,10 +1,15 @@
 package com.deloitte.eshop.controller;
 
+import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -49,6 +54,16 @@ public class ProductController {
         if (product != null)
             delete_message = productService.deleteProduct(product);
         return ResponseEntity.ok(delete_message);
+    }
+
+    @GetMapping("/filter")
+    public Page<Product> filterProducts(
+            @ModelAttribute ProductFilter filter,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "name") String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return productService.getFilteredProducts(filter, pageable);
     }
 
 }

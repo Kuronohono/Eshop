@@ -1,6 +1,5 @@
 package com.deloitte.eshop.service;
 
-import com.deloitte.eshop.entity.Colors;
 import com.deloitte.eshop.entity.ProductVariant;
 import com.deloitte.eshop.entity.Sizes;
 
@@ -28,11 +27,12 @@ public interface ProductVariantService {
     List<ProductVariant> getProductVariantsByProductId(String product_id);
 
     // Get Product Variants Colors
-    List<Colors> getProductVariantColors(String product_id);
+    List<String> getProductVariantColors(String product_id);
 
     // Get Product Variant Stock
     List<Integer> getProductVariantsStock(String product_id);
 
     // Get Product Variant Sizes
     List<Sizes> getProductVariantsSizes(String product_id);
+
 }

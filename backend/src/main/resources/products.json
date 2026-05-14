@@ -9,7 +9,9 @@
     "productType": "T_SHIRT",
     "dressStyle": "CASUAL",
     "productBrand": "Other",
-    "imageUrls": ["gradient-graphic-tshirt.jpg"],
+    "imageUrls": ["https://b.scdn.gr/images/sku_main_images/058822/58822717/fixedratio_20260123135021_funky_buddha_polo_t_shirt_mple_fbm011_001_11_smoke_blue.jpeg",
+                  "https://c.scdn.gr/images/sku_images/121867/121867918/fixedratio_20260123135021_f86bdb5a.jpeg",
+                  "https://d.scdn.gr/images/sku_images/121895/121895948/fixedratio_20260126111049_3cba40f5.jpeg" ],
     "variants": [
       { "color": "WHITE", "size": "SMALL", "stock": 10 },
       { "color": "RED", "size": "MEDIUM", "stock": 15 },

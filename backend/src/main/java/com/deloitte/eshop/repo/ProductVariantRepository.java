@@ -9,4 +9,5 @@ import com.deloitte.eshop.entity.ProductVariant;
 
 @Repository
 public interface ProductVariantRepository extends CrudRepository<ProductVariant, String> {
+    List<ProductVariant> findByProductId(String productId);
 }

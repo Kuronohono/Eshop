@@ -6,6 +6,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -41,6 +42,9 @@ public class Product {
     // Product Price (Original)
     @Column(nullable = false)
     private double price;
+
+    @Column(name = "arrival_date", updatable = false)
+    private LocalDate arrivalDate;
 
     // Product Stock
     @Column(nullable = false)
@@ -91,6 +95,11 @@ public class Product {
 
     // ----------- Methods ---------//
 
+    @PrePersist
+    protected void onCreate() {
+        this.arrivalDate = LocalDate.now();
+    }
+
     public int getReviewCount() {
         return reviews == null ? 0 : reviews.size();
     }
@@ -109,6 +118,10 @@ public class Product {
                 .average()
                 .orElse(0.0);
 
+    }
+
+    public LocalDate getArrivalDate() {
+        return arrivalDate;
     }
 
 }

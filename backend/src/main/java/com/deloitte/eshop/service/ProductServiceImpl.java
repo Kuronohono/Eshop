@@ -1,10 +1,13 @@
 package com.deloitte.eshop.service;
 
+import com.deloitte.eshop.dto.ProductFilter;
+import com.deloitte.eshop.dto.ProductSpecification;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -44,5 +47,11 @@ public class ProductServiceImpl implements ProductService {
     public String deleteProduct(Product product) {
         productRepository.delete(product);
         return "Product Deleted Successfully for productId: " + product.getId();
+    }
+
+    @Override
+    public Page<Product> getFilteredProducts(ProductFilter filter, Pageable pageable) {
+        return productRepository.findAll(
+                ProductSpecification.withFilters(filter), pageable);
     }
 }

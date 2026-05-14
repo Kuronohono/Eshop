@@ -1,8 +1,10 @@
 package com.deloitte.eshop.service;
 
+import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.entity.Product;
-
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ProductService {
 
@@ -18,4 +20,5 @@ public interface ProductService {
 
     String deleteProduct(Product product);
 
+    Page<Product> getFilteredProducts(ProductFilter filter, Pageable pageable);
 }
