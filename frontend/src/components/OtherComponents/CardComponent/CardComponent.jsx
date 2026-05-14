@@ -13,16 +13,16 @@ const CardComponent = ({product}) => {
             e.currentTarget.src = NoImageAvailable
         }}
         alt="product"
-        className=" w-full h-[200px] md:h-[300px] object-cover rounded-2xl bg-[#F0F0F0]"/>
+        className=" w-full h-[200px] md:h-[300px] object-cover object-top rounded-2xl bg-[#F0F0F0]"/>
                             <div className="flex flex-col gap-1">
                                 <h3 className="font-satoshibold text-16px md:text-[20px] truncate">{product?.name}</h3>
                                 {product?.productRating > 0 && (
                                     <div className="flex items-center gap-2 md:gap-4">
-                                        <StarRating rating={product.productRating}/>
+                                        <StarRating rating={product.productRating} starClassName="star_rate" divClassName="div_className"/>
                                         <h4 className="font-satoshi text-[12px] md:text-[15px]">{product.productRating}/5</h4>
                                     </div>
                                 )}
-                                <ProductPrice price={product.price} sale_per={product.discount}/>
+                                <ProductPrice price={product.price} sale_per={product.discount} pricingDivClass="" newPriceClass="" oldPriceClass="" discountClass=""/>
                             </div>
         </Link>           
 
