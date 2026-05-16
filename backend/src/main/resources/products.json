@@ -11,13 +11,13 @@
     "productBrand": "Other",
     "imageUrls": ["https://b.scdn.gr/images/sku_main_images/058822/58822717/fixedratio_20260123135021_funky_buddha_polo_t_shirt_mple_fbm011_001_11_smoke_blue.jpeg",
                   "https://c.scdn.gr/images/sku_images/121867/121867918/fixedratio_20260123135021_f86bdb5a.jpeg",
-                  "https://d.scdn.gr/images/sku_images/121895/121895948/fixedratio_20260126111049_3cba40f5.jpeg" ],
+                  "https://d.scdn.gr/images/sku_images/121895/121895948/fixedratio_20260126111049_3cba40f5.jpeg"],
     "variants": [
-      { "color": "WHITE", "size": "SMALL", "stock": 10 },
-      { "color": "RED", "size": "MEDIUM", "stock": 15 },
-      { "color": "GREEN", "size": "LARGE", "stock": 15 },
-      { "color": "PURPLE", "size": "XLARGE", "stock": 10 },
-      { "color": "LIGHT_BLUE", "size": "XLARGE", "stock": 5 }
+      { "color": "WHITE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
+      { "color": "RED", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "GREEN", "size": ["XSMALL", "SMALL", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "PURPLE", "size": ["SMALL", "MEDIUM", "XLARGE"], "stock": 10 },
+      { "color": "LIGHT_BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 5 }
     ]
   },
   {
@@ -32,9 +32,9 @@
     "productBrand": "Other",
     "imageUrls": ["polo-tipping-details.jpg"],
     "variants": [
-      { "color": "PINK", "size": "SMALL", "stock": 10 },
-      { "color": "BLUE", "size": "MEDIUM", "stock": 15 },
-      { "color": "ORANGE", "size": "LARGE", "stock": 4 }
+      { "color": "PINK", "size": ["XSMALL", "SMALL", "MEDIUM"], "stock": 10 },
+      { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "ORANGE", "size": ["SMALL", "MEDIUM", "LARGE"], "stock": 4 }
     ]
   },
   {
@@ -49,10 +49,10 @@
     "productBrand": "Other",
     "imageUrls": ["black-striped-tshirt.jpg"],
     "variants": [
-      { "color": "WHITE", "size": "SMALL", "stock": 10 },
-      { "color": "GREEN", "size": "MEDIUM", "stock": 15 },
-      { "color": "BLACK", "size": "LARGE", "stock": 15 },
-      { "color": "PINK", "size": "XLARGE", "stock": 10 }
+      { "color": "WHITE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
+      { "color": "GREEN", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "BLACK", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "PINK", "size": ["SMALL", "MEDIUM", "XLARGE"], "stock": 10 }
     ]
   },
   {
@@ -67,10 +67,9 @@
     "productBrand": "Other",
     "imageUrls": ["skinny-fit-jeans.jpg"],
     "variants": [
-      { "color": "BLUE", "size": "SMALL", "stock": 8 },
-      { "color": "YELLOW", "size": "MEDIUM", "stock": 12 },
-      { "color": "RED", "size": "LARGE", "stock": 12 },
-      { "color": "BLUE", "size": "XLARGE", "stock": 8 }
+      { "color": "BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 8 },
+      { "color": "YELLOW", "size": ["SMALL", "MEDIUM", "LARGE"], "stock": 12 },
+      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 12 }
     ]
   },
   {
@@ -85,9 +84,9 @@
     "productBrand": "Other",
     "imageUrls": ["checkered-shirt.jpg"],
     "variants": [
-      { "color": "RED", "size": "SMALL", "stock": 10 },
-      { "color": "BLUE", "size": "MEDIUM", "stock": 15 },
-      { "color": "LIGHT_BLUE", "size": "LARGE", "stock": 15 }
+      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
+      { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "LIGHT_BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 }
     ]
   },
   {
@@ -102,10 +101,10 @@
     "productBrand": "Other",
     "imageUrls": ["sleeve-striped-tshirt.jpg"],
     "variants": [
-      { "color": "ORANGE", "size": "SMALL", "stock": 10 },
-      { "color": "BLUE", "size": "MEDIUM", "stock": 15 },
-      { "color": "PURPLE", "size": "LARGE", "stock": 15 },
-      { "color": "PINK", "size": "XLARGE", "stock": 10 }
+      { "color": "ORANGE", "size": ["XSMALL", "SMALL", "MEDIUM"], "stock": 10 },
+      { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "PURPLE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 15 },
+      { "color": "PINK", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 10 }
     ]
   },
   {
@@ -120,8 +119,8 @@
     "productBrand": "Other",
     "imageUrls": ["vertical-striped-shirt.jpg"],
     "variants": [
-      { "color": "GREEN", "size": "SMALL", "stock": 8 },
-      { "color": "YELLOW", "size": "MEDIUM", "stock": 15 }
+      { "color": "GREEN", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 8 },
+      { "color": "YELLOW", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 }
     ]
   },
   {
@@ -136,10 +135,10 @@
     "productBrand": "Other",
     "imageUrls": ["courage-graphic-tshirt.jpg"],
     "variants": [
-      { "color": "ORANGE", "size": "SMALL", "stock": 10 },
-      { "color": "BLUE", "size": "MEDIUM", "stock": 15 },
-      { "color": "RED", "size": "LARGE", "stock": 15 },
-      { "color": "GREEN", "size": "XLARGE", "stock": 10 }
+      { "color": "ORANGE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
+      { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "GREEN", "size": ["SMALL", "MEDIUM", "XLARGE"], "stock": 10 }
     ]
   },
   {
@@ -154,8 +153,8 @@
     "productBrand": "Other",
     "imageUrls": ["bermuda-shorts.jpg"],
     "variants": [
-      { "color": "BLUE", "size": "SMALL", "stock": 8 },
-      { "color": "GREEN", "size": "MEDIUM", "stock": 12 }
+      { "color": "BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 8 },
+      { "color": "GREEN", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 12 }
     ]
   },
   {
@@ -170,10 +169,10 @@
     "productBrand": "Other",
     "imageUrls": ["tshirt-tape-details.jpg"],
     "variants": [
-      { "color": "BLACK", "size": "SMALL", "stock": 10 },
-      { "color": "WHITE", "size": "MEDIUM", "stock": 15 },
-      { "color": "RED", "size": "LARGE", "stock": 15 },
-      { "color": "LIGHT_BLUE", "size": "XLARGE", "stock": 10 }
+      { "color": "BLACK", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
+      { "color": "WHITE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
+      { "color": "LIGHT_BLUE", "size": ["SMALL", "MEDIUM", "XLARGE"], "stock": 10 }
     ]
   },
   {
@@ -188,10 +187,10 @@
     "productBrand": "Other",
     "imageUrls": ["faded-skinny-jeans.jpg"],
     "variants": [
-      { "color": "BLACK", "size": "SMALL", "stock": 8 },
-      { "color": "YELLOW", "size": "MEDIUM", "stock": 12 },
-      { "color": "RED", "size": "LARGE", "stock": 12 },
-      { "color": "PURPLE", "size": "XLARGE", "stock": 8 }
+      { "color": "BLACK", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 8 },
+      { "color": "YELLOW", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 12 },
+      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 12 },
+      { "color": "PURPLE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 8 }
     ]
   }
 ]

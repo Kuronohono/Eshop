@@ -21,7 +21,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @Order(1)
@@ -66,7 +68,11 @@ public class ProductsJsonDataLoader implements ApplicationRunner {
             for (VariantJsonDto v : dto.variants()) {
                 variants.add(ProductVariant.builder()
                         .color(v.color())
-                        .size(Sizes.valueOf(v.size()))
+                        .sizes(v.size() != null
+                                ? v.size().stream()
+                                        .map(Sizes::valueOf)
+                                        .collect(Collectors.toCollection(HashSet::new))
+                                : new HashSet<>())
                         .stock(v.stock())
                         .build());
             }
@@ -87,7 +93,7 @@ public class ProductsJsonDataLoader implements ApplicationRunner {
                 .build();
     }
 
-    public record VariantJsonDto(String color, String size, int stock) {
+    public record VariantJsonDto(String color, List<String> size, int stock) {
     }
 
     public record ProductJsonDto(

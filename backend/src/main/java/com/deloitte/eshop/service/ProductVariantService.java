@@ -33,6 +33,6 @@ public interface ProductVariantService {
     List<Integer> getProductVariantsStock(String product_id);
 
     // Get Product Variant Sizes
-    List<Sizes> getProductVariantsSizes(String product_id);
+    List<Sizes> getProductVariantsSizes(String product_id, String color);
 
 }

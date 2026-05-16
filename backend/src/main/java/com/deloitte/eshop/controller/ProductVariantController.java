@@ -1,5 +1,6 @@
 package com.deloitte.eshop.controller;
 
+import com.deloitte.eshop.entity.Sizes;
 import com.deloitte.eshop.service.ProductVariantServiceImpl;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/product-variants")
@@ -24,6 +26,11 @@ public class ProductVariantController {
     @GetMapping("/colors/{productId}")
     public ResponseEntity<List<String>> getProductVariantColors(@PathVariable String productId) {
         return ResponseEntity.ok(productVariantServiceImpl.getProductVariantColors(productId));
+    }
+
+    @GetMapping("/sizes/{product_id}/{color}")
+    public List<Sizes> getSizes(@PathVariable String product_id, @PathVariable String color) {
+        return productVariantServiceImpl.getProductVariantsSizes(product_id, color);
     }
 
 }

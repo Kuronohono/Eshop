@@ -25,8 +25,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "product_variants", uniqueConstraints = @UniqueConstraint(name = "variant_product_color_size", columnNames = {
-        "product_id", "color", "size" }))
+@Table(name = "product_variants", uniqueConstraints = @UniqueConstraint(name = "variant_product_color", columnNames = {
+        "product_id", "color" }))
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -46,9 +47,11 @@ public class ProductVariant {
     @Column(name = "color")
     private String color;
 
+    @ElementCollection
+    @CollectionTable(name = "variant_sizes", joinColumns = @JoinColumn(name = "variant_id"))
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Sizes size;
+    @Column(name = "size")
+    private Set<Sizes> sizes = new HashSet<>();
 
     @Column(nullable = false)
     private int stock;

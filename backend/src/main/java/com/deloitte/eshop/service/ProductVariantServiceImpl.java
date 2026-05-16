@@ -1,6 +1,7 @@
 package com.deloitte.eshop.service;
 
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,10 +61,12 @@ public class ProductVariantServiceImpl implements ProductVariantService {
     }
 
     @Override
-    public List<Sizes> getProductVariantsSizes(String product_id) {
+    public List<Sizes> getProductVariantsSizes(String product_id, String color) {
         return productVariantRepository.findByProductId(product_id)
                 .stream()
-                .map(ProductVariant::getSize)
+                .filter(v -> v.getColor().equalsIgnoreCase(color))
+                .flatMap(v -> v.getSizes().stream())
+                .distinct()
                 .collect(Collectors.toList());
     }
 
