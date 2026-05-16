@@ -338,3 +338,11 @@
 .product_star_divClass{
     @apply flex items-center gap-1.5;
 }
+
+.size_styling{
+    @apply font-satoshi px-5 py-3 text-[14px] rounded-[62px] cursor-pointer transition-all duration-500;
+}
+
+.add_toCart_btn{
+    @apply bg-black text-white w-full rounded-[25px] py-3 text-[14px] lg:text-[16px] cursor-pointer hover:bg-[#121212] active:scale-95 transition-normal duration-200;
+}

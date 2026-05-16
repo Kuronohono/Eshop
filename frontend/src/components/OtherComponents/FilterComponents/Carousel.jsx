@@ -28,7 +28,7 @@ const Carousel = ({ items = fallbackItems }) => {
             key={item.id}
             className="snap-start shrink-0 min-w-[75%] sm:min-w-[calc(50%_-_0.5rem)] md:min-w-[calc(33.333%_-_0.67rem)] lg:min-w-[calc(25%_-_0.75rem)]"
           >
-            <CardComponent product={item} />
+            <CardComponent product={item}/>
           </div>
         ))}
       </div>

@@ -1,23 +1,22 @@
 import React, { useState } from 'react'
 import { colorMap } from '../../../constants/colorMap'
 
-const ColorButtonGroup = ({ colors = [], onChange }) => {
+const AvailableColors = ({ colors = [], onColorSelect }) => {
   const displayColors = colors.length > 0 ? colors : Object.keys(colorMap)
-    const [activeColor, setActiveColor] = useState(displayColors[0] ?? null)
+  const [activeColor, setActiveColor] = useState(displayColors[0] ?? null)
 
   const toggle = (color) => {
-    const next = activeColor === color ? null : color  // deselect if clicked again
+    const next = activeColor === color ? null : color
     setActiveColor(next)
-    if (onChange) onChange(next)  // notify parent
+    if (onColorSelect) onColorSelect(next)
   }
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-3 mb-5">
       {displayColors.map((color) => {
         const { hex, border } = colorMap[color] ?? { hex: "#ccc", border: "#999" }
         const isActive = activeColor === color
         const checkColor = hex === '#FFFFFF' ? '#333' : '#fff'
-
         return (
           <button
             key={color}
@@ -41,4 +40,4 @@ const ColorButtonGroup = ({ colors = [], onChange }) => {
   )
 }
 
-export default ColorButtonGroup
+export default AvailableColors

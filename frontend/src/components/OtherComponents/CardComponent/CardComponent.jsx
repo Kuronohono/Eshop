@@ -22,7 +22,7 @@ const CardComponent = ({product}) => {
                                         <h4 className="font-satoshi text-[12px] md:text-[15px]">{product.productRating}/5</h4>
                                     </div>
                                 )}
-                                <ProductPrice price={product.price} sale_per={product.discount} pricingDivClass="" newPriceClass="" oldPriceClass="" discountClass=""/>
+                                <ProductPrice price={product.price} sale_per={product.discount} pricingDivClass="pricing_div" newPriceClass="newPrice" oldPriceClass="oldPrice" discountClass="discountPer"/>
                             </div>
         </Link>           
 

@@ -58,8 +58,7 @@ const SizesComponent = () => {
         Sizes_Data.map( (size) => (
           <div key={size.id}
           onClick={() => toggle(size.id)}
-           className={`font-satoshi px-[8%] py-[4%]
-           text-[14px] rounded-[62px] cursor-pointer transition-all duration-500
+           className={`size_styling
            ${activeIds.has(size.id) ? 'bg-black text-white' : 'bg-[#F0F0F0] text-black/60'}`}>
             {size.name}
           </div>
