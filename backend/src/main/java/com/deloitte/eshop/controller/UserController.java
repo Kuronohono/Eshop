@@ -1,44 +1,40 @@
 package com.deloitte.eshop.controller;
+
 import com.deloitte.eshop.entity.User;
 import com.deloitte.eshop.service.UserService;
+
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+@RequestMapping("/users")
 @RestController
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @GetMapping("/users")
-    public ResponseEntity<List<User>> getUsers() {
-        return ResponseEntity.ok(userService.getUsers());
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/users/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable("UserId") String UserId){
-        return ResponseEntity.ok(userService.getUserById(UserId));
+    @GetMapping("/me")
+    public ResponseEntity<User> authenticatedUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+        return ResponseEntity.ok(currentUser);
     }
 
-    @PostMapping("/users")
-    public ResponseEntity<User> addUser(@RequestBody User User){
-        return ResponseEntity.ok(userService.addUser(User));
+    @GetMapping("/")
+    public ResponseEntity<List<User>> allUsers() {
+        List<User> users = userService.allUsers();
+        return ResponseEntity.ok(users);
     }
 
-    @PatchMapping("/users/{userId}")
-    public ResponseEntity<User> updateUser(@RequestBody User User, @PathVariable("UserId") String UserId){
-        return ResponseEntity.ok(userService.updateUser(User));
-    }
-
-    @DeleteMapping("/users/{userId}")
-    public ResponseEntity<String> deleteUser(@PathVariable("UserId") String UserId){
-        User User = userService.getUserById(UserId);
-        String delete_message = null;
-        if(User!=null)
-            delete_message = userService.deleteUser(User);
-        return ResponseEntity.ok(delete_message);
-    }
 }

@@ -59,6 +59,10 @@ public class Product {
     @Column(name = "discount_percentage")
     private int discount;
 
+    @Builder.Default
+    @Column(name = "sold_count", nullable = false)
+    private int soldCount = 0;
+
     // --------------------- Categories -------------------//
 
     // Gender Category Men Women Unisex
@@ -81,31 +85,66 @@ public class Product {
     @Column(name = "product_brand")
     private Brands productBrand;
 
-    // ----------------- Product Variants ----------------//
+    // Product Status
+    @Builder.Default
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "product_statuses", joinColumns = @JoinColumn(name = "product_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "product_status")
+    private Set<ProductStatus> statuses = new HashSet<>();
 
+    // ----------------- Product Variants ----------------//
+    @Builder.Default
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnore
     private List<ProductVariant> variants = new ArrayList<>();
 
     // Product Reviews Dont load reviews unless necessary
-
+    @Builder.Default
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Review> reviews = new ArrayList<>();
 
-    // ----------- Methods ---------//
+    // ----------- Methods CRUD ---------//
 
     @PrePersist
     protected void onCreate() {
         this.arrivalDate = LocalDate.now();
+        updateStatus();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updateStatus();
+    }
+
+    private void updateStatus() {
+        statuses.clear();
+        // Check if the product is a new arrival. New Arrival = has arrived less than a
+        // month ago
+        boolean isNewArrival = arrivalDate != null && arrivalDate.isAfter(LocalDate.now().minusMonths(1));
+
+        if (isNewArrival)
+            statuses.add(ProductStatus.NEW_ARRIVALS);
+        // Check if it has sold more than 100 pieces. If true it is top selling
+        if (soldCount >= 100)
+            statuses.add(ProductStatus.TOP_SELLING);
+        // Check if the product is on sale
+        if (discount > 0)
+            statuses.add(ProductStatus.ON_SALE);
+        // If the product has none of the above give it the status none
+        if (statuses.isEmpty())
+            statuses.add(ProductStatus.NONE);
+    }
+
+    // ------ Other Methods -----------//
+
+    public void incrementSoldCount(int quantity) {
+        this.soldCount += quantity;
     }
 
     public int getReviewCount() {
         return reviews == null ? 0 : reviews.size();
-    }
-
-    public double getDiscountedPrice() {
-        return price - price * (discount / 100);
     }
 
     // Get rating

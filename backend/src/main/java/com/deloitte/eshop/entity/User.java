@@ -1,52 +1,93 @@
 package com.deloitte.eshop.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name="users", uniqueConstraints = {
-        @UniqueConstraint(
-                columnNames = {"email"}
-        )
+@Table(name = "users", uniqueConstraints = {
+                @UniqueConstraint(columnNames = { "email" })
 })
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class User implements UserDetails {
 
-    @Id
-    @UuidGenerator
-    @Column(name="id", unique = true, updatable = false)
-    private String id;
+        /* User Authentication Fields */
 
-    @OneToMany
-    @JoinTable(
-            name = "user_cart",
-            joinColumns = @JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name="product_id")
-    )
-    private List<Product> products_cart = new ArrayList<>();
+        @Id
+        @UuidGenerator
+        @Column(name = "id", unique = true, updatable = false)
+        private String id;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Order> user_orders = new ArrayList<>();
+        @Column(name = "username", unique = true, nullable = false)
+        private String username;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Review> reviews = new ArrayList<>();
+        @Column(name = "email", unique = true, nullable = false)
+        private String email;
 
-    @Column(name="username", unique = true, nullable = false)
-    private String username;
+        @Column(name = "password", nullable = false)
+        private String password;
 
-    @Column(name="email", unique = true, nullable = false)
-    private String email;
+        private boolean enabled;
 
-    @Column(name="password", unique = true, nullable = false)
-    private String password;
+        @Column(name = "verification code")
+        private String verificationCode;
+
+        @Column(name = "verification_expiration")
+        private LocalDateTime verificationCodeExpiration;
+
+        @OneToMany
+        @JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+        private List<Product> products_cart = new ArrayList<>();
+
+        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        private List<Order> user_orders = new ArrayList<>();
+
+        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        private List<Review> reviews = new ArrayList<>();
+
+        // Contrsuctors
+
+        public User(String username, String email, String password) {
+                this.username = username;
+                this.email = email;
+                this.password = password;
+        }
+
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+                return List.of();
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+                return true;
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+                return true;
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+                return true;
+        }
+
+        @Override
+        public boolean isEnabled() {
+                return enabled;
+        }
 
 }
