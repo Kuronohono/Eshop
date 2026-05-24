@@ -58,8 +58,8 @@ const Pagination = ({
 
   return (
     <nav
-      className={`flex flex-wrap items-center justify-between gap-2 sm:gap-3 ${className}`}
-      aria-label="Pagination"
+      className={`flex flex-wrap items-center mb-5 lg:mb-10 justify-between gap-2 sm:gap-3 ${className}`}
+      aria-label="Pagination" 
     >
       <button
         type="button"

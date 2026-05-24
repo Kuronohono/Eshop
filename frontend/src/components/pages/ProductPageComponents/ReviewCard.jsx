@@ -17,7 +17,7 @@ const ReviewCard = ({username, reviewText, reviewStar}) => {
         <p className="font-satoshi flex flex-wrap text-black/50 text-[14px] lg:text-[16px]">{reviewText}</p>
 
         </div>
-        <span className="font-satoshi text-[14px] text-[16px] opacity-60">Posted on August 14, 2023</span>
+        <span className="font-satoshi text-[14px] lg:text-[16px] opacity-60">Posted on August 14, 2023</span>
     </div>
   )
 }

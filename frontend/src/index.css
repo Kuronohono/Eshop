@@ -160,7 +160,7 @@
 }
 
 .login_option_btn{
-    @apply flex flex-row gap-3 rounded-[10px] w-full px-2 py-2 border border-gray-600 cursor-pointer hover:bg-[#F0F0F0] transition-all active:scale-100 hover:scale-105;
+    @apply flex flex-row gap-3 rounded-[15px] w-full px-3.5 py-3.5 border border-gray-600 cursor-pointer transition-all active:scale-100 hover:scale-103;
 }
 
 /*----------- Cart -----------------*/
@@ -269,6 +269,10 @@
     @apply font-satoshi text-black/50 text-[14px] lg:text-[16px];
 }
 
+.filter_button_hidden{
+   @apply inline-flex md:hidden size-10 shrink-0 items-center justify-center rounded-full bg-[#F0F0F0] text-black rotate-90; 
+}
+
 /*---------------Dual Price Slider----------------*/
 .slider-thumb-left::-webkit-slider-thumb,
 .slider-thumb-right::-webkit-slider-thumb {
@@ -345,4 +349,30 @@
 
 .add_toCart_btn{
     @apply bg-black text-white w-full rounded-[25px] py-3 text-[14px] lg:text-[16px] cursor-pointer hover:bg-[#121212] active:scale-95 transition-normal duration-200;
+}
+
+/*---------------Reviews Page--------------*/
+.loadMoreBtn{
+    @apply border border-black/10 w-auto rounded-[40px] px-[10%] lg:px-[5%] py-4 hover:cursor-pointer active:scale-95;
+}
+
+.writeAReviewBtn{
+    @apply font-satoshi bg-black text-white px-7 py-3 rounded-[30px] hover:bg-[#121212] active:scale-95 cursor-pointer;
+}
+
+.filter_button{
+   @apply inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F0F0F0] text-black rotate-90; 
+}
+
+/*--------- Verification Page------------*/
+.otpInput{
+    @apply w-[40px] h-[50px] lg:w-[60px] lg:h-[70px] mx-1 lg:mx-3 my-5 border rounded-[10%] text-center text-[1.3em];
+}
+
+.verification_button{
+    @apply font-satoshi bg-blue-500 text-white w-full lg:w-[80%] text-[1.5em] py-2 rounded-[1.5em] cursor-pointer hover:scale-103 active:scale-100 transition-all duration-200;
+}
+
+.resend_ver_btn{
+    @apply text-blue-400 cursor-pointer active:text-blue-300;
 }

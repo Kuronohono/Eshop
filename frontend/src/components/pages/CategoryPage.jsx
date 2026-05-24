@@ -97,8 +97,7 @@ const CategoryPage = () => {
                         </div>
                         <button
                             type="button"
-                            className="md:hidden inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F0F0F0] text-black rotate-90"
-                            aria-label="Open filters"
+                            className="filter_button_hidden"
                         >
                             <IoMdOptions size={20} />
                         </button>

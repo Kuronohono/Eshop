@@ -15,6 +15,7 @@ import TabNavigation from './ProductPageComponents/TabNavigation'
 import ProductDetailsPage from './ProductPageComponents/ProductDetailsPage'
 import RatingAndReviewsPage from './ProductPageComponents/RatingAndReviewsPage'
 import FAQsPage from './ProductPageComponents/FAQsPage'
+import Carousel from '../OtherComponents/FilterComponents/Carousel'
 
 const Tabs = [
 { id: "tab1", label: "Product Details" },
@@ -98,7 +99,7 @@ const ProductPage = () => {
                     </div>
 
                     <div className="w-full sm:w-[80%]">
-                            <img src={mainImage} className="w-full h-full max-h-[530px] object-contain object-top hover:cursor-zoom-in"/>
+                            <img src={mainImage} className="w-full h-full max-h-132.5 2xl:max-h-[750px] object-contain object-top hover:cursor-zoom-in"/>
                     </div>
                 </div>
 
@@ -154,18 +155,18 @@ const ProductPage = () => {
             </div>
 
             {/* Product Details Rating and FAQs */}
-            <div className="flex flex-col w-full  lg:mx-[0] mt-5">
+            <div className="flex flex-col w-full  lg:mx-0 mt-5">
 
-                <div className="relative flex justify-between border-b border-black/10">
+                <div className="relative flex border-b border-black/10">
                         
-                        <div className="absolute bottom-0 h-[2px] bg-black transition-all duration-300 ease-in-out"
+                        <div className="absolute bottom-0 h-0.5 bg-black transition-all duration-300 ease-in-out"
                             style={{ width: `${100 / Tabs.length}%`, left: `${(Tabs.findIndex(t => t.id === activeTab) / Tabs.length) * 100}%` }}/>
 
                         {
                             Tabs.map( (tab) => (
                                 <button
                                     key={tab.id}
-                                    className={`cursor-pointer relative px-4 py-3 font-satoshi text-[16px] lg:text-[20px] w-full transition-colors duration-200 ${
+                                    className={`cursor-pointer relative py-3 px-2 font-satoshi text-[16px] lg:text-[20px] transition-colors duration-200 flex-1 ${
                                         activeTab === tab.id ? "text-black" : "text-black/50 hover:text-black/70"
                                     }`}
                                     onClick={() => setActiveTab(tab.id)}>
@@ -175,6 +176,18 @@ const ProductPage = () => {
                 </div>
                 <div>{tabContent[activeTab]}</div>
 
+            </div>
+
+            {/* You Might also like section */}
+            <div>
+                <div className="flex items-center justify-center pt-8 md:pt-15">
+                    <h1 className="home_banner">You might also like</h1>
+                </div>
+
+                {/* Top Selling Card Section */}
+                <div className="flex flex-col items-center justify-center w-full">
+                    <Carousel />
+                </div>
             </div>
         </div>
     </div>

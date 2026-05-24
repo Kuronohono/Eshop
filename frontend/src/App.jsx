@@ -14,6 +14,7 @@ import Register from './components/pages/Register'
 import ShopPage from './components/pages/ShopPage'
 import UserProfilePage from './components/pages/MyAccountPage'
 import ProductPage from './components/pages/ProductPage'
+import VerificationPage from './components/pages/VerificationPage'
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
       <Route path="/shop" element={<ShopPage/>}/>
       <Route path="/my_account" element={<UserProfilePage/>}/>
       <Route path=":product" element={<ProductPage/>}/>
+      <Route path="/verification" element={<VerificationPage/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
