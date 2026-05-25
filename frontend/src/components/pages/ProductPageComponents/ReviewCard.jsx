@@ -5,7 +5,7 @@ import { BsThreeDots } from "react-icons/bs";
 
 const ReviewCard = ({username, reviewText, reviewStar}) => {
   return (
-    <div className="flex flex-col border border-black/10 rounded-[20px] px-7 py-7 gap-4">
+    <div className="flex flex-col w=full border border-black/10 rounded-[20px] px-7 py-7 gap-4 h-full">
         <div className="flex items-center gap-2 md:gap-4 justify-between">
              <StarRating rating={reviewStar} starClassName="product_star_rate" divClassName="product_star_divClass"/>
              <BsThreeDots size={24} className="text-gray-600"/>

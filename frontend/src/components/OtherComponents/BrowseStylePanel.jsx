@@ -34,7 +34,11 @@ const BrowseStylePanel = () => {
   return (
     <div className="browse_style_comp">
       {DressStyle.map((style) => (
-        <div key={style.id} className={`style_card ${style.flex === 3 ? "style_card-lg" : "style_card-md"}`}>
+        <div key={style.id} 
+              className={`style_card 
+              ${style.flex === 3 ? 
+              "style_card-lg" : 
+              "style_card-md"}`}>
           <img src={style.img} className="style_img" />
           <p className="browse_style_par">
             {style.title}

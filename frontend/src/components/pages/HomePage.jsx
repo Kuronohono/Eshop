@@ -1,88 +1,18 @@
-import React from 'react'
-import Img1 from "../../assets/placeholder_imgs/tapeshirt.png"
-import Img2 from "../../assets/placeholder_imgs/skinnyjeans.png"
-import Img3 from "../../assets/placeholder_imgs/checkered_shirt.png"
-import Img4 from "../../assets/placeholder_imgs/sleevestriped.png"
-import Img5 from "../../assets/placeholder_imgs/vertical_striped.png"
-import Img6 from "../../assets/placeholder_imgs/courage_shirt.png"
-import Img7 from "../../assets/placeholder_imgs/bermuda_shorts.png"
-import Img8 from "../../assets/placeholder_imgs/faded_skinny.png"
+import React, { useState, useEffect } from 'react'
 import BrowseStylePanel from '../OtherComponents/BrowseStylePanel'
 import Footer from '../OtherComponents/Footer'
 import Carousel from '../OtherComponents/FilterComponents/Carousel'
-
-const NewArrivalsProductsData = [
-{
-    id: 1,
-    img: Img1,
-    title: "T-shirt with Tape Details",
-    rating: 4.5,
-    price: 120,
-    sale_per: 0,
-},
-{
-    id: 2,
-    img: Img2,
-    title: "Skinny Fit Jeans",
-    rating: 3.5,
-    price: 260,
-    sale_per: 20,
-},
-{
-    id: 3,
-    img: Img3,
-    title: "Checkered Shirt",
-    rating: 4.5,
-    price: 180,
-    sale_per: 0,
-},
-{
-    id: 4,
-    img: Img4,
-    title: "Sleeve Striped T-shirt",
-    rating: 4.5,
-    price: 160,
-    sale_per: 30,
-}
-]
-
-const TopSellingData = [
-{
-    id: 5,
-    img: Img5,
-    title: "Vertical Striped Shirt",
-    rating: 5.0,
-    price: 232,
-    sale_per: 20
-},
-{
-    id: 6,
-    img: Img6,
-    title: "Courage Graphic T-shirt",
-    rating: 4.0,
-    price: 145,
-    sale_per: 0
-},
-{
-    id: 7,
-    img: Img7,
-    title: "Loose Fit Bermuda Shorts",
-    rating: 3.0,
-    price: 80,
-    sale_per: 0
-},
-{
-    id: 8,
-    img: Img8,
-    title: "Faded Skinny Jeans",
-    rating: 4.5,
-    price: 210,
-    sale_per: 0
-},
-]
+import TestimonialCarousel from '../OtherComponents/TestimonialCarousel';
 
 const Products = () => {
+    
+    useEffect(() =>{
+        fetch("http://localhost:8085/products/")
+    })
+
+
   return (
+    <div className='w-full overflow-hidden'>
     <div className="screen-adapt gap-10" >
         
         {/* New Arrivals Header Section */}
@@ -92,7 +22,7 @@ const Products = () => {
 
         {/* New Arrivals Card Section */}
         <div className="flex flex-col items-center justify-center w-full gap-10">
-            <Carousel items={NewArrivalsProductsData}/>
+            <Carousel/>
             <button className="view_all_btn" >View All</button>
             
         </div>
@@ -106,7 +36,7 @@ const Products = () => {
 
         {/* Top Selling Card Section */}
         <div className="flex flex-col items-center justify-center w-full gap-10">
-            <Carousel items={TopSellingData}/>
+            <Carousel/>
             <button className="view_all_btn" >View All</button>
         </div>
 
@@ -123,12 +53,10 @@ const Products = () => {
         </div>
 
         {/* Our Happy Customers Section */}
-        
-            <div className="flex pl-[7%] pt-8 md:pt-15">
-            <h1 className="home_banner">Our Happy Customers</h1>
-            </div>
+        <TestimonialCarousel/>
         
 
+    </div>
     </div>
   )
 }

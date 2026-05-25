@@ -48,6 +48,7 @@
     @apply flex flex-col items-center justify-center mt-5 md:mt-8 w-full px-[6%] sm:px-[7%] md:px-[6%] lg:px-[7%] xl:px-[7%] 2xl:px-[12%] ;
 }
 
+
 /*------------ Hero Page----------------*/
 .brand_container{
     @apply flex flex-wrap bg-black w-full items-center justify-center gap-x-6 gap-y-3 py-8 lg:py-10 px-4
@@ -137,6 +138,7 @@
     @apply border rounded-md;
 }
 
+
 .input_outerDiv{
     @apply flex items-center justify-center rounded-[62px] my-3 h-12 bg-[#F0F0F0] px-2;
 }
@@ -146,7 +148,7 @@
 }
 
 .black_button{
-    @apply font-satoshi bg-black w-full h-13 max-w-92.5 sm:max-w-[350px] lg:max-w-52.5 rounded-[62px] mt-4 text-white
+    @apply flex items-center justify-center font-satoshi bg-black w-full h-13 max-w-92.5 sm:max-w-[350px] lg:max-w-52.5 rounded-[62px] mt-4 text-white
                     py-3.5 lg:px-13.5 gap-3 hover:bg-[#202020] cursor-pointer transition-all active:scale-95;
 }
 
@@ -351,13 +353,17 @@
     @apply bg-black text-white w-full rounded-[25px] py-3 text-[14px] lg:text-[16px] cursor-pointer hover:bg-[#121212] active:scale-95 transition-normal duration-200;
 }
 
+.product_tabs{
+    @apply cursor-pointer relative py-3 font-satoshi text-[16px] lg:text-[20px] transition-colors duration-200 px-3 lg:flex-1;
+}
+
 /*---------------Reviews Page--------------*/
 .loadMoreBtn{
     @apply border border-black/10 w-auto rounded-[40px] px-[10%] lg:px-[5%] py-4 hover:cursor-pointer active:scale-95;
 }
 
 .writeAReviewBtn{
-    @apply font-satoshi bg-black text-white px-7 py-3 rounded-[30px] hover:bg-[#121212] active:scale-95 cursor-pointer;
+    @apply font-satoshi bg-black text-white px-5 lg:px-7 py-3 rounded-[30px] hover:bg-[#121212] active:scale-95 cursor-pointer text-[0.75em];
 }
 
 .filter_button{
@@ -366,13 +372,30 @@
 
 /*--------- Verification Page------------*/
 .otpInput{
-    @apply w-[40px] h-[50px] lg:w-[60px] lg:h-[70px] mx-1 lg:mx-3 my-5 border rounded-[10%] text-center text-[1.3em];
+    @apply w-10 h-12.5 lg:w-[60px] lg:h-[70px] mx-1 lg:mx-3 my-5 border rounded-[10%] text-center text-[1.3em];
 }
 
 .verification_button{
-    @apply font-satoshi bg-blue-500 text-white w-full lg:w-[80%] text-[1.5em] py-2 rounded-[1.5em] cursor-pointer hover:scale-103 active:scale-100 transition-all duration-200;
+    @apply font-satoshi bg-blue-500 text-white 
+    w-full lg:w-[80%] text-[1.5em] 
+    py-2 rounded-[1.5em] 
+    cursor-pointer 
+    hover:scale-103 
+    active:scale-100 
+    transition-all duration-200;
 }
 
 .resend_ver_btn{
     @apply text-blue-400 cursor-pointer active:text-blue-300;
 }
+
+
+/*----------- Product Details --------------------------*/
+.details_li{
+    @apply font-satoshibold text-[16px] lg:text-[18px];
+}
+
+.details_span{
+    @apply font-satoshi text-[15px] lg:text-[17px];
+}
+

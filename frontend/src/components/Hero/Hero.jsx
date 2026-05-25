@@ -5,6 +5,7 @@ import Zara from "../../assets/zara.png"
 import Gucci from "../../assets/gucci.png"
 import Prada from "../../assets/prada.png"
 import CalvinKlein from "../../assets/calvin_klein.png"
+import {Link} from "react-router-dom"
 
 const Brands = [
     {
@@ -55,8 +56,8 @@ const Hero = () => {
                     </p>
 
                     {/* Button and Info Section */}
-                    <button className="black_button">
-                    Shop Now</button>
+                    <Link to={"/login"} className="black_button">
+                    Shop Now</Link>
 
                     {/*Stats */}
                     <div className="flex flex-wrap lg:flex-nowrap justify-center md:justify-start items-center md:items-start gap-8 mt-8">

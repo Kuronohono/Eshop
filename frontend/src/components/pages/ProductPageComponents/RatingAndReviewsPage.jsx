@@ -17,12 +17,12 @@ const RatingAndReviewsPage = () => {
         {/*Header and Options */}
         <div className="flex justify-between">
 
-            <h1 className="font-satoshibold text-[20px] lg:text-[24px]">All Reviews <span className="opacity-40 text-[14px] lg:text-[16px]">(451)</span></h1>
+            <h1 className="font-satoshibold text-[1.25em] lg:text-[1.5em]">All Reviews <span className="opacity-40 text-[14px] lg:text-[16px]">(451)</span></h1>
 
             {/*Sorting and Options */}
             <div className="flex gap-3 items-center">
                 <button type="button" className="filter_button"><IoMdOptions size={24} className="mx-2 my-3" /></button>
-                <div className="bg-[#F0F0F0] px-5 pt-2 pb-3 rounded-[25px] items-center justify-center">
+                <div className="hidden lg:flex bg-[#F0F0F0] px-5 pt-2 pb-3 rounded-[25px] items-center justify-center">
                   <ComboBox value={sortValue} onChange={setSortValue} options={sortOptions}/>
                 </div>
                 <button className="writeAReviewBtn">Write a Review</button>
