@@ -20,6 +20,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Builder
 public class User implements UserDetails {
 
@@ -41,21 +42,29 @@ public class User implements UserDetails {
 
         private boolean enabled;
 
-        @Column(name = "verification code")
+        @Column(name = "verification_code")
         private String verificationCode;
 
         @Column(name = "verification_expiration")
         private LocalDateTime verificationCodeExpiration;
 
-        @OneToMany
+        @ManyToMany
         @JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+        @Builder.Default
         private List<Product> products_cart = new ArrayList<>();
 
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        @Builder.Default
         private List<Order> user_orders = new ArrayList<>();
 
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        @Builder.Default
         private List<Review> reviews = new ArrayList<>();
+
+        @ManyToMany
+        @JoinTable(name = "user_wishlist", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+        @Builder.Default
+        private List<Product> userWishList = new ArrayList<>();
 
         // Contrsuctors
 

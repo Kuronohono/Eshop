@@ -8,7 +8,7 @@
     "gender": "MEN",
     "productType": "T_SHIRT",
     "dressStyle": "CASUAL",
-    "productBrand": "Other",
+    "productBrand": "Polo",
     "imageUrls": ["https://b.scdn.gr/images/sku_main_images/058822/58822717/fixedratio_20260123135021_funky_buddha_polo_t_shirt_mple_fbm011_001_11_smoke_blue.jpeg",
                   "https://c.scdn.gr/images/sku_images/121867/121867918/fixedratio_20260123135021_f86bdb5a.jpeg",
                   "https://d.scdn.gr/images/sku_images/121895/121895948/fixedratio_20260126111049_3cba40f5.jpeg"],
@@ -29,8 +29,13 @@
     "gender": "MEN",
     "productType": "SHIRT",
     "dressStyle": "CASUAL",
-    "productBrand": "Other",
-    "imageUrls": ["polo-tipping-details.jpg"],
+    "productBrand": "Gant",
+    "imageUrls": ["https://a.scdn.gr/images/sku_images/072842/72842547/fixedratio_20230308121011_85e28f63.jpeg",
+                  "https://b.scdn.gr/images/sku_main_images/040840/40840399/fixedratio_20251113094559_gant_polo_mplouza_kontomaniki_navy_mple_2063013_433.jpeg",
+                  "https://a.scdn.gr/images/sku_images/119498/119498579/fixedratio_20251113094601_3eea03e1.jpeg",
+                  "https://a.scdn.gr/images/sku_images/119498/119498580/fixedratio_20251113094602_9614e198.jpeg",
+                  "https://c.scdn.gr/images/sku_images/119498/119498582/fixedratio_20251113094603_39edfd11.jpeg"
+                  ],
     "variants": [
       { "color": "PINK", "size": ["XSMALL", "SMALL", "MEDIUM"], "stock": 10 },
       { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
@@ -46,8 +51,12 @@
     "gender": "MEN",
     "productType": "T_SHIRT",
     "dressStyle": "CASUAL",
-    "productBrand": "Other",
-    "imageUrls": ["black-striped-tshirt.jpg"],
+    "productBrand": "Karl",
+    "imageUrls": ["https://a.scdn.gr/images/sku_images/056974/56974073/20250910030435_7046668c.jpeg",
+                  "https://d.scdn.gr/images/sku_main_images/033652/33652215/fixedratio_20250910030350_karl_kani_t_shirt_mayro_kkmq32063blk.jpeg",
+                  "https://b.scdn.gr/images/sku_images/112390/112390572/fixedratio_20250910030356_b8e254cf.jpeg",
+                  "https://d.scdn.gr/images/sku_images/112390/112390557/fixedratio_20250910030401_44025747.jpeg"
+                  ],
     "variants": [
       { "color": "WHITE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
       { "color": "GREEN", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
@@ -64,8 +73,11 @@
     "gender": "MEN",
     "productType": "JEAN",
     "dressStyle": "CASUAL",
-    "productBrand": "Other",
-    "imageUrls": ["skinny-fit-jeans.jpg"],
+    "productBrand": "Guess",
+    "imageUrls": ["https://a.scdn.gr/images/sku_images/065923/65923727/fixedratio_20250621042212_ed8f9c6e.jpeg",
+                  "https://d.scdn.gr/images/sku_images/065923/65923724/fixedratio_20250621042219_dd268d5c.jpeg",
+                  "https://a.scdn.gr/images/sku_main_images/038683/38683522/fixedratio_20250621042154_guess_m2yan2d4q51_andriko_panteloni_tzin_me_skinny_efarmogi_mayro_m2yan2d4q51_2crb.jpeg",
+                  "https://d.scdn.gr/images/sku_images/065923/65923728/fixedratio_20250621042200_46397371.jpeg"],
     "variants": [
       { "color": "BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 8 },
       { "color": "YELLOW", "size": ["SMALL", "MEDIUM", "LARGE"], "stock": 12 },
@@ -117,7 +129,8 @@
     "productType": "SHIRT",
     "dressStyle": "CASUAL",
     "productBrand": "Other",
-    "imageUrls": ["vertical-striped-shirt.jpg"],
+    "imageUrls": ["https://m.media-amazon.com/images/I/71NtE32MIhL._AC_SY879_.jpg", 
+                  "https://m.media-amazon.com/images/I/71FOwaBFyGL._AC_SY741_.jpg"],
     "variants": [
       { "color": "GREEN", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 8 },
       { "color": "YELLOW", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 }

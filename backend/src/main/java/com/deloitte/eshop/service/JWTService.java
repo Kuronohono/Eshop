@@ -8,6 +8,8 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import com.deloitte.eshop.entity.User;
 import java.util.function.Function;
 import java.security.Key;
 import java.util.Date;
@@ -48,7 +50,7 @@ public class JWTService {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
+                .setSubject(resolveTokenSubject(userDetails))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
@@ -56,8 +58,15 @@ public class JWTService {
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
-        final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+        final String subject = extractUsername(token);
+        return subject.equals(resolveTokenSubject(userDetails)) && !isTokenExpired(token);
+    }
+
+    private String resolveTokenSubject(UserDetails userDetails) {
+        if (userDetails instanceof User user) {
+            return user.getEmail();
+        }
+        return userDetails.getUsername();
     }
 
     private boolean isTokenExpired(String token) {

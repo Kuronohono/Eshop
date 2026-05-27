@@ -1,13 +1,13 @@
 package com.deloitte.eshop.controller;
 
+import com.deloitte.eshop.dto.UserProfileDto;
+import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.User;
 import com.deloitte.eshop.service.UserService;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,10 +25,13 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<User> authenticatedUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
-        return ResponseEntity.ok(currentUser);
+    public ResponseEntity<UserProfileDto> authenticatedUser() {
+        return ResponseEntity.ok(userService.getCurrentUserProfile());
+    }
+
+    @GetMapping("/me/wishlist")
+    public ResponseEntity<List<Product>> getWishlist() {
+        return ResponseEntity.ok(userService.getCurrentUser().getUserWishList());
     }
 
     @GetMapping("/")

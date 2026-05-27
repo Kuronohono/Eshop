@@ -39,13 +39,16 @@ public class SecurityConfig {
                                                 .requestMatchers(
                                                                 "/products/**",
                                                                 "/product-variants/**",
-                                                                "/auth/**")
+                                                                "/auth/**",
+                                                                "/h2-console/**")
                                                 .permitAll()
                                                 .anyRequest().authenticated())
                                 .sessionManagement(session -> session
                                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                                 .authenticationProvider(authenticationProvider)
-                                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                                .headers(headers -> headers
+                                                .frameOptions(frame -> frame.disable()));
                 return http.build();
 
         }

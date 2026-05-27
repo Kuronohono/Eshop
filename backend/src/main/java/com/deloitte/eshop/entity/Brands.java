@@ -6,5 +6,9 @@ public enum Brands {
     Gucci,
     Prada,
     Calvin_klein,
+    Gant,
+    Karl,
+    Guess,
+    Polo,
     Other
 }

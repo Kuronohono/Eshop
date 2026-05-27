@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 @Entity
@@ -59,9 +60,8 @@ public class Product {
     @Column(name = "discount_percentage")
     private int discount;
 
-    @Builder.Default
     @Column(name = "sold_count", nullable = false)
-    private int soldCount = 0;
+    private int soldCount;
 
     // --------------------- Categories -------------------//
 
@@ -110,6 +110,8 @@ public class Product {
     @PrePersist
     protected void onCreate() {
         this.arrivalDate = LocalDate.now();
+        this.soldCount = new Random().nextInt(200);
+        System.out.println(soldCount);
         updateStatus();
     }
 

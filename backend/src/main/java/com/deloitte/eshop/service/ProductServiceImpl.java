@@ -3,6 +3,8 @@ package com.deloitte.eshop.service;
 import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.dto.ProductSpecification;
 import com.deloitte.eshop.entity.Product;
+import com.deloitte.eshop.entity.ProductStatus;
+import com.deloitte.eshop.entity.ProductType;
 import com.deloitte.eshop.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -53,5 +55,25 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> getFilteredProducts(ProductFilter filter, Pageable pageable) {
         return productRepository.findAll(
                 ProductSpecification.withFilters(filter), pageable);
+    }
+
+    @Override
+    public List<Product> getProductsByStatus(ProductStatus status, int limit) {
+        List<Product> products = productRepository.findByStatusesContaining(status);
+        if (limit > 0) {
+            return products.stream().limit(limit).toList();
+        }
+        return products;
+    }
+
+    @Override
+    public List<Product> searchProducts(String query) {
+        return productRepository.findByNameContainingIgnoreCase(query)
+                .stream().limit(5).toList();
+    }
+
+    @Override
+    public List<Product> getProductsByProductType(ProductType productType) {
+        return productRepository.findByProductType(productType);
     }
 }
