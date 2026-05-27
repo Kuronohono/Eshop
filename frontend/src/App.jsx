@@ -15,13 +15,15 @@ import ShopPage from './components/pages/ShopPage'
 import UserProfilePage from './components/pages/MyAccountPage'
 import ProductPage from './components/pages/ProductPage'
 import VerificationPage from './components/pages/VerificationPage'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   return (
     <BrowserRouter>
+    <ScrollToTop/>
     <Navbar/>
     <Routes>
-      <Route path="/Home" element={<><Hero /><Products/></>}/>
+      <Route path="/home" element={<><Hero /><Products/></>}/>
       <Route path=":gender/:category" element={<CategoryPage/>}/>
       <Route path="/on_sale" element={<OnSale/>}/>
       <Route path="/new_arrivals" element={<NewArrivals/>}/>

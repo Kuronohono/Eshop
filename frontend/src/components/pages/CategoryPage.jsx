@@ -6,6 +6,7 @@ import ComboBox from '../OtherComponents/ComboBox';
 import CardComponent from '../OtherComponents/CardComponent/CardComponent'
 import Pagination from '../OtherComponents/Pagination';
 import { IoMdOptions } from "react-icons/io";
+import LoadingGif from "../../assets/gifs/loading_blue.gif"
 
 
 const PAGE_SIZE = 9
@@ -18,7 +19,7 @@ const CategoryPage = () => {
     const [loading, setLoading] = useState(true)
     const totalProducts = products.length
     const totalPages = Math.max(1, Math.ceil(totalProducts / PAGE_SIZE))
-
+    
     useEffect(() => {
         setPage(1)
     }, [category])
@@ -105,9 +106,9 @@ const CategoryPage = () => {
 
 
                     {/* Products */}
-                    <div className="grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 lg:gap-7 mt-5">
+                    <div className={`grid ${loading? 'grid-cols-1' : 'grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'} gap-5 lg:gap-7 mt-5`}>
                        {loading ? (
-                        <p>Loading...</p>
+                        <div className='flex items-center justify-center w-full'><img src={LoadingGif}/></div>
                        )
                        :(
                             pageItems.map((product,index) =>(

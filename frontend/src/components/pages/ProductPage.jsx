@@ -83,20 +83,20 @@ const ProductPage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-start justify-start">
 
                     {/* Images Section */}
-                    <div className="flex flex-col-reverse gap-3 sm:flex-row">
-                        <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
+                    <div className="flex flex-col-reverse gap-3 sm:flex-row ">
+                        <div className="flex sm:flex-col w-full overflow-x-auto overflow-y-hidden lg:overflow-x-hidden lg:overflow-y-scroll justify-between sm:justify-normal items-center max-h-132.5 2xl:max-h-[750px] lg:w-30">
                             {images.map((image, index) => (
                                 <img
                                     onClick={() => setMainImage(image)}
                                     src={image}
                                     key={index}
-                                    className={`w-[24%] sm:w-full sm:mb-3 shrink-0 cursor-pointer rounded-[20px] ${mainImage === image ? "border border-black" : "border-0"}`}
+                                    className={`w-[24%] sm:w-full sm:mb-3 mx-2 shrink-0 cursor-pointer rounded-[10%] ${mainImage === image ? "border border-black" : "border-0"}`}
                                 />
                             ))}
                         </div>
 
                         <div className="w-full sm:w-[80%]">
-                            <img src={mainImage} className="w-full h-full max-h-132.5 2xl:max-h-[750px] object-contain object-top hover:cursor-zoom-in"/>
+                            <img src={mainImage} className="w-full h-full max-h-132.5 2xl:max-h-[750px] object-contain object-top hover:cursor-zoom-in rounded-[20px]"/>
                         </div>
                     </div>
 

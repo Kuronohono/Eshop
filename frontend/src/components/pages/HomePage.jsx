@@ -3,12 +3,25 @@ import BrowseStylePanel from '../OtherComponents/BrowseStylePanel'
 import Footer from '../OtherComponents/Footer'
 import Carousel from '../OtherComponents/FilterComponents/Carousel'
 import TestimonialCarousel from '../OtherComponents/TestimonialCarousel';
+import {Link} from "react-router-dom";
 
 const Products = () => {
-    
+    const [newArrivals, setNewArrivals] = useState([]);
+    const [topSelling, setTopSelling] = useState([]);
+
     useEffect(() =>{
-        fetch("http://localhost:8085/products/")
-    })
+        fetch("http://localhost:8085/products/status/NEW_ARRIVALS?limit=4")
+        .then(res => res.json())
+        .then(data => setNewArrivals(data))
+        .catch(err => console.error(err));
+    }, [])
+
+    useEffect(() =>{
+        fetch("http://localhost:8085/products/status/TOP_SELLING?limit=4")
+        .then(res => res.json())
+        .then(data => setTopSelling(data))
+        .catch(err => console.error(err));
+    }, [])
 
 
   return (
@@ -22,8 +35,8 @@ const Products = () => {
 
         {/* New Arrivals Card Section */}
         <div className="flex flex-col items-center justify-center w-full gap-10">
-            <Carousel/>
-            <button className="view_all_btn" >View All</button>
+            <Carousel items={newArrivals}/>
+            <Link to={"/new_arrivals"} className="view_all_btn" >View All</Link>
             
         </div>
 
@@ -36,8 +49,8 @@ const Products = () => {
 
         {/* Top Selling Card Section */}
         <div className="flex flex-col items-center justify-center w-full gap-10">
-            <Carousel/>
-            <button className="view_all_btn" >View All</button>
+            <Carousel items={topSelling}/>
+            <Link to={"/top_selling"} className="view_all_btn" >View All</Link>
         </div>
 
         {/* Browse By Dress Style Section*/}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Link, useNavigate} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 
@@ -23,9 +23,6 @@ const Login = () => {
   const handleLogin = async () => {
     setLoading(true);
 
-    console.log(form.email);
-    console.log(form.password);
-
     try{
       const response = await fetch("http://localhost:8085/auth/login", {
           method: "POST",
@@ -36,7 +33,7 @@ const Login = () => {
       if(response.ok){
         const data = await response.json();
         localStorage.setItem("token", data.token); //save token
-        navigate("/Home");
+        window.location.replace("/home");
       } else{
         setError("Invalid credentials. Please try again.");
       }
@@ -83,10 +80,10 @@ const Login = () => {
 
                     <div className="flex flex-col gap-3 items-center justify-center w-full">
                       <p className="auth_paragraph">Or login with</p>
-                      <button className="login_option_btn">
+                      <a href="/oauth2/authorization/google" className="login_option_btn">
                         <FcGoogle size={24}/>
                         <h2>Google</h2>
-                      </button>
+                      </a>
                       <button className="login_option_btn bg-blue-700 hover:bg-blue-600 text-white">
                         <FaFacebook  size={24}/>
                         <h2>Facebook</h2>

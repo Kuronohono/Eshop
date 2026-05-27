@@ -12,13 +12,14 @@ import GooglePay from "../../assets/payment_imgs/GooglePay.png"
 
 const Footer = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full mt-[20%] sm:mt-[10%] md:mt-[10%] lg:mt-[10%]">
+    <div className="flex flex-col items-center justify-center w-full mt-[8%]">
+
         {/* Newsletter Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 w-[85%] gap-5 bg-black px-[5%] py-[5%] md:px-[5%] md:py-[1%] rounded-[20px] items-center relative z-10 mb-[-90px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] lg:w-[85%] gap-5 bg-black px-[5%] py-[5%] lg:py-[1%] rounded-[1.25em] items-center relative z-10 mb-[-45%] md:mb-[-18%] lg:mb-[-6%]">
             
-            <h1 className="font-integralcf text-white  md:pt-[0px] text-[32px] md:text-[40px]">Stay upto date about our latest offers</h1>
+            <h1 className="font-integralcf text-white text-[32px] md:text-[40px]">Stay upto date about our latest offers</h1>
             
-            <div className="flex flex-col justify-center w-full md:pl-[30%]">
+            <div className="flex flex-col justify-center w-full lg:pl-[30%]">
 
                 <div className="input_outerDiv">
                     <TiMail className="opacity-40 mr-2" size={24}/>
@@ -33,13 +34,13 @@ const Footer = () => {
         </div>
 
         {/* Footer Grid Section */}
-        <div className="flex flex-col w-full bg-[#F0F0F0] pt-[80px] md:pt-[0px] px-[8%] gap-10 ">
+        <div className="flex flex-col w-full bg-[#F0F0F0] pt-[40%] md:pt-[10%] lg:pt-0 px-[8%] gap-10 ">
 
             {/*Info Section */}
 
-            <div className="grid grid-cols-2 md:grid-cols-6 mt-[10%] w-full justify-center gap-10">
+            <div className="grid grid-cols-2 lg:grid-cols-6 mt-[10%] w-full justify-center gap-2 sm:gap-5 lg:gap-10">
 
-                <div className="flex flex-col col-span-2 md:pr-[20%] gap-5">
+                <div className="flex flex-col col-span-2 md:pr-[20%] gap-5 ">
                     <p className="font-integralcf text-[25px] sm:text-[32px] flex items-center gap-2 font-bold">SHOP.CO</p>
                     <p className="opacity-60 text-[14px]">We have clothes that suits your style and which you're proud to wear. From women to men.</p>
                     
@@ -65,7 +66,7 @@ const Footer = () => {
                 </div>
 
                 {/* Company */}
-                <div className="flex flex-col justify-center gap-3 md:gap-4">
+                <div className="flex flex-col justify-center gap-3 md:gap-4 whitespace-nowrap">
                     <h1 className="font-satoshisemibold">COMPANY</h1>
                     <p className="footer_options">About</p>
                     <p className="footer_options">Features</p>
@@ -74,7 +75,7 @@ const Footer = () => {
                 </div>
 
                 {/* Help */}
-                <div className="flex flex-col justify-center gap-3 md:gap-4">
+                <div className="flex flex-col justify-center gap-3 md:gap-4 whitespace-nowrap">
                     <h1 className="font-satoshisemibold">HELP</h1>
                     <p className="footer_options">Customer Support</p>
                     <p className="footer_options">Delivery Details</p>
@@ -83,7 +84,7 @@ const Footer = () => {
                 </div>
 
                 {/* FAQ*/}
-                <div className="flex flex-col justify-center gap-3 md:gap-4">
+                <div className="flex flex-col justify-center gap-3 md:gap-4 whitespace-nowrap">
                     <h1 className="font-satoshisemibold">FAQ</h1>
                     <p className="footer_options">Account</p>
                     <p className="footer_options">Manage Deliveries</p>
@@ -92,10 +93,10 @@ const Footer = () => {
                 </div>
 
                 {/* Resources */}
-                <div className="flex flex-col justify-center gap-3 md:gap-4">
+                <div className="flex flex-col justify-center gap-3 md:gap-4 whitespace-nowrap">
                     <h1 className="font-satoshisemibold">RESOURCES</h1>
                     <p className="footer_options">Free eBooks</p>
-                    <p className="footer_options whitespace-nowrap">Developmnet Tutorial</p>
+                    <p className="footer_options">Developmnet Tutorial</p>
                     <p className="footer_options">How to - Blog</p>
                     <p className="footer_options">Youtube Playlist</p>
                 </div>

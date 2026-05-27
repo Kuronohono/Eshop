@@ -18,7 +18,7 @@ const TestimonialCarousel = () => {
     const next = () => setIndex(i => Math.min(reviews.length - visibleCount, i + 1))
 
     return (
-        <div className="flex flex-col w-full gap-6">
+        <div className="flex flex-col w-full gap-6 h-full">
 
             {/* Header */}
             <div className="flex w-full justify-between items-center">
