@@ -33,7 +33,8 @@ const Login = () => {
       if(response.ok){
         const data = await response.json();
         localStorage.setItem("token", data.token); //save token
-        window.location.replace("/home");
+        window.dispatchEvent(new Event("cartUpdated"));
+        window.location.replace("/");
       } else{
         setError("Invalid credentials. Please try again.");
       }

@@ -7,16 +7,16 @@ const fallbackItems = [
   { id: "fallback-3", title: "Slide 3", price: 160, rating: 4.8, sale_per: 0 },
 ];
 
-const Carousel = ({ items = fallbackItems }) => {
+const Carousel = ({ items = fallbackItems, crumbs, cardImgClassName = "" }) => {
   const safeItems = useMemo(() => {
     if (!Array.isArray(items) || items.length === 0) return fallbackItems;
     return items;
   }, [items]);
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className="w-full max-w-7xl mx-auto min-w-0">
       <div
-        className="flex flex-nowrap gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pt-3 pb-3 pl-3 pr-2 touch-pan-x"
+        className="carousel-track flex flex-nowrap gap-4 overflow-x-scroll overscroll-x-contain snap-x snap-mandatory pt-3 pb-3 pl-3 pr-2 touch-pan-x cursor-grab active:cursor-grabbing"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -28,7 +28,7 @@ const Carousel = ({ items = fallbackItems }) => {
             key={item.id}
             className="snap-start shrink-0 min-w-[75%] sm:min-w-[calc(50%_-_0.5rem)] md:min-w-[calc(33.333%_-_0.67rem)] lg:min-w-[calc(25%_-_0.75rem)]"
           >
-            <CardComponent product={item}/>
+            <CardComponent product={item} crumbs={crumbs} imgClassName={cardImgClassName} />
           </div>
         ))}
       </div>

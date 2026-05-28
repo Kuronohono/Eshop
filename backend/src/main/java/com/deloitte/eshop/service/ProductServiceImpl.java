@@ -2,15 +2,20 @@ package com.deloitte.eshop.service;
 
 import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.dto.ProductSpecification;
+import com.deloitte.eshop.entity.Brands;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
 import com.deloitte.eshop.entity.ProductType;
 import com.deloitte.eshop.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -75,5 +80,17 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getProductsByProductType(ProductType productType) {
         return productRepository.findByProductType(productType);
+    }
+
+    @Override
+    public List<Product> getProductsByBrand(Brands brand) {
+        return productRepository.findByProductBrand(brand);
+    }
+
+    @Override
+    public List<Product> getRandomProducts(int limit) {
+        long count = productRepository.count();
+        int randomOffset = (int) (Math.random() * Math.max(1, count - limit));
+        return productRepository.findAll(PageRequest.of(randomOffset / limit, limit)).getContent();
     }
 }

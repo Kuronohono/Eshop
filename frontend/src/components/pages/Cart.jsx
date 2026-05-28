@@ -1,67 +1,71 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Breadcrumb from '../OtherComponents/Breadcrumb'
-import Img1 from "../../assets/placeholder_imgs/tapeshirt.png"
-import Img2 from "../../assets/placeholder_imgs/skinnyjeans.png"
-import Img3 from "../../assets/placeholder_imgs/checkered_shirt.png"
-import Img4 from "../../assets/placeholder_imgs/sleevestriped.png"
-import Img5 from "../../assets/placeholder_imgs/vertical_striped.png"
-import Img6 from "../../assets/placeholder_imgs/courage_shirt.png"
-import Img7 from "../../assets/placeholder_imgs/bermuda_shorts.png"
-import Img8 from "../../assets/placeholder_imgs/faded_skinny.png"
 import CartProduct from '../OtherComponents/ProductComponents/CartProduct'
 import { MdOutlineDiscount } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
-const CartProducts = [
-{
-    id: 1,
-    img: Img1,
-    title: "T-shirt with Tape Details",
-    rating: 4.5,
-    price: 120,
-    sale_per: 0,
-    size: "Large",
-    color: "Red",
-    quantity: 2
-},
-{
-    id: 2,
-    img: Img2,
-    title: "Skinny Fit Jeans",
-    rating: 3.5,
-    price: 260,
-    sale_per: 20,
-    size: "Medium",
-    color: "White",
-    quantity: 3
-},
-{
-    id: 3,
-    img: Img3,
-    title: "Checkered Shirt",
-    rating: 4.5,
-    price: 180,
-    sale_per: 0,
-    size: "Small",
-    color: "Blue",
-    quantity: 4
-},
-{
-    id: 4,
-    img: Img4,
-    title: "Sleeve Striped T-shirt",
-    rating: 4.5,
-    price: 160,
-    sale_per: 30,
-    size: "Large",
-    color: "Blue",
-    quantity: 1
+
+const toCartItem = (cartItem) => {
+    const baseProduct = cartItem?.product ?? cartItem
+    return {
+        id: cartItem?.id ?? baseProduct?.id,
+        img: baseProduct?.imageUrls?.[0],
+        title: baseProduct?.name,
+        size: cartItem?.size ?? baseProduct?.size ?? "—",
+        color: cartItem?.color ?? baseProduct?.color ?? "—",
+        quantity: cartItem?.quantity ?? baseProduct?.quantity ?? 1,
+        price: baseProduct?.price,
+        discount: baseProduct?.discount,
+    }
 }
-]
 
 const Cart = () => {
-  return (
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [cart_products, setCartProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setIsLoggedIn(!!token);
+
+        if (!token) {
+            localStorage.setItem("cartCount", "0");
+            window.dispatchEvent(new Event("cartUpdated"));
+            setLoading(false);
+            return;
+        }
+
+        fetch("http://localhost:8085/users/me/cart", {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+            .then(async (res) => {
+                if (!res.ok) {
+                    const text = await res.text();
+                    throw new Error(text || `Failed to load cart (${res.status})`);
+                }
+                return res.json();
+            })
+            .then((data) => {
+                const items = Array.isArray(data) ? data : [];
+                setCartProducts(items);
+                localStorage.setItem("cartCount", String(items.length));
+                window.dispatchEvent(new Event("cartUpdated"));
+            })
+            .catch((err) => {
+                console.error(err);
+                setCartProducts([]);
+            })
+            .finally(() => setLoading(false));
+    }, []);
+
+  return(
     <div className="screen-adapt">
-        <div className="flex flex-col mb-[10%] w-full">
+
+        <div className={`w-full h-full items-center justify-center ${isLoggedIn ? "hidden" : "flex"}`}>
+            <h1 className='font-satoshibold text-[16px] lg:text-[24px] '>Log in to view your cart.</h1>
+
+        </div>
+        <div className={`flex-col mb-[10%] w-full ${isLoggedIn ?  "flex" : "hidden"}`}>
 
             <div className="h-px bg-black opacity-10 mx-auto w-full" />
 
@@ -75,14 +79,17 @@ const Cart = () => {
                 {/* Your Cart */}
 
                 <div className="item_container divide-y divide-black/10 lg:col-span-3">
-                    {
-                        CartProducts.map((product) => (
-                            <div key={product.id} className="flex mx-[3%] py-[4%] md:py-[3%]">
-                                  <CartProduct product={product}/>  
-                            </div>
-                        ))
-                    }
-                    
+                    {loading && (
+                        <p className="font-satoshi text-gray-500 mx-[3%] py-[4%]">Loading cart...</p>
+                    )}
+                    {!loading && cart_products.length === 0 && (
+                        <p className="font-satoshi text-gray-500 mx-[3%] py-[4%]">Your cart is empty.</p>
+                    )}
+                    {!loading && cart_products.map((product) => (
+                        <div key={product.id ?? `${product?.product?.id}-${product?.size}-${product?.color}`} className="flex mx-[3%] py-[4%] md:py-[3%]">
+                            <CartProduct product={toCartItem(product)} />
+                        </div>
+                    ))}
                 </div>
 
                 {/* Order Summary */}

@@ -5,11 +5,11 @@ public enum Sizes {
     XSMALL("X-Small"),
     SMALL("Small"),
     MEDIUM("Medium"),
-    LARGE("LARGE"),
-    XLARGE("X-LARGE"),
-    XXLARGE("XX-LARGE"),
-    TXLARGE("3X-LARGE"),
-    FXLARGE("4X-LARGE");
+    LARGE("Large"),
+    XLARGE("X-Large"),
+    XXLARGE("XX-Large"),
+    TXLARGE("3X-Large"),
+    FXLARGE("4X-Large");
 
     private final String size;
 

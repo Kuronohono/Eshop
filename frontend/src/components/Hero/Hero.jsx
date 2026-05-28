@@ -87,11 +87,13 @@ const Hero = () => {
             </div>
 
             <div className="brand_container">
-                <img src={Versace} alt=""     className="brand-logo" />
-                <img src={Zara} alt=""        className="brand-logo"/>
-                <img src={Gucci} alt=""       className="brand-logo"/>
-                <img src={Prada} alt=""       className="brand-logo"/>
-                <img src={CalvinKlein} alt="" className="brand-logo"/>
+                {
+                    Brands.map( (brand) => (
+                        <Link key={brand.id} to={`/Brands/${brand.name}`} className='flex items-center'>
+                            <img src={brand.image} className="brand-logo"/>
+                        </Link>
+                    ))
+                }
             </div>
 
         </section>

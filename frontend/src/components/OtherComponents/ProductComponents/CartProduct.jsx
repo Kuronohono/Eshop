@@ -2,19 +2,29 @@ import React from 'react'
 import { HiTrash } from "react-icons/hi2";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
+import NoImageAvailable from '../../../assets/No_Image_Available.jpg'
+
 const CartProduct = ({product}) => {
+    const imageSrc = product.img ?? product.imageUrls?.[0] ?? NoImageAvailable
+    const title = product.title ?? product.name
+
     return (
     <div className="flex w-full justify-between">
 
         
         {/* Image and Details */}
         <div className="flex gap-3">
-            <img src={product.img} className="object-cover w-[100px] h-[100px] md:w-[124px] md:h-[124px] rounded-md shrink-0"/>
+            <img
+                src={imageSrc}
+                alt={title}
+                onError={(e) => { e.currentTarget.src = NoImageAvailable }}
+                className="object-cover w-[100px] h-[100px] md:w-[124px] md:h-[124px] rounded-md shrink-0"
+            />
 
             {/* Product Info */}
             <div className="flex flex-col">
                 {/* Product Name */}
-                <h1 className="cart_item_title">{product.title}</h1>
+                <h1 className="cart_item_title">{title}</h1>
 
                 {/* Product Details */}
                 <p className="cart_item_details">Size: <span className="cart_item_details opacity-60">{product.size}</span></p>

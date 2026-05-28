@@ -33,8 +33,8 @@ const SearchBar = () => {
 
 
   return (
-    <div className=" max-w-310 flex-1 flex-col mx-auto hidden min-[1280px]:block relative">
-        <div className="flex items-center rounded-[62px] my-3 mr-4 h-12 bg-[#F0F0F0] gap-3 px-4">
+    <div className=" w-full flex-1 flex-col mx-auto hidden min-[1280px]:block relative">
+        <div className="flex items-center rounded-[62px] my-3 h-12 bg-[#F0F0F0] gap-3 px-4">
             <IoSearch className="opacity-40" size={24}/>
             <input 
             type="text"
@@ -58,7 +58,7 @@ const SearchBar = () => {
                                 onMouseDown={() => {
                                     setQuery(product.name);
                                     setOpen(false);
-                                    navigate(`/products/${product.id}`, { state: { product } });
+                                    navigate(`/${product.id}`, { state: { product } });
                                 }}
                             >
                                 {matchIndex === -1 ? (

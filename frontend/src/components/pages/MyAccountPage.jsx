@@ -64,12 +64,14 @@ const UserProfilePage = () => {
     });
 
     localStorage.removeItem("token");
+    localStorage.setItem("cartCount", "0");
+    window.dispatchEvent(new Event("cartUpdated"));
     window.location.replace("/login");
   }
-   const tabContent = {
+  const tabContent = {
         tab1: <Wishlist userData={userData} />,
         tab2: <Orders/>,
-        tab3: <Settings/>
+        tab3: <Settings userData={userData} onUserUpdated={setUserData} />
     }
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Breadcrumb from '../OtherComponents/Breadcrumb'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import StarRating from '../OtherComponents/ProductComponents/StarRating'
 import ProductPrice from '../OtherComponents/ProductComponents/ProductPrice'
 import AvailalbleColors from './ProductPageComponents/AvailalbleColors'
@@ -19,15 +19,18 @@ const Tabs = [
 ]
 
 const ProductPage = () => {
-    const {state} = useLocation()
-    const product = state?.product
+    const { state } = useLocation()
+    const { product: productId } = useParams()
+    const [product, setProduct] = useState(state?.product ?? null)
     const [colors, setColors] = useState([])
+    const [suggestions, setSuggestions] = useState([])
     const [images, setImages] = useState(product?.imageUrls || [])
     const [mainImage, setMainImage] = useState(product?.imageUrls?.[0] || '')
     const [selectedColor, setSelectedColor] = useState(null)
     const [sizes, setSizes] = useState([])
+    const [selectedSize, setSelectedSize] = useState(null)
     const [quantity, setQuantity] = useState(0)
-    const [selectedVariant, setSelectedVariant] = useState(null)
+    const [addError, setAddError] = useState("")
     const [activeTab, setActiveTab] = useState("tab1")
     const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 })
     const tabRefs = useRef({})
@@ -39,6 +42,39 @@ const ProductPage = () => {
     }
 
     useEffect(() => {
+        // When navigating to another product from suggestions, reset UI and scroll like a page reload.
+        window.scrollTo({ top: 0, behavior: "instant" })
+        setActiveTab("tab1")
+        setAddError("")
+        setQuantity(0)
+        setSelectedColor(null)
+        setSelectedSize(null)
+        setSizes([])
+        setColors([])
+
+        const fromState = state?.product
+        if (fromState?.id && String(fromState.id) === String(productId)) {
+            setProduct(fromState)
+            setImages(fromState.imageUrls || [])
+            setMainImage(fromState.imageUrls?.[0] || "")
+            return
+        }
+
+        if (!productId) return
+        fetch(`http://localhost:8085/products/${productId}`)
+            .then((res) => {
+                if (!res.ok) throw new Error("Failed to fetch product")
+                return res.json()
+            })
+            .then((data) => {
+                setProduct(data)
+                setImages(data?.imageUrls || [])
+                setMainImage(data?.imageUrls?.[0] || "")
+            })
+            .catch((err) => console.error(err))
+    }, [productId])
+
+    useEffect(() => {
         const activeBtn = tabRefs.current[activeTab]
         if (activeBtn) {
             setIndicatorStyle({
@@ -48,31 +84,131 @@ const ProductPage = () => {
         }
     }, [activeTab])
 
+
     useEffect(() => {
+        if (!product?.id) return
         fetch(`http://localhost:8085/product-variants/colors/${product.id}`)
             .then(res => res.json())
-            .then(data => setColors(data))
+            .then(data => {
+                setColors(data)
+                // Default select first color so it's checked and sizes load immediately.
+                const first = Array.isArray(data) && data.length > 0 ? data[0] : null
+                if (first) setSelectedColor(first)
+            })
             .catch(err => console.error("Failed to fetch colors:", err))
     }, [product?.id])
 
+
     useEffect(() => {
-        if (!selectedColor) return
+        fetch(`http://localhost:8085/products/you_might_also_like`)
+        .then(res => res.json())
+            .then(data => {
+                setSuggestions(data)
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }, [])
+
+    const sortSizes = (list) => {
+        const order = {
+            XXS: 1, XS: 2, S: 3, M: 4, L: 5, XL: 6, XXL: 7, XXXL: 8,
+            "2XS": 1, "X-SMALL": 2, SMALL: 3, MEDIUM: 4, LARGE: 5, "X-LARGE": 6, "2XL": 7, "3XL": 8,
+        }
+
+        return [...(list ?? [])].sort((a, b) => {
+            const A = String(a).trim()
+            const B = String(b).trim()
+
+            const aNum = Number(A)
+            const bNum = Number(B)
+            const aIsNum = !Number.isNaN(aNum) && A !== ""
+            const bIsNum = !Number.isNaN(bNum) && B !== ""
+            if (aIsNum && bIsNum) return aNum - bNum
+
+            const aKey = order[A.toUpperCase()]
+            const bKey = order[B.toUpperCase()]
+            if (aKey != null && bKey != null) return aKey - bKey
+            if (aKey != null) return -1
+            if (bKey != null) return 1
+
+            return A.localeCompare(B)
+        })
+    }
+
+    useEffect(() => {
+        if (!selectedColor || !product?.id) return
         fetch(`http://localhost:8085/product-variants/sizes/${product.id}/${selectedColor}`)
             .then(res => res.json())
-            .then(data => setSizes(data))
+            .then(data => {
+                setSizes(sortSizes(data))
+                setSelectedSize(null)
+                setAddError("")
+                setQuantity(0)
+            })
             .catch(err => console.error("Failed to fetch sizes:", err))
+    }, [selectedColor, product?.id])
 
-        fetch(`http://localhost:8085/product-variants/variant/${product.id}/${selectedColor}`)
-            .then(res => res.json())
-            .then(data => setSelectedVariant(data))
-            .catch(err => console.error("Failed to fetch variant:", err))
-    }, [selectedColor])
+    const getMaxQuantity = () => {
+            const stock = product?.stock
+        if (typeof stock === "number" && stock > 0) return stock
+        return 99
+    }
 
-    const increase = () => setQuantity(prev => Math.min(selectedVariant?.stock ?? 0, prev + 1))
-    const decrease = () => setQuantity(prev => Math.max(0, prev - 1))
+    const increase = () => setQuantity((prev) => Math.min(getMaxQuantity(), prev + 1))
+    const decrease = () => setQuantity((prev) => Math.max(0, prev - 1))
+
+    const handleAddToCart = async () => {
+        setAddError("")
+
+        if (!selectedColor || !selectedSize) {
+            setAddError("Please select a color and size first.")
+            return
+        }
+        if (quantity <= 0) {
+            setAddError("Please select a quantity.")
+            return
+        }
+
+        const token = localStorage.getItem("token")
+        if (!token) {
+            setAddError("Please log in to add items to your cart.")
+            return
+        }
+
+        try {
+            const params = new URLSearchParams({
+                size: selectedSize,
+                color: selectedColor,
+                quantity: String(quantity),
+            })
+            const res = await fetch(`http://localhost:8085/users/me/cart/${product.id}?${params.toString()}`, {
+                method: "POST",
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            if (!res.ok) {
+                const text = await res.text()
+                throw new Error(text || "Failed to add to cart")
+            }
+
+            // Sync cart count from backend so navbar stays accurate.
+            const cartRes = await fetch("http://localhost:8085/users/me/cart", {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            if (cartRes.ok) {
+                const cartItems = await cartRes.json()
+                localStorage.setItem("cartCount", String(Array.isArray(cartItems) ? cartItems.length : 0))
+            }
+            window.dispatchEvent(new Event("cartUpdated"))
+
+            setQuantity(0)
+        } catch (e) {
+            setAddError(e?.message || "Failed to add to cart")
+        }
+    }
 
     return (
-        <div className="screen-adapt">
+        <div className="screen-adapt min-w-0 gap-10">
             <div className="flex flex-col mb-[10%] w-full gap-7">
 
                 <div className="h-px bg-black opacity-10 mx-auto w-full" />
@@ -80,7 +216,7 @@ const ProductPage = () => {
                 <Breadcrumb/>
 
                 {/* Product Images and Options */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 items-start justify-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 items-start justify-start gap-2">
 
                     {/* Images Section */}
                     <div className="flex flex-col-reverse gap-3 sm:flex-row ">
@@ -96,7 +232,7 @@ const ProductPage = () => {
                         </div>
 
                         <div className="w-full sm:w-[80%]">
-                            <img src={mainImage} className="w-full h-full max-h-132.5 2xl:max-h-[750px] object-contain object-top hover:cursor-zoom-in rounded-[20px]"/>
+                            <img src={mainImage} className="w-full h-full max-h-132.5 2xl:max-h-187.5 object-contain object-top hover:cursor-zoom-in rounded-[20px]"/>
                         </div>
                     </div>
 
@@ -111,30 +247,40 @@ const ProductPage = () => {
                                 <h4 className="font-satoshi text-[12px] md:text-[15px]">{4.5}/5</h4>
                             </div>
 
-                            <ProductPrice price={product.price} sale_per={product.discount}/>
+                            <ProductPrice price={product.price} sale_per={product.discount} pricingDivClass="pricing_div" newPriceClass="newPrice_proPage" oldPriceClass="oldPrice_proPage" discountClass="discountPer_proPage"/>
 
                             <p className="product_description mb-5">{product.description}</p>
                         </div>
 
                         <div className="flex flex-col gap-3 mt-3">
                             <span className="product_select_option">Select Colors</span>
-                            <AvailalbleColors colors={colors} onColorSelect={setSelectedColor}/>
+                            <AvailalbleColors colors={colors} selectedColor={selectedColor} onColorSelect={setSelectedColor}/>
                         </div>
 
                         <div className="flex flex-col gap-3 my-3">
                             <span className="product_select_option">Choose Size</span>
-                            <AvailableSizes sizes={sizes}/>
+                            <AvailableSizes sizes={sizes} selectedSize={selectedSize} onSizeSelect={setSelectedSize}/>
                         </div>
 
                         <div className="flex items-center gap-5">
                             <div className="flex bg-[#F0F0F0] rounded-[62px] gap-4 md:gap-6 items-center py-3 px-6 md:px-10">
-                                <button onClick={decrease} className="active:scale-80 cursor-pointer"><FaMinus size={12}/></button>
+                                <button type="button" onClick={decrease} disabled={quantity <= 0} className="active:scale-80 cursor-pointer disabled:opacity-40"><FaMinus size={12}/></button>
                                 <span className="text-[14px]">{quantity}</span>
-                                <button onClick={increase} className="active:scale-80 cursor-pointer"><FaPlus size={16}/></button>
+                                <button type="button" onClick={increase} disabled={quantity >= getMaxQuantity()} className="active:scale-80 cursor-pointer disabled:opacity-40"><FaPlus size={16}/></button>
                             </div>
 
-                            <button className="add_toCart_btn">Add to Cart</button>
+                            <button
+                                className="add_toCart_btn"
+                                onClick={handleAddToCart}
+                                disabled={!selectedColor || !selectedSize || quantity <= 0}
+                                style={!selectedColor || !selectedSize || quantity <= 0 ? { opacity: 0.6, cursor: "not-allowed" } : undefined}
+                            >
+                                Add to Cart
+                            </button>
                         </div>
+                        {addError && (
+                            <p className="font-satoshi text-sm text-red-500 mt-2">{addError}</p>
+                        )}
                     </div>
                 </div>
 
@@ -167,8 +313,12 @@ const ProductPage = () => {
                     <div className="flex items-center justify-center pt-8 md:pt-15">
                         <h1 className="home_banner">You might also like</h1>
                     </div>
-                    <div className="flex flex-col items-center justify-center w-full">
-                        <Carousel />
+                    <div className="flex flex-col items-center justify-center w-full min-w-0 gap-10">
+                        <Carousel
+                            items={suggestions}
+                            crumbs={[{label: "Home", to: "/"}]}
+                            cardImgClassName="h-45 sm:h-52 md:h-60 lg:h-60 xl:h-65 2xl:h-70"
+                        />
                     </div>
                 </div>
 

@@ -1,6 +1,7 @@
 package com.deloitte.eshop.service;
 
 import com.deloitte.eshop.dto.ProductFilter;
+import com.deloitte.eshop.entity.Brands;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
 import com.deloitte.eshop.entity.ProductType;
@@ -29,6 +30,9 @@ public interface ProductService {
 
     List<Product> getProductsByProductType(ProductType productType);
 
+    List<Product> getProductsByBrand(Brands brand);
+
     List<Product> searchProducts(String query);
 
+    List<Product> getRandomProducts(int limit);
 }

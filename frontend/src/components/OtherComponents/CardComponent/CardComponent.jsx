@@ -4,16 +4,24 @@ import ProductPrice from '../ProductComponents/ProductPrice'
 import NoImageAvailable from '../../../assets/No_Image_Available.jpg'
 import {Link} from "react-router-dom"
 
-const CardComponent = ({product}) => {
+const CardComponent = ({ product, crumbs, imgClassName = "" }) => {
+  const nextCrumbs = Array.isArray(crumbs) && crumbs.length > 0
+    ? [...crumbs, { label: product?.name ?? String(product?.id ?? "Product"), to: `/${product.id}` }]
+    : undefined
+
   return (
-    <Link to={`/${product.id}`} state={{product}} className="flex flex-col gap-2 hover:scale-105 transition-all active:scale-100 cursor-pointer w-full">
+    <Link
+      to={`/${product.id}`}
+      state={{ product, crumbs: nextCrumbs }}
+      className="flex flex-col gap-2 hover:scale-105 transition-all active:scale-100 cursor-pointer w-full touch-pan-x"
+    >
         <img 
         src={product?.imageUrls?.[0] || NoImageAvailable} 
         onError = {(e) =>{
             e.currentTarget.src = NoImageAvailable
         }}
         alt="product"
-        className=" w-full h-[200px] md:h-[300px] object-cover object-top rounded-2xl bg-[#F0F0F0]"/>
+        className={`w-full h-55 sm:h-60 md:h-70 lg:h-70 xl:h-75 2xl:h-85 object-cover object-top rounded-2xl bg-[#F0F0F0] ${imgClassName}`}/>
                             <div className="flex flex-col gap-1">
                                 <h3 className="font-satoshibold text-16px md:text-[20px] truncate">{product?.name}</h3>
                                 {product?.productRating > 0 && (

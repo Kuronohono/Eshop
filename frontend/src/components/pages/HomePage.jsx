@@ -25,8 +25,8 @@ const Products = () => {
 
 
   return (
-    <div className='w-full overflow-hidden'>
-    <div className="screen-adapt gap-10" >
+    <div className=" w-full overflow-x-hidden">
+    <div className="screen-adapt gap-10 min-w-0" >
         
         {/* New Arrivals Header Section */}
         <div className="flex items-center justify-center pt-8 md:pt-15">
@@ -34,9 +34,9 @@ const Products = () => {
         </div>
 
         {/* New Arrivals Card Section */}
-        <div className="flex flex-col items-center justify-center w-full gap-10">
-            <Carousel items={newArrivals}/>
-            <Link to={"/new_arrivals"} className="view_all_btn" >View All</Link>
+        <div className="flex flex-col items-center justify-center w-full min-w-0 gap-10">
+            <Carousel items={newArrivals} crumbs={[{ label: "Home", to: "/" }]} />
+            <Link to={"/Status/New_Arrivals"} className="view_all_btn" >View All</Link>
             
         </div>
 
@@ -48,9 +48,9 @@ const Products = () => {
         </div>
 
         {/* Top Selling Card Section */}
-        <div className="flex flex-col items-center justify-center w-full gap-10">
-            <Carousel items={topSelling}/>
-            <Link to={"/top_selling"} className="view_all_btn" >View All</Link>
+        <div className="flex flex-col items-center justify-center w-full min-w-0 gap-10">
+            <Carousel items={topSelling} crumbs={[{ label: "Home", to: "/" }]} />
+            <Link to={"/Status/Top_Selling"} className="view_all_btn" >View All</Link>
         </div>
 
         {/* Browse By Dress Style Section*/}
@@ -67,7 +67,6 @@ const Products = () => {
 
         {/* Our Happy Customers Section */}
         <TestimonialCarousel/>
-        
 
     </div>
     </div>

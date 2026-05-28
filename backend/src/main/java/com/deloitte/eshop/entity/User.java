@@ -48,10 +48,9 @@ public class User implements UserDetails {
         @Column(name = "verification_expiration")
         private LocalDateTime verificationCodeExpiration;
 
-        @ManyToMany
-        @JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
         @Builder.Default
-        private List<Product> products_cart = new ArrayList<>();
+        private List<CartProduct> products_cart = new ArrayList<>();
 
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
         @Builder.Default

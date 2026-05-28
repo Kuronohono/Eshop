@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "com.deloitte.eshop.Application",
+            "projectName": "eshop",
+            "env":{
+                "JWT_SECRET_KEY": "1L0YYXHDoABh5VlzTt8Ri6F4043S2qr4IzpBd89PXTcEz",
+                "SUPPORT_EMAIL": "21gold2003@gmail.com",
+                "SUPPORT_PASSWORD": "hvpm uohw obsn pbxm"
+            }
+        }
+    ]
+}

@@ -1,12 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { colorMap } from '../../../constants/colorMap'
 
-const AvailableColors = ({ colors = [], onColorSelect }) => {
-  const displayColors = colors.length > 0 ? colors : Object.keys(colorMap)
-  const [activeColor, setActiveColor] = useState(displayColors[0] ?? null)
+const AvailableColors = ({ colors = [], selectedColor, onColorSelect }) => {
+  const displayColors = useMemo(
+    () => (colors.length > 0 ? colors : Object.keys(colorMap)),
+    [colors]
+  )
+
+  const [activeColor, setActiveColor] = useState(selectedColor ?? displayColors[0] ?? null)
+
+  // Keep internal state in sync with parent-controlled value.
+  useEffect(() => {
+    if (selectedColor !== undefined) setActiveColor(selectedColor)
+  }, [selectedColor])
+
+  // Ensure a color is selected by default and parent gets notified.
+  useEffect(() => {
+    if (!activeColor && displayColors[0]) {
+      setActiveColor(displayColors[0])
+      onColorSelect?.(displayColors[0])
+    } else if (activeColor) {
+      onColorSelect?.(activeColor)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [displayColors])
 
   const toggle = (color) => {
-    const next = activeColor === color ? null : color
+    // UX requirement: always keep one color selected (no deselect to null).
+    const next = color
     setActiveColor(next)
     if (onColorSelect) onColorSelect(next)
   }

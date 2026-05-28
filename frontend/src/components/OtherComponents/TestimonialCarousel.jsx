@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6"
 import ReviewCard from '../pages/ProductPageComponents/ReviewCard'
 
@@ -14,8 +14,30 @@ const TestimonialCarousel = () => {
     const [index, setIndex] = useState(0)
     const [visibleCount, setVisibleCount] = useState(3)
 
+    useEffect(() => {
+        const updateVisibleCount = () => {
+            const isDesktop = window.matchMedia("(min-width: 1024px)").matches
+            const count = isDesktop ? 3 : 1
+            setVisibleCount(count)
+            setIndex((i) => Math.min(i, Math.max(0, reviews.length - count)))
+        }
+        updateVisibleCount()
+        window.addEventListener("resize", updateVisibleCount)
+        return () => window.removeEventListener("resize", updateVisibleCount)
+    }, [])
+
+    const isDesktop = visibleCount === 3
+    const maxIndex = Math.max(0, reviews.length - visibleCount)
+
     const prev = () => setIndex(i => Math.max(0, i - 1))
-    const next = () => setIndex(i => Math.min(reviews.length - visibleCount, i + 1))
+    const next = () => setIndex(i => Math.min(maxIndex, i + 1))
+
+    const trackStyle = isDesktop
+        ? { transform: `translateX(calc(-${index} * (100% / ${visibleCount} + 6px)))` }
+        : {
+              width: `${reviews.length * 100}%`,
+              transform: `translateX(-${(index / reviews.length) * 100}%)`,
+          }
 
     return (
         <div className="flex flex-col w-full gap-6 h-full">
@@ -32,7 +54,7 @@ const TestimonialCarousel = () => {
                     </button>
                     <button
                         onClick={next}
-                        disabled={index >= reviews.length - visibleCount}
+                        disabled={index >= maxIndex}
                         className="cursor-pointer disabled:opacity-30 transition-opacity active:scale-90">
                         <FaArrowRight size={22} />
                     </button>
@@ -40,7 +62,7 @@ const TestimonialCarousel = () => {
             </div>
 
             {/* Cards */}
-                <div className='h-full'>
+            <div className='h-full'>
 
                 {/* Left blur fade */}
                 <div className="hidden lg:block pointer-events-none absolute left-0 top-0 h-full w-16 z-10"
@@ -48,24 +70,32 @@ const TestimonialCarousel = () => {
 
                 {/* Right blur fade */}
                 <div className="hidden lg:block pointer-events-none absolute right-0 top-0 h-full w-32 z-10"
-                    style={{ background: "linear-gradient(to left, white 10%, transparent 100%)", opacity: index < reviews.length - visibleCount ? 1 : 0, transition: "opacity 0.3s" }}/>
+                    style={{ background: "linear-gradient(to left, white 10%, transparent 100%)", opacity: index < maxIndex ? 1 : 0, transition: "opacity 0.3s" }}/>
 
                 <div
                     className="flex flex-nowrap gap-5 duration-500 lg:ease-in-out transition-transform"
-                    style={{ transform: `translateX(calc(-${index} * (100% / ${visibleCount} + 6px)))` }}>
-                    {reviews.map((review, i) => (
-                        <div key={i} className="min-w-[calc(33.333%-14px)] transition-all duration-300"
-                            style={{ filter: i < index || i >= index + visibleCount ? "blur(2px)" : "none", opacity: i < index || i >= index + visibleCount ? 0.5 : 1 }}>
-                            <ReviewCard
-                                username={review.username}
-                                reviewStar={review.reviewStar}
-                                reviewText={review.reviewText}
-                            />
-                        </div>
-                    ))}
+                    style={trackStyle}>
+                    {reviews.map((review, i) => {
+                        const isFaded = isDesktop && (i < index || i >= index + visibleCount)
+                        return (
+                            <div key={review.username}
+                                className={isDesktop
+                                    ? "min-w-[calc(33.333%-14px)] transition-all duration-300"
+                                    : "shrink-0 transition-all duration-300"}
+                                style={isDesktop
+                                    ? isFaded ? { filter: "blur(2px)", opacity: 0.5 } : undefined
+                                    : { width: `${100 / reviews.length}%` }}>
+                                <ReviewCard
+                                    username={review.username}
+                                    reviewStar={review.reviewStar}
+                                    reviewText={review.reviewText}
+                                />
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
-            </div>
+        </div>
     )
 }
 

@@ -11,8 +11,8 @@ import ShopMenu from './ShopMenu';
 import SearchBar from './SearchBar';
 
 const Menu = [
-    { id: 1, name: "On Sale", link: "/on_sale" },
-    { id: 2, name: "New Arrivals", link: "/new_arrivals" },
+    { id: 1, name: "On Sale", link: "/Status/On_Sale" },
+    { id: 2, name: "New Arrivals", link: "/Status/New_Arrivals" },
     { id: 3, name: "Brands", link: "/brands" }
 ]
 
@@ -28,11 +28,31 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [searchActive, setSearchActive] = useState(false);
+    const [cartCount, setCartCount] = useState(0);
     const inputRef = useRef(null);
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        setIsLoggedIn(!!token);
+        const syncAuthAndCart = () => {
+            const token = localStorage.getItem("token");
+            const loggedIn = !!token;
+            setIsLoggedIn(loggedIn);
+            if (!loggedIn) {
+                setCartCount(0);
+                return;
+            }
+            const n = Number(localStorage.getItem("cartCount") || "0");
+            setCartCount(Number.isFinite(n) ? n : 0);
+        };
+
+        syncAuthAndCart();
+        window.addEventListener("cartUpdated", syncAuthAndCart);
+        window.addEventListener("storage", syncAuthAndCart);
+        window.addEventListener("focus", syncAuthAndCart);
+        return () => {
+            window.removeEventListener("cartUpdated", syncAuthAndCart);
+            window.removeEventListener("storage", syncAuthAndCart);
+            window.removeEventListener("focus", syncAuthAndCart);
+        };
     }, []);
 
     const handleSearchOpen = () => {
@@ -75,7 +95,7 @@ const Navbar = () => {
 
                         {/* Logo */}
                         <div className="font-integralcf text-[25px] sm:text-[32px] flex items-center font-bold hover:bg-[#F0F0F0] active:bg-[#f5f5f5] rounded-[10px] px-2">
-                            <Link to={"/Home"}>SHOP.CO</Link>
+                            <Link to={"/"}>SHOP.CO</Link>
                         </div>
                     </div>
 
@@ -97,7 +117,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop SearchBar (hidden on mobile) */}
-                    <div className="hidden min-[1280px]:block flex-1 max-w-[400px]">
+                    <div className="hidden min-[1280px]:block flex-1 w-full">
                         <SearchBar />
                     </div>
 
@@ -163,10 +183,15 @@ const Navbar = () => {
                                 }`}
                         >
                             <Link
-                                to={"/Cart"}
-                                className="text-2xl hover:bg-[#e6e6e6] rounded-full p-2 cursor-pointer transition-all active:scale-95"
+                                to={"/cart"}
+                                className="relative text-2xl hover:bg-[#e6e6e6] rounded-full p-2 cursor-pointer transition-all active:scale-95"
                             >
                                 <FiShoppingCart size={24} />
+                                {isLoggedIn && cartCount > 0 && (
+                                    <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-black text-white text-[11px] flex items-center justify-center">
+                                        {cartCount}
+                                    </span>
+                                )}
                             </Link>
                             <Link
                                 to={isLoggedIn ? "/my_account" : "/login"}
@@ -181,7 +206,7 @@ const Navbar = () => {
             </nav>
 
             {/* Mobile Sidebar */}
-            <ResponsiveMenu open={open} />
+            <ResponsiveMenu open={open} onClose={() => setOpen(false)} />
         </>
     )
 }

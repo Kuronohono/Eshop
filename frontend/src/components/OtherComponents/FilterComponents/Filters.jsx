@@ -35,9 +35,8 @@ const DressStyles = [
     { id:9, name:"Gym"}
 ]
 
-
-
 const Filters = () => {
+
   return (
     <div className="hidden lg:block h-fit w-full flex-col border border-[#F0F0F0] rounded-[20px] px-6 py-6 gap-4 divide-y divide-black/10">
 

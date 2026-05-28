@@ -1,8 +1,10 @@
 package com.deloitte.eshop.controller;
 
 import com.deloitte.eshop.dto.ProductFilter;
+import com.deloitte.eshop.entity.Brands;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
+import com.deloitte.eshop.entity.ProductType;
 import com.deloitte.eshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -13,12 +15,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(originPatterns = { "http://localhost:*", "http://127.0.0.1:*" })
 public class ProductController {
 
     @Autowired
@@ -58,6 +58,21 @@ public class ProductController {
     public ResponseEntity<List<Product>> getByStatus(@PathVariable ProductStatus status,
             @RequestParam(defaultValue = "0") int limit) {
         return ResponseEntity.ok(productService.getProductsByStatus(status, limit));
+    }
+
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<Product>> getByType(@PathVariable ProductType type) {
+        return ResponseEntity.ok(productService.getProductsByProductType(type));
+    }
+
+    @GetMapping("/brands/{brand}")
+    public ResponseEntity<List<Product>> getByBrand(@PathVariable Brands brand) {
+        return ResponseEntity.ok(productService.getProductsByBrand(brand));
+    }
+
+    @GetMapping("/you_might_also_like")
+    public ResponseEntity<List<Product>> youMightAlsoLikeProducts(@RequestParam(defaultValue = "4") int limit) {
+        return ResponseEntity.ok(productService.getRandomProducts(limit));
     }
 
     @GetMapping("/{productId}")

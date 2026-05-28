@@ -35,7 +35,7 @@ const ShopMenu = () => {
         </div>
 
         {isOpen && (
-            <div className="fixed z-[9999] left-0 w-screen bg-white text-black shadow-md">
+            <div className="fixed z-9999 left-0 w-screen bg-white text-black shadow-md">
                 <div className="max-w-3xl mx-auto py-4">
                     <div className="grid grid-cols-3 gap-10 divide-x divide-black/10">
                         {ShopCategories.map((gender) => (

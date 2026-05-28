@@ -2,208 +2,1523 @@
   {
     "name": "Gradient Graphic T-shirt",
     "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
-    "price": 145.0,
+    "price": 145,
     "discount": 0,
     "stock": 50,
     "gender": "MEN",
     "productType": "T_SHIRT",
     "dressStyle": "CASUAL",
     "productBrand": "Polo",
-    "imageUrls": ["https://b.scdn.gr/images/sku_main_images/058822/58822717/fixedratio_20260123135021_funky_buddha_polo_t_shirt_mple_fbm011_001_11_smoke_blue.jpeg",
-                  "https://c.scdn.gr/images/sku_images/121867/121867918/fixedratio_20260123135021_f86bdb5a.jpeg",
-                  "https://d.scdn.gr/images/sku_images/121895/121895948/fixedratio_20260126111049_3cba40f5.jpeg"],
+    "imageUrls": [
+      "https://b.scdn.gr/images/sku_main_images/058822/58822717/fixedratio_20260123135021_funky_buddha_polo_t_shirt_mple_fbm011_001_11_smoke_blue.jpeg",
+      "https://c.scdn.gr/images/sku_images/121867/121867918/fixedratio_20260123135021_f86bdb5a.jpeg",
+      "https://d.scdn.gr/images/sku_images/121895/121895948/fixedratio_20260126111049_3cba40f5.jpeg"
+    ],
     "variants": [
-      { "color": "WHITE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
-      { "color": "RED", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "GREEN", "size": ["XSMALL", "SMALL", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "PURPLE", "size": ["SMALL", "MEDIUM", "XLARGE"], "stock": 10 },
-      { "color": "LIGHT_BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 5 }
+      {
+        "color": "WHITE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "RED",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "GREEN",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "PURPLE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "XLARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "LIGHT_BLUE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 5
+      }
     ]
   },
   {
     "name": "Polo with Tipping Details",
     "description": "A classic polo shirt with contrasting tipping details on collar and cuffs.",
-    "price": 180.0,
+    "price": 180,
     "discount": 0,
     "stock": 50,
     "gender": "MEN",
     "productType": "SHIRT",
     "dressStyle": "CASUAL",
     "productBrand": "Gant",
-    "imageUrls": ["https://a.scdn.gr/images/sku_images/072842/72842547/fixedratio_20230308121011_85e28f63.jpeg",
-                  "https://b.scdn.gr/images/sku_main_images/040840/40840399/fixedratio_20251113094559_gant_polo_mplouza_kontomaniki_navy_mple_2063013_433.jpeg",
-                  "https://a.scdn.gr/images/sku_images/119498/119498579/fixedratio_20251113094601_3eea03e1.jpeg",
-                  "https://a.scdn.gr/images/sku_images/119498/119498580/fixedratio_20251113094602_9614e198.jpeg",
-                  "https://c.scdn.gr/images/sku_images/119498/119498582/fixedratio_20251113094603_39edfd11.jpeg"
-                  ],
+    "imageUrls": [
+      "https://a.scdn.gr/images/sku_images/072842/72842547/fixedratio_20230308121011_85e28f63.jpeg",
+      "https://b.scdn.gr/images/sku_main_images/040840/40840399/fixedratio_20251113094559_gant_polo_mplouza_kontomaniki_navy_mple_2063013_433.jpeg",
+      "https://a.scdn.gr/images/sku_images/119498/119498579/fixedratio_20251113094601_3eea03e1.jpeg",
+      "https://a.scdn.gr/images/sku_images/119498/119498580/fixedratio_20251113094602_9614e198.jpeg",
+      "https://c.scdn.gr/images/sku_images/119498/119498582/fixedratio_20251113094603_39edfd11.jpeg"
+    ],
     "variants": [
-      { "color": "PINK", "size": ["XSMALL", "SMALL", "MEDIUM"], "stock": 10 },
-      { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "ORANGE", "size": ["SMALL", "MEDIUM", "LARGE"], "stock": 4 }
+      {
+        "color": "PINK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "BLUE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "ORANGE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 4
+      }
     ]
   },
   {
     "name": "Black Striped T-shirt",
     "description": "A classic baseball-style t-shirt with vertical pinstripes and contrast raglan sleeves.",
-    "price": 120.0,
+    "price": 120,
     "discount": 30,
     "stock": 50,
     "gender": "MEN",
     "productType": "T_SHIRT",
     "dressStyle": "CASUAL",
     "productBrand": "Karl",
-    "imageUrls": ["https://a.scdn.gr/images/sku_images/056974/56974073/20250910030435_7046668c.jpeg",
-                  "https://d.scdn.gr/images/sku_main_images/033652/33652215/fixedratio_20250910030350_karl_kani_t_shirt_mayro_kkmq32063blk.jpeg",
-                  "https://b.scdn.gr/images/sku_images/112390/112390572/fixedratio_20250910030356_b8e254cf.jpeg",
-                  "https://d.scdn.gr/images/sku_images/112390/112390557/fixedratio_20250910030401_44025747.jpeg"
-                  ],
+    "imageUrls": [
+      "https://a.scdn.gr/images/sku_images/056974/56974073/20250910030435_7046668c.jpeg",
+      "https://d.scdn.gr/images/sku_main_images/033652/33652215/fixedratio_20250910030350_karl_kani_t_shirt_mayro_kkmq32063blk.jpeg",
+      "https://b.scdn.gr/images/sku_images/112390/112390572/fixedratio_20250910030356_b8e254cf.jpeg",
+      "https://d.scdn.gr/images/sku_images/112390/112390557/fixedratio_20250910030401_44025747.jpeg"
+    ],
     "variants": [
-      { "color": "WHITE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
-      { "color": "GREEN", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "BLACK", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "PINK", "size": ["SMALL", "MEDIUM", "XLARGE"], "stock": 10 }
+      {
+        "color": "WHITE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "GREEN",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "PINK",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "XLARGE"
+        ],
+        "stock": 10
+      }
     ]
   },
   {
     "name": "Skinny Fit Jeans",
     "description": "Slim-cut distressed skinny fit jeans in classic blue denim.",
-    "price": 260.0,
+    "price": 260,
     "discount": 20,
     "stock": 40,
     "gender": "MEN",
     "productType": "JEAN",
     "dressStyle": "CASUAL",
     "productBrand": "Guess",
-    "imageUrls": ["https://a.scdn.gr/images/sku_images/065923/65923727/fixedratio_20250621042212_ed8f9c6e.jpeg",
-                  "https://d.scdn.gr/images/sku_images/065923/65923724/fixedratio_20250621042219_dd268d5c.jpeg",
-                  "https://a.scdn.gr/images/sku_main_images/038683/38683522/fixedratio_20250621042154_guess_m2yan2d4q51_andriko_panteloni_tzin_me_skinny_efarmogi_mayro_m2yan2d4q51_2crb.jpeg",
-                  "https://d.scdn.gr/images/sku_images/065923/65923728/fixedratio_20250621042200_46397371.jpeg"],
+    "imageUrls": [
+      "https://a.scdn.gr/images/sku_images/065923/65923727/fixedratio_20250621042212_ed8f9c6e.jpeg",
+      "https://d.scdn.gr/images/sku_images/065923/65923724/fixedratio_20250621042219_dd268d5c.jpeg",
+      "https://a.scdn.gr/images/sku_main_images/038683/38683522/fixedratio_20250621042154_guess_m2yan2d4q51_andriko_panteloni_tzin_me_skinny_efarmogi_mayro_m2yan2d4q51_2crb.jpeg",
+      "https://d.scdn.gr/images/sku_images/065923/65923728/fixedratio_20250621042200_46397371.jpeg"
+    ],
     "variants": [
-      { "color": "BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 8 },
-      { "color": "YELLOW", "size": ["SMALL", "MEDIUM", "LARGE"], "stock": 12 },
-      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 12 }
+      {
+        "color": "BLUE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 8
+      },
+      {
+        "color": "YELLOW",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 12
+      },
+      {
+        "color": "RED",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 12
+      }
     ]
   },
   {
     "name": "Checkered Shirt",
     "description": "A relaxed-fit long sleeve shirt in a bold red and navy plaid check pattern.",
-    "price": 180.0,
+    "price": 180,
     "discount": 0,
     "stock": 50,
     "gender": "MEN",
     "productType": "SHIRT",
     "dressStyle": "CASUAL",
-    "productBrand": "Other",
-    "imageUrls": ["checkered-shirt.jpg"],
+    "productBrand": "Zara",
+    "imageUrls": [
+      "https://b.scdn.gr/images/sku_images/123456/123456528/fixedratio_20260312105338_aac12f2c.jpeg",
+      "https://a.scdn.gr/images/sku_main_images/064471/64471413/fixedratio_20260312105338_helikon_tex_makrymaniko_poukamiso_se_kanoniki_grammi_true_grey_checkered_ko_gmn_ns_pw.jpeg",
+      "https://a.scdn.gr/images/sku_images/123456/123456529/fixedratio_20260312105338_d32c7907.jpeg"
+    ],
     "variants": [
-      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
-      { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "LIGHT_BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 }
+      {
+        "color": "RED",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "BLUE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "LIGHT_BLUE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      }
     ]
   },
   {
     "name": "Sleeve Striped T-shirt",
     "description": "A bold raglan t-shirt with vertical orange stripes and contrasting black sleeves.",
-    "price": 160.0,
+    "price": 160,
     "discount": 30,
     "stock": 50,
     "gender": "MEN",
     "productType": "T_SHIRT",
     "dressStyle": "CASUAL",
     "productBrand": "Other",
-    "imageUrls": ["sleeve-striped-tshirt.jpg"],
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/7139oHjJSjL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/71lcm76Y2aL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/81FYKPm-BWL._AC_SX569_.jpg"
+    ],
     "variants": [
-      { "color": "ORANGE", "size": ["XSMALL", "SMALL", "MEDIUM"], "stock": 10 },
-      { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "PURPLE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 15 },
-      { "color": "PINK", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 10 }
+      {
+        "color": "ORANGE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "BLUE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "PURPLE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "PINK",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 10
+      }
     ]
   },
   {
     "name": "Vertical Striped Shirt",
     "description": "A mandarin collar long sleeve shirt with subtle vertical green stripes.",
-    "price": 232.0,
+    "price": 232,
     "discount": 20,
     "stock": 45,
     "gender": "MEN",
     "productType": "SHIRT",
     "dressStyle": "CASUAL",
     "productBrand": "Other",
-    "imageUrls": ["https://m.media-amazon.com/images/I/71NtE32MIhL._AC_SY879_.jpg", 
-                  "https://m.media-amazon.com/images/I/71FOwaBFyGL._AC_SY741_.jpg"],
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/71NtE32MIhL._AC_SY879_.jpg",
+      "https://m.media-amazon.com/images/I/71FOwaBFyGL._AC_SY741_.jpg"
+    ],
     "variants": [
-      { "color": "GREEN", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 8 },
-      { "color": "YELLOW", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 }
+      {
+        "color": "GREEN",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 8
+      },
+      {
+        "color": "YELLOW",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      }
     ]
   },
   {
     "name": "Courage Graphic T-shirt",
     "description": "An oversized graphic t-shirt in burnt orange with bold graffiti-style lettering.",
-    "price": 145.0,
+    "price": 145,
     "discount": 0,
     "stock": 50,
     "gender": "MEN",
     "productType": "T_SHIRT",
     "dressStyle": "CASUAL",
     "productBrand": "Other",
-    "imageUrls": ["courage-graphic-tshirt.jpg"],
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/B1pppR4gVKL._CLa%7C2140%2C2000%7C71AGfSP4waL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX569_.png"
+    ],
     "variants": [
-      { "color": "ORANGE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
-      { "color": "BLUE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "GREEN", "size": ["SMALL", "MEDIUM", "XLARGE"], "stock": 10 }
+      {
+        "color": "ORANGE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "BLUE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "RED",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "GREEN",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "XLARGE"
+        ],
+        "stock": 10
+      }
     ]
   },
   {
     "name": "Loose Fit Bermuda Shorts",
     "description": "Relaxed fit distressed bermuda shorts in light blue denim.",
-    "price": 80.0,
+    "price": 80,
     "discount": 0,
     "stock": 40,
     "gender": "MEN",
     "productType": "SHORT",
     "dressStyle": "CASUAL",
     "productBrand": "Other",
-    "imageUrls": ["bermuda-shorts.jpg"],
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/61SnDXLga4L._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/715GSMjVbOL._AC_SX569_.jpg"
+    ],
     "variants": [
-      { "color": "BLUE", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 8 },
-      { "color": "GREEN", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 12 }
+      {
+        "color": "BLUE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 8
+      },
+      {
+        "color": "GREEN",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 12
+      }
     ]
   },
   {
     "name": "T-shirt with Tape Details",
     "description": "A minimalist black t-shirt with branded tape detail along the sleeve hem.",
-    "price": 120.0,
+    "price": 120,
     "discount": 0,
     "stock": 50,
     "gender": "MEN",
     "productType": "T_SHIRT",
     "dressStyle": "CASUAL",
-    "productBrand": "Other",
-    "imageUrls": ["tshirt-tape-details.jpg"],
+    "productBrand": "Zara",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/B1pppR4gVKL._CLa%7C2140%2C2000%7C719t9NrybML.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png"
+    ],
     "variants": [
-      { "color": "BLACK", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 10 },
-      { "color": "WHITE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 15 },
-      { "color": "LIGHT_BLUE", "size": ["SMALL", "MEDIUM", "XLARGE"], "stock": 10 }
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "WHITE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "RED",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "LIGHT_BLUE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "XLARGE"
+        ],
+        "stock": 10
+      }
     ]
   },
   {
     "name": "Faded Skinny Jeans",
     "description": "Slim-cut skinny jeans in faded black denim with a modern washed finish.",
-    "price": 210.0,
+    "price": 210,
     "discount": 0,
     "stock": 40,
     "gender": "MEN",
     "productType": "JEAN",
     "dressStyle": "CASUAL",
-    "productBrand": "Other",
-    "imageUrls": ["faded-skinny-jeans.jpg"],
+    "productBrand": "Zara",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/81fiOzcMvkL._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/81O3dP+MuxL._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/71+0TwmR5dL._AC_SX679_.jpg"
+    ],
     "variants": [
-      { "color": "BLACK", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE"], "stock": 8 },
-      { "color": "YELLOW", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 12 },
-      { "color": "RED", "size": ["XSMALL", "SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 12 },
-      { "color": "PURPLE", "size": ["SMALL", "MEDIUM", "LARGE", "XLARGE"], "stock": 8 }
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 8
+      },
+      {
+        "color": "YELLOW",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 12
+      },
+      {
+        "color": "RED",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 12
+      },
+      {
+        "color": "PURPLE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 8
+      }
+    ]
+  },
+  {
+    "name": "Versace Medusa Logo Hoodie",
+    "description": "A luxurious heavyweight hoodie featuring the iconic Medusa logo embroidered on the chest. Drop-shoulder fit with a kangaroo pocket.",
+    "price": 520,
+    "discount": 0,
+    "stock": 30,
+    "gender": "MEN",
+    "productType": "HOODIE",
+    "dressStyle": "CASUAL",
+    "productBrand": "Versace",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/61eWNIRTjyL._AC_SY550_.jpg",
+      "https://m.media-amazon.com/images/I/51BQNCO62RL._AC_SY550_.jpg",
+      "https://m.media-amazon.com/images/I/61+w+GtQugL._AC_SY550_.jpg",
+      "https://m.media-amazon.com/images/I/81LqR+hf2TL._AC_SY550_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "BLACK",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 8
+      },
+      {
+        "color": "WHITE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "GOLD",
+        "size": [
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 12
+      }
+    ]
+  },
+  {
+    "name": "Gucci GG Monogram Hoodie",
+    "description": "Premium fleece hoodie with all-over GG monogram print and ribbed cuffs. A statement streetwear essential.",
+    "price": 680,
+    "discount": 10,
+    "stock": 25,
+    "gender": "UNISEX",
+    "productType": "HOODIE",
+    "dressStyle": "CASUAL",
+    "productBrand": "Gucci",
+    "imageUrls": [
+      "https://cdn-images.farfetch-contents.com/33/14/27/03/33142703_63809809_1000.jpg",
+      "https://cdn-images.farfetch-contents.com/33/14/27/03/33142703_63809061_1000.jpg"
+    ],
+    "variants": [
+      {
+        "color": "BEIGE",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 5
+      },
+      {
+        "color": "BLACK",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "RED",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "name": "Prada Re-Nylon Shorts",
+    "description": "Sleek athletic-cut shorts crafted from Prada's signature Re-Nylon recycled fabric with a subtle logo tab.",
+    "price": 450,
+    "discount": 15,
+    "stock": 35,
+    "gender": "MEN",
+    "productType": "SHORT",
+    "dressStyle": "GYM",
+    "productBrand": "Prada",
+    "imageUrls": [
+      "https://cdn-images.farfetch-contents.com/29/89/86/56/29898656_58992562_1000.jpg"
+    ],
+    "variants": [
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "NAVY",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "WHITE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "name": "Calvin Klein High-Rise Skinny Jeans",
+    "description": "Iconic high-rise skinny jeans in stretch denim with a subtle logo waistband. A timeless wardrobe staple.",
+    "price": 195,
+    "discount": 25,
+    "stock": 60,
+    "gender": "WOMEN",
+    "productType": "JEAN",
+    "dressStyle": "CASUAL",
+    "productBrand": "Calvin_klein",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/61C9OCvbdaL._AC_SY741_.jpg",
+      "https://m.media-amazon.com/images/I/71nq1g5-1xL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/71M9cjtmjiL._AC_SX569_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "BLUE",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "BLACK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 20
+      },
+      {
+        "color": "WHITE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "LIGHT_BLUE",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM"
+        ],
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "name": "Calvin Klein Logo Cropped Hoodie",
+    "description": "A cropped zip-up hoodie in brushed fleece with a bold Calvin Klein logo across the chest. Relaxed streetwear fit.",
+    "price": 175,
+    "discount": 0,
+    "stock": 45,
+    "gender": "WOMEN",
+    "productType": "HOODIE",
+    "dressStyle": "CASUAL",
+    "productBrand": "Calvin_klein",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/6136ZlmtynL._AC_SY741_.jpg",
+      "https://m.media-amazon.com/images/I/71ip6ulqSQL._AC_SX569_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "GREY",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "PINK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM"
+        ],
+        "stock": 15
+      }
+    ]
+  },
+  {
+    "name": "Zara Floral Wrap Dress Shirt",
+    "description": "A feminine long-sleeve wrap-style shirt in a vibrant floral print. Effortlessly transitions from office to evening.",
+    "price": 89,
+    "discount": 0,
+    "stock": 55,
+    "gender": "WOMEN",
+    "productType": "SHIRT",
+    "dressStyle": "FORMAL",
+    "productBrand": "Zara",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/81XFzcfu4DL._AC_SY445_SX342_QL70_ML2_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "WHITE",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "PINK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 20
+      },
+      {
+        "color": "BLUE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 20
+      }
+    ]
+  },
+  {
+    "name": "Guess Rhinestone Party Top",
+    "description": "A glamorous sleeveless top adorned with rhinestone detailing. Perfect for nights out and special occasions.",
+    "price": 155,
+    "discount": 0,
+    "stock": 30,
+    "gender": "WOMEN",
+    "productType": "T_SHIRT",
+    "dressStyle": "PARTY",
+    "productBrand": "Guess",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/71p1d6DV-uL._AC_SY550_.jpg",
+      "https://m.media-amazon.com/images/I/71FNkkqonNL._AC_SX569_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "BLACK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "GOLD",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "SILVER",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM"
+        ],
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "name": "Versace Baroque Print Formal Shirt",
+    "description": "A luxurious slim-fit shirt featuring Versace's signature baroque print in gold and black. Ideal for formal and party occasions.",
+    "price": 490,
+    "discount": 0,
+    "stock": 20,
+    "gender": "MEN",
+    "productType": "SHIRT",
+    "dressStyle": "FORMAL",
+    "productBrand": "Versace",
+    "imageUrls": [
+      "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw8aad68b0/original/90_1025703-1A18683_5UK20_10_PrintedCrpeDeChineSilkShirt-Shirts-Versace-online-store_0_1.jpg?sw=850&q=85&strip=true",
+      "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw61edbb1b/original/90_1025703-1A18683_5UK20_14_PrintedCrpeDeChineSilkShirt-Shirts-Versace-online-store_0_1.jpg?sw=850&q=85&strip=true"
+    ],
+    "variants": [
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 5
+      },
+      {
+        "color": "WHITE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 8
+      },
+      {
+        "color": "GOLD",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 7
+      }
+    ]
+  },
+  {
+    "name": "Prada Formal Oxford Shirt",
+    "description": "A tailored slim-fit Oxford shirt in premium cotton poplin. Clean lines and subtle Prada branding at the cuff.",
+    "price": 370,
+    "discount": 0,
+    "stock": 35,
+    "gender": "MEN",
+    "productType": "SHIRT",
+    "dressStyle": "FORMAL",
+    "productBrand": "Prada",
+    "imageUrls": [
+      "https://www.prada.com/content/dam/pradabkg_products/U/UJL/UJL73B/11CDF0P40/UJL73B_11CD_F0P40_S_WM1_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2000.2000.jpg"
+    ],
+    "variants": [
+      {
+        "color": "WHITE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "LIGHT_BLUE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "name": "Karl Lagerfeld Party Sequin T-shirt",
+    "description": "An eye-catching sequin-embellished t-shirt with a Karl signature logo. The perfect statement piece for any party look.",
+    "price": 210,
+    "discount": 20,
+    "stock": 40,
+    "gender": "WOMEN",
+    "productType": "T_SHIRT",
+    "dressStyle": "PARTY",
+    "productBrand": "Karl",
+    "imageUrls": [
+      "https://b.scdn.gr/images/sku_main_images/058554/58554899/fixedratio_20250910145930_karl_lagerfeld_gynaikeio_t_shirt_leyko_mayro_a1w17005100.jpeg",
+      "https://a.scdn.gr/images/sku_images/106636/106636536/fixedratio_20250910145935_06beac20.jpeg"
+    ],
+    "variants": [
+      {
+        "color": "SILVER",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "BLACK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "BLUE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 15
+      }
+    ]
+  },
+  {
+    "name": "Gant Relaxed Fit Chino Shorts",
+    "description": "Classic chino shorts in a comfortable relaxed fit with a elasticated waistband and two side pockets. Great for weekend casual wear.",
+    "price": 130,
+    "discount": 0,
+    "stock": 50,
+    "gender": "MEN",
+    "productType": "SHORT",
+    "dressStyle": "CASUAL",
+    "productBrand": "Gant",
+    "imageUrls": [
+      "https://a.scdn.gr/images/sku_main_images/059112/59112299/fixedratio_20250914074426_gant_andriki_vermouda_gri_205069_162.jpeg",
+      "https://a.scdn.gr/images/sku_images/107777/107777472/fixedratio_20250914074430_c0cc3739.jpeg"
+    ],
+    "variants": [
+      {
+        "color": "BEIGE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "NAVY",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE"
+        ],
+        "stock": 20
+      },
+      {
+        "color": "GREEN",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      }
+    ]
+  },
+  {
+    "name": "Polo Ralph Lauren Performance Gym T-shirt",
+    "description": "A moisture-wicking performance t-shirt with four-way stretch fabric and Polo logo embroidery. Engineered for gym and active training.",
+    "price": 98,
+    "discount": 0,
+    "stock": 60,
+    "gender": "UNISEX",
+    "productType": "T_SHIRT",
+    "dressStyle": "GYM",
+    "productBrand": "Polo",
+    "imageUrls": [
+      "https://b.scdn.gr/images/sku_images/122425/122425865/fixedratio_20260213121017_81363124.jpeg"
+    ],
+    "variants": [
+      {
+        "color": "BLACK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE",
+          "FXLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "GREY",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE"
+        ],
+        "stock": 20
+      },
+      {
+        "color": "BLUE",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "RED",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "name": "Gucci Formal Slim Trousers",
+    "description": "Elegantly tailored slim-fit trousers in fine wool blend with a satin waistband detail. A timeless Gucci formal essential.",
+    "price": 860,
+    "discount": 0,
+    "stock": 20,
+    "gender": "MEN",
+    "productType": "JEAN",
+    "dressStyle": "FORMAL",
+    "productBrand": "Gucci",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/51oRow9So4L._AC_SY741_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 8
+      },
+      {
+        "color": "NAVY",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE"
+        ],
+        "stock": 7
+      },
+      {
+        "color": "GREY",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "name": "Calvin Klein Gym Performance Shorts",
+    "description": "Lightweight gym shorts with built-in compression liner, side zip pockets, and a bold CK waistband. Ideal for running and training.",
+    "price": 85,
+    "discount": 0,
+    "stock": 55,
+    "gender": "UNISEX",
+    "productType": "SHORT",
+    "dressStyle": "GYM",
+    "productBrand": "Calvin_klein",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/71LGdw-b1+L._AC_SX679_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "BLACK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE",
+          "FXLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "GREY",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 20
+      },
+      {
+        "color": "NAVY",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 20
+      }
+    ]
+  },
+  {
+    "name": "Guess High-Waist Party Flare Jeans",
+    "description": "Retro-inspired high-waist flare jeans in stretch denim with rhinestone pocket detailing. A statement party look.",
+    "price": 230,
+    "discount": 15,
+    "stock": 35,
+    "gender": "WOMEN",
+    "productType": "JEAN",
+    "dressStyle": "PARTY",
+    "productBrand": "Guess",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/81RtEReZszL._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/91nj5w3uueL._AC_SX569_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "BLUE",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 10
+      },
+      {
+        "color": "BLACK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "WHITE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE"
+        ],
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "name": "Prada Oversized Gym Hoodie",
+    "description": "An oversized heavyweight hoodie in Prada's signature Re-Nylon blend. Features a rubberised logo and kangaroo pocket — luxury athleisure at its best.",
+    "price": 780,
+    "discount": 0,
+    "stock": 20,
+    "gender": "UNISEX",
+    "productType": "HOODIE",
+    "dressStyle": "GYM",
+    "productBrand": "Prada",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/B1mEhjGJ2nL._CLa%7C2140%2C2000%7CB1%2Bfo6kp4KL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX569_.png"
+    ],
+    "variants": [
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE"
+        ],
+        "stock": 8
+      },
+      {
+        "color": "WHITE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 7
+      },
+      {
+        "color": "GREY",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE",
+          "FXLARGE"
+        ],
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "name": "Karl Lagerfeld Formal Slim Shirt",
+    "description": "A sharp slim-fit shirt with a Karl Lagerfeld signature cat print lining. Clean exterior, playful detail — perfect for formal events.",
+    "price": 185,
+    "discount": 0,
+    "stock": 40,
+    "gender": "MEN",
+    "productType": "SHIRT",
+    "dressStyle": "FORMAL",
+    "productBrand": "Karl",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/61fUowXwQGL._AC_SX466_.jpg",
+      "https://m.media-amazon.com/images/I/51TVhX15O5L._AC_SX466_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "WHITE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE"
+        ],
+        "stock": 12
+      },
+      {
+        "color": "BLACK",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "LIGHT_BLUE",
+        "size": [
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE",
+          "FXLARGE"
+        ],
+        "stock": 13
+      }
+    ]
+  },
+  {
+    "name": "Gant Women's Oxford Formal Shirt",
+    "description": "A classic women's Oxford button-down in premium cotton. Slightly fitted silhouette with a pin-tucked front placket and embroidered Gant shield logo.",
+    "price": 160,
+    "discount": 0,
+    "stock": 45,
+    "gender": "WOMEN",
+    "productType": "SHIRT",
+    "dressStyle": "FORMAL",
+    "productBrand": "Gant",
+    "imageUrls": [
+      "https://m.media-amazon.com/images/I/71Ot5NWBNML._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/81TgVzzeDqL._AC_SY550_.jpg"
+    ],
+    "variants": [
+      {
+        "color": "WHITE",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "PINK",
+        "size": [
+          "XXSMALL",
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "stock": 15
+      },
+      {
+        "color": "LIGHT_BLUE",
+        "size": [
+          "XSMALL",
+          "SMALL",
+          "MEDIUM",
+          "LARGE",
+          "XLARGE",
+          "XXLARGE",
+          "TXLARGE"
+        ],
+        "stock": 15
+      }
     ]
   }
 ]
