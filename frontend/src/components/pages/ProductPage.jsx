@@ -108,7 +108,7 @@ const ProductPage = () => {
             .catch(err => {
                 console.error(err)
             })
-    }, [])
+    }, [productId])
 
     const sortSizes = (list) => {
         const order = {
@@ -208,8 +208,8 @@ const ProductPage = () => {
     }
 
     return (
-        <div className="screen-adapt min-w-0 gap-10">
-            <div className="flex flex-col mb-[10%] w-full gap-7">
+        <div className="screen-adapt w-full gap-10">
+            <div className="flex flex-col w-full gap-7">
 
                 <div className="h-px bg-black opacity-10 mx-auto w-full" />
 
@@ -220,7 +220,7 @@ const ProductPage = () => {
 
                     {/* Images Section */}
                     <div className="flex flex-col-reverse gap-3 sm:flex-row ">
-                        <div className="flex sm:flex-col w-full overflow-x-auto overflow-y-hidden lg:overflow-x-hidden lg:overflow-y-scroll justify-between sm:justify-normal items-center max-h-132.5 2xl:max-h-[750px] lg:w-30">
+                        <div className="flex sm:flex-col w-full overflow-x-auto overflow-y-hidden lg:overflow-x-hidden lg:overflow-y-scroll justify-between sm:justify-normal items-center max-h-132.5 2xl:max-h-187.5 lg:w-30">
                             {images.map((image, index) => (
                                 <img
                                     onClick={() => setMainImage(image)}
@@ -243,8 +243,8 @@ const ProductPage = () => {
                             <h1 className="product_header">{product.name}</h1>
 
                             <div className="flex items-center gap-2 md:gap-4">
-                                <StarRating rating={4.5} starClassName="product_star_rate" divClassName="product_star_divClass"/>
-                                <h4 className="font-satoshi text-[12px] md:text-[15px]">{4.5}/5</h4>
+                                <StarRating rating={product.productRating} starClassName="product_star_rate" divClassName="product_star_divClass"/>
+                                <h4 className="font-satoshi text-[12px] md:text-[15px]">{product.productRating}/5</h4>
                             </div>
 
                             <ProductPrice price={product.price} sale_per={product.discount} pricingDivClass="pricing_div" newPriceClass="newPrice_proPage" oldPriceClass="oldPrice_proPage" discountClass="discountPer_proPage"/>
@@ -309,7 +309,7 @@ const ProductPage = () => {
                 </div>
 
                 {/* You Might Also Like */}
-                <div>
+                <div className="flex flex-col gap-10">
                     <div className="flex items-center justify-center pt-8 md:pt-15">
                         <h1 className="home_banner">You might also like</h1>
                     </div>
@@ -317,7 +317,6 @@ const ProductPage = () => {
                         <Carousel
                             items={suggestions}
                             crumbs={[{label: "Home", to: "/"}]}
-                            cardImgClassName="h-45 sm:h-52 md:h-60 lg:h-60 xl:h-65 2xl:h-70"
                         />
                     </div>
                 </div>

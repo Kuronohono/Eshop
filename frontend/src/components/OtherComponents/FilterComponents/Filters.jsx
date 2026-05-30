@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoMdOptions } from "react-icons/io";
 import PriceRangeSlider from './PriceRangeSlider';
 import ColorButtonGroup from './ColorButtonGroup';
@@ -35,7 +35,23 @@ const DressStyles = [
     { id:9, name:"Gym"}
 ]
 
-const Filters = () => {
+const Filters = ( {onApply} ) => {
+    const [selectedSizes, setSelectedSizes] = useState([])
+    const [activeType, setActiveType] = useState(null)
+    const [activeDressStyle, setDressStyle] = useState(null)
+    const [color, setColor] = useState(null)
+    const [minPrice, setMinPrice] = useState(null)
+    const [maxPrice, setMaxPrice] = useState(null)
+
+    const handleApply = () => {
+        const params = new URLSearchParams()
+        if (selectedSizes.length > 0)  params.set("sizes", selectedSizes.join(","))
+        if (color)                      params.set("color", color)
+        if (minPrice != null)           params.set("minPrice", minPrice)
+        if (maxPrice != null)           params.set("maxPrice", maxPrice)
+        if (activeDressStyle)           params.set("dressStyle", activeDressStyle)
+        onApply?.(params.toString())
+    }
 
   return (
     <div className="hidden lg:block h-fit w-full flex-col border border-[#F0F0F0] rounded-[20px] px-6 py-6 gap-4 divide-y divide-black/10">
@@ -50,7 +66,8 @@ const Filters = () => {
         <div className="flex flex-col gap-2 pb-3">
             {
                 Filter_Types.map((type) => (
-                    <button key={type.id} className="filter_type">
+                    <button key={type.id} className={`filter_type ${ activeType == type.id ? "bg-[#d2d2d2]" : " hover:bg-[#eeeeee] bg-white"}`}
+                    onClick={ () => setActiveType(prev => prev === type.id ? null : type.id)}>
                         <h1 className="font-satoshi text-[16px] opacity-50">{type.name}</h1>
                         <p className="opacity-60">{'>'}</p>
                     </button>
@@ -73,7 +90,7 @@ const Filters = () => {
 
         {/* Size Section */}
         <Accordion text="Size">
-            <SizesComponent/>
+            <SizesComponent onChange={setSelectedSizes}/>
         </Accordion>
 
 
@@ -92,7 +109,7 @@ const Filters = () => {
         </Accordion>  
 
         {/* Apply Filter Button */}
-            <button className="auth_button w-full">Apply Filter</button>
+            <button className="auth_button w-full" onClick={handleApply}>Apply Filter</button>
 
     </div>
   )

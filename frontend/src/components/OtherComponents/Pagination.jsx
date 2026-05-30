@@ -28,10 +28,10 @@ const buildPageList = (currentPage, totalPages) => {
 
 const pageButtonClass = (active) =>
   [
-    "inline-flex min-h-9 min-w-9 items-center justify-center rounded-full border px-2 font-satoshi text-[14px] transition-colors",
+    "inline-flex cursor-pointer min-h-9 min-w-9 items-center justify-center rounded-[15%] px-2 font-satoshi text-[14px] transition-colors",
     active
-      ? "border-black bg-black text-white"
-      : "border-black/10 bg-white text-black hover:border-black/30",
+      ? "border-black bg-[#F0F0F0] text-black"
+      : "border-black/10 bg-white text-gray-500 hover:border-black/30",
   ].join(" ");
 
 const Pagination = ({
@@ -53,6 +53,7 @@ const Pagination = ({
     const next = Math.min(Math.max(1, page), totalPages);
     if (next !== currentPage) {
       onPageChange?.(next);
+      window.scrollTo({top: 0, behavior: "instant"});
     }
   };
 

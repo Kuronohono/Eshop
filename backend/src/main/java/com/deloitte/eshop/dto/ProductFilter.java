@@ -18,6 +18,6 @@ public class ProductFilter {
     private Double maxPrice;
     private Integer minDiscount;
     private String color;
-    private Sizes size;
+    private Sizes sizes;
 
 }

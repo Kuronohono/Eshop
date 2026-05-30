@@ -7,7 +7,6 @@ import CardComponent from '../OtherComponents/CardComponent/CardComponent'
 import Pagination from '../OtherComponents/Pagination';
 import { IoMdOptions } from "react-icons/io";
 import LoadingGif from "../../assets/gifs/loading_blue.gif"
-import { fetchFilteredProducts } from "../../utils/productsApi";
 
 const PAGE_SIZE = 9
 
@@ -17,9 +16,18 @@ const CategoryPage = () => {
     const [page, setPage] = useState(1)
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
-    const [activeFilter, setActiveFilter] = useState({})
+    const [filterQuery, setFilterQuery] = useState("")
     const totalProducts = products.length
     const totalPages = Math.max(1, Math.ceil(totalProducts / PAGE_SIZE))
+
+    /* Type Map for the product types to match with backend */
+    const typeMap = {
+            "t-shirts": "T_SHIRT",
+            "shorts": "SHORT",
+            "shirts": "SHIRT",
+            "hoodies": "HOODIE",
+            "jeans": "JEAN",
+    }
     
     useEffect(() => {
         setPage(1)
@@ -29,50 +37,71 @@ const CategoryPage = () => {
         setPage((p) => Math.max(1, Math.min(p, totalPages)))
     }, [totalPages])
 
-    const sortByMap = {
-        popular: "soldCount",
-        newest: "arrivalDate",
-        "price-low-high": "price",
-        "price-high-low": "price",
-        rating: "productRating",
+ useEffect(() => {
+        if (!gender || !category) return
+        const productType = typeMap[category.toLowerCase()]
+        if (!productType) return
+
+        const fetchProducts = async () => {
+            setLoading(true)
+            try {
+                const params = new URLSearchParams(filterQuery)
+                const body = {
+                    gender: gender.toUpperCase(),
+                    productType,
+                }
+                if (params.get("sizes"))      body.size = params.get("sizes").split(",")
+                if (params.get("color"))      body.color = params.get("color")
+                if (params.get("minPrice"))   body.minPrice = Number(params.get("minPrice"))
+                if (params.get("maxPrice"))   body.maxPrice = Number(params.get("maxPrice"))
+                if (params.get("dressStyle")) body.dressStyle = params.get("dressStyle")
+
+                const res = await fetch("http://localhost:8085/products/filter", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(body)
+                })
+                const data = await res.json()
+                setProducts(data)
+            } catch (err) {
+                console.error(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchProducts()
+    }, [gender, category, filterQuery])
+
+    const applyFilters = async (filterQuery) => {
+       const params = new URLSearchParams(filterQuery);
+
+       const body = {}
+
+        if (params.get("sizes"))        body.size = params.get("sizes")
+        if (params.get("color"))        body.color = params.get("color")
+        if (params.get("minPrice"))     body.minPrice = Number(params.get("minPrice"))
+        if (params.get("maxPrice"))     body.maxPrice = Number(params.get("maxPrice"))
+        if (params.get("dressStyle"))   body.dressStyle = params.get("dressStyle")
+
+        body.gender = gender.toUpperCase()
+        body.productType = typeMap[category.toLowerCase()]
+
+        const res = await fetch("http://localhost:8085/products/filter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+        })
+
+        const data = await res.json()
+        setProducts(data)
+                    
     }
 
-    const baseFilter = useMemo(() => {
-        const g = gender ? gender.toUpperCase() : undefined
-        const typeMap = {
-            "t-shirts": "T_SHIRT",
-            "shorts": "SHORT",
-            "shirts": "SHIRT",
-            "hoodie": "HOODIE",
-            "jeans": "JEAN",
-        }
-        const typeFromRoute = category ? typeMap[String(category).toLowerCase()] : undefined
-        return {
-            gender: g,
-            productTypes: typeFromRoute ? [typeFromRoute] : undefined,
-        }
-    }, [gender, category])
-
-    useEffect(() => {
-        setLoading(true)
-        fetchFilteredProducts(
-            { ...baseFilter, ...activeFilter },
-            { page, pageSize: PAGE_SIZE, sortBy: sortByMap[sortValue] ?? "name" }
-        )
-            .then((data) => {
-                // backend returns Page<Product>
-                setProducts(Array.isArray(data?.content) ? data.content : [])
-                setLoading(false)
-            })
-            .catch((err) => {
-                console.error(err)
-                setProducts([])
-                setLoading(false)
-            })
-    }, [baseFilter, activeFilter, page, sortValue])
-
-    const rangeStart = totalProducts === 0 ? 0 : (page - 1) * PAGE_SIZE + 1
-    const rangeEnd = Math.min(page * PAGE_SIZE, totalProducts)
+    const startIndex = (page - 1) * PAGE_SIZE;
+    const pageItems = products.slice(startIndex, startIndex + PAGE_SIZE);
+    const rangeStart = totalProducts === 0 ? 0 : startIndex + 1;
+    const rangeEnd = Math.min(page * PAGE_SIZE, totalProducts);
     const sortOptions = [
         { value: "popular", label: "Most Popular" },
         { value: "newest", label: "Newest" },
@@ -81,14 +110,14 @@ const CategoryPage = () => {
         { value: "rating", label: "Top Rated" },
     ]
 
-    const crumbs = useMemo(() => {
-        const g = gender ? gender.charAt(0).toUpperCase() + gender.slice(1) : null
-        const c = category ? String(category).replace(/-/g, " ") : null
-        const list = [{ label: "Home", to: "/home" }]
-        if (g) list.push({ label: g, to: `/${gender}` })
-        if (c) list.push({ label: c, to: `/${gender}/${category}` })
-        return list
-    }, [gender, category])
+    const sortByMap = {
+        popular: "soldCount",
+        newest: "arrivalDate",
+        "price-low-high": "price",
+        "price-high-low": "price",
+        rating: "productRating",
+    }
+
 
   return (
     <div className="screen-adapt">
@@ -103,13 +132,7 @@ const CategoryPage = () => {
 
                 {/* Filters Section Column */}
                 
-                <Filters
-                    initial={activeFilter}
-                    onApply={(payload) => {
-                        setPage(1)
-                        setActiveFilter(payload)
-                    }}
-                />
+                <Filters onApply={setFilterQuery}/>
 
                 {/*Results Section Columns */}
                 <div className="flex flex-col col-span-2 lg:col-span-3 2xl:col-span-3">
@@ -156,7 +179,8 @@ const CategoryPage = () => {
                        :(
                             products.map((product,index) =>(
                                 <div key={`${index}-${product.id}`}>
-                                    <CardComponent product={product} crumbs={crumbs} />
+                                    {console.log(product.productRating)}
+                                    <CardComponent product={product}/>
                                 </div>
                             ))
                        )}

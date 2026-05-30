@@ -137,7 +137,7 @@
 }
 
 .filter_type{
-    @apply flex items-center justify-between cursor-pointer hover:bg-[#eeeeee] rounded-md px-1 py-1;
+    @apply flex items-center justify-between cursor-pointer rounded-md px-1 py-1;
 }
 
 .filter_header{
@@ -459,6 +459,26 @@
 .saveChangesBtn{
     @apply lg:self-end bg-black text-white px-[4%] py-[1%] rounded-[10px] lg:rounded-[20px]
     hover:bg-[#121212] cursor-pointer active:scale-98 transition-all;
+}
+
+/*---------------- Card Component -------------------*/
+.card_div{
+    @apply object-cover object-top rounded-2xl bg-[#F0F0F0] aspect-[3/4]
+    /* Temporarily */
+    border 
+    /*Default*/
+    h-70 w-full
+    /* Small Screen*/
+    sm:h-70
+    /* Medium Screen*/
+    md:h-75
+    /* Large Screen */
+    lg:h-80
+    /* XL Screen */
+    xl:h-85
+    /*2XL Screen */
+    2xl:h-90
+    ;
 }
 
 

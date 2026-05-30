@@ -2,6 +2,7 @@ package com.deloitte.eshop.controller;
 
 import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.entity.Brands;
+import com.deloitte.eshop.entity.Gender;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
 import com.deloitte.eshop.entity.ProductType;
@@ -15,6 +16,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/products")
@@ -39,19 +42,20 @@ public class ProductController {
         return ResponseEntity.ok(productService.addProducts(products));
     }
 
-    @GetMapping("/filter")
-    public Page<Product> filterProducts(
-            @ModelAttribute ProductFilter filter,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "name") String sortBy) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
-        return productService.getFilteredProducts(filter, pageable);
+    @PostMapping("/filter")
+    public ResponseEntity<List<Product>> filterProducts(@RequestBody ProductFilter filter) {
+        return ResponseEntity.ok(productService.getFilteredProducts(filter));
     }
 
     @GetMapping("/search")
     public ResponseEntity<List<Product>> searchProduct(@RequestParam String query) {
         return ResponseEntity.ok(productService.searchProducts(query));
+    }
+
+    @GetMapping("/getByCategoryAndGender")
+    public ResponseEntity<List<Product>> getByCategoryAndGender(@RequestParam ProductType productType,
+            @RequestParam Gender gender) {
+        return ResponseEntity.ok(productService.getByMenuCategory(productType, gender));
     }
 
     @GetMapping("/status/{status}")

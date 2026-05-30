@@ -3,6 +3,7 @@ package com.deloitte.eshop.service;
 import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.dto.ProductSpecification;
 import com.deloitte.eshop.entity.Brands;
+import com.deloitte.eshop.entity.Gender;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
 import com.deloitte.eshop.entity.ProductType;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -57,9 +59,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> getFilteredProducts(ProductFilter filter, Pageable pageable) {
-        return productRepository.findAll(
-                ProductSpecification.withFilters(filter), pageable);
+    public List<Product> getFilteredProducts(ProductFilter filter) {
+        Specification<Product> spec = ProductSpecification.withFilters(filter);
+        return productRepository.findAll(spec);
     }
 
     @Override
@@ -92,5 +94,10 @@ public class ProductServiceImpl implements ProductService {
         long count = productRepository.count();
         int randomOffset = (int) (Math.random() * Math.max(1, count - limit));
         return productRepository.findAll(PageRequest.of(randomOffset / limit, limit)).getContent();
+    }
+
+    @Override
+    public List<Product> getByMenuCategory(ProductType productType, Gender gender) {
+        return productRepository.findByProductTypeAndGender(productType, gender);
     }
 }

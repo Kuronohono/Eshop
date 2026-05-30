@@ -154,10 +154,12 @@ public class Product {
         if (reviews == null || reviews.isEmpty())
             return 0.0;
 
-        return reviews.stream()
+        double average = reviews.stream()
                 .mapToInt(Review::getRating)
                 .average()
                 .orElse(0.0);
+
+        return Math.round(average * 2) / 2.0;
 
     }
 

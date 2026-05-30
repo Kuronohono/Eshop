@@ -7,7 +7,7 @@ const fallbackItems = [
   { id: "fallback-3", title: "Slide 3", price: 160, rating: 4.8, sale_per: 0 },
 ];
 
-const Carousel = ({ items = fallbackItems, crumbs, cardImgClassName = "" }) => {
+const Carousel = ({ items = fallbackItems, crumbs }) => {
   const safeItems = useMemo(() => {
     if (!Array.isArray(items) || items.length === 0) return fallbackItems;
     return items;
@@ -26,9 +26,9 @@ const Carousel = ({ items = fallbackItems, crumbs, cardImgClassName = "" }) => {
         {safeItems.map((item) => (
           <div
             key={item.id}
-            className="snap-start shrink-0 min-w-[75%] sm:min-w-[calc(50%_-_0.5rem)] md:min-w-[calc(33.333%_-_0.67rem)] lg:min-w-[calc(25%_-_0.75rem)]"
+          className="snap-start flex-shrink-0 flex-grow-0 w-[75%] sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)] lg:w-[calc(25%-0.75rem)]"
           >
-            <CardComponent product={item} crumbs={crumbs} imgClassName={cardImgClassName} />
+            <CardComponent product={item} crumbs={crumbs}/>
           </div>
         ))}
       </div>

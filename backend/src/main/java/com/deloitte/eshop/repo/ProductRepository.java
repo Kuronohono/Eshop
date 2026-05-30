@@ -23,6 +23,8 @@ public interface ProductRepository extends JpaRepository<Product, String>, JpaSp
 
     List<Product> findByGender(Gender gender);
 
+    List<Product> findByProductTypeAndGender(ProductType productType, Gender gender);
+
     List<Product> findByProductBrand(Brands productBrand);
 
 }
