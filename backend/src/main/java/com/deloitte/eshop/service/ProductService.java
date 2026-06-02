@@ -20,7 +20,7 @@ public interface ProductService {
 
     List<Product> addProducts(List<Product> products);
 
-    Product updateProduct(Product product);
+    Product updateProduct(String productId, Product product);
 
     String deleteProduct(Product product);
 

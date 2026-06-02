@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
+import React, { useMemo } from 'react'
 import { colorMap } from '../../../constants/colorMap'
 
-const ColorButtonGroup = ({ colors = [] }) => {
-  const [activeIds, setActiveIds] = useState(new Set())
+const ColorButtonGroup = ({ colors = [], selectedColors = [], onChange }) => {
+  const activeIds = useMemo(() => new Set(selectedColors), [selectedColors])
 
   const displayColors = colors.length > 0 ? colors : Object.keys(colorMap)
 
   const toggle = (color) => {
-    setActiveIds(prev => {
-      const next = new Set(prev)
-      next.has(color) ? next.delete(color) : next.add(color)
-      return next
-    })
+    const next = new Set(activeIds)
+    next.has(color) ? next.delete(color) : next.add(color)
+    onChange?.(Array.from(next))
   }
 
   return (

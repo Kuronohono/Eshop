@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import OrderItem from './OrderItem'
 
 const Orders = ( {userData}) => {
-  const [data, setData] = useState([])
-
-    if (!userData) {
+  if (!userData) {
     return (
       <div>
         <h1 className="page_header">Orders</h1>
@@ -14,16 +12,21 @@ const Orders = ( {userData}) => {
   }
 
   const orders = userData.orders ?? []
-  console.log(orders);
 
   return (
     <div>
       <div className='flex justify-between'>
         <h1 className="page_header">Orders</h1>  
       </div>
-      <div className="flex flex-col gap-5 lg:gap-7 mt-5">
-         <OrderItem order={orders}/>
+      {orders.length === 0 ? (
+        <p className="font-satoshi text-gray-500 mt-5">You have no orders yet.</p>
+      ) : (
+        <div className="flex flex-col gap-5 lg:gap-7 mt-5">
+          {orders.map((order) => (
+            <OrderItem key={order.id} order={order} />
+          ))}
         </div>
+      )}
     </div>
   )
 }

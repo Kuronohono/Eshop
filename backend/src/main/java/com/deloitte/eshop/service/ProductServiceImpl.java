@@ -48,8 +48,39 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updateProduct(Product product) {
-        return productRepository.save(product);
+    public Product updateProduct(String productId, Product product) {
+        Product existing = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + productId));
+
+        existing.setId(productId);
+
+        if (product.getName() != null)
+            existing.setName(product.getName());
+        if (product.getDescription() != null)
+            existing.setDescription(product.getDescription());
+        if (product.getImageUrls() != null)
+            existing.setImageUrls(product.getImageUrls());
+        if (product.getGender() != null)
+            existing.setGender(product.getGender());
+        if (product.getProductType() != null)
+            existing.setProductType(product.getProductType());
+        if (product.getDressStyle() != null)
+            existing.setDressStyle(product.getDressStyle());
+        if (product.getProductBrand() != null)
+            existing.setProductBrand(product.getProductBrand());
+        if (product.getStatuses() != null)
+            existing.setStatuses(product.getStatuses());
+        if (product.getVariants() != null) {
+            product.getVariants().forEach(variant -> variant.setProduct(existing));
+            existing.setVariants(product.getVariants());
+        }
+
+        // primitive values (always present after JSON binding)
+        existing.setPrice(product.getPrice());
+        existing.setDiscount(product.getDiscount());
+        existing.setSoldCount(product.getSoldCount());
+
+        return productRepository.save(existing);
     }
 
     @Override

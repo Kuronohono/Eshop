@@ -23,9 +23,9 @@ const PRODUCT_ACTIONS = [
   { id: 4,  method: "GET",    label: "By status",       path: "/products/status/{status}",                body: false },
   { id: 5,  method: "GET",    label: "By type",         path: "/products/type/{type}",                    body: false },
   { id: 6,  method: "GET",    label: "By brand",        path: "/products/brands/{brand}",                  body: false },
-  { id: 9,  method: "POST",   label: "Add product",     path: "/products",                                body: true,  defaultBody: '{\n  "name": "",\n  "price": 0\n}' },
+  { id: 9,  method: "POST",   label: "Add product",     path: "/products",                                body: true,  defaultBody: '{\n  "name": "New Product",\n  "description": "Description",\n  "price": 99.99,\n  "discount": 0,\n  "soldCount": 0,\n  "imageUrls": ["https://picsum.photos/600/800"],\n  "gender": "MEN",\n  "productType": "T_SHIRT",\n  "dressStyle": "CASUAL",\n  "productBrand": "Zara",\n  "variants": []\n}' },
   { id: 10, method: "POST",   label: "Bulk add",        path: "/products/bulk",                           body: true,  defaultBody: '[\n  { "name": "", "price": 0 }\n]' },
-  { id: 11, method: "PATCH",  label: "Update product",  path: "/products/{id}",                           body: true,  defaultBody: '{\n  "price": 59.99,\n  "status": "ACTIVE"\n}' },
+  { id: 11, method: "PATCH",  label: "Update product",  path: "/products/{id}",                           body: true,  defaultBody: '{\n  "name": "Updated Product Name",\n  "description": "Updated description",\n  "price": 59.99,\n  "discount": 10,\n  "soldCount": 50,\n  "imageUrls": ["https://picsum.photos/600/800"],\n  "gender": "MEN",\n  "productType": "T_SHIRT",\n  "dressStyle": "CASUAL",\n  "productBrand": "Zara",\n  "variants": []\n}' },
   { id: 12, method: "DELETE", label: "Delete product",  path: "/products/{id}",                           body: false },
 ];
 
@@ -78,6 +78,11 @@ export const Products = () => {
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(err => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem('admin_token') || '';
+    if (token) setAuthToken(token);
   }, []);
 
   const defaultTotalPages = Math.ceil(products.length / PAGE_SIZE);
@@ -172,6 +177,12 @@ export const Products = () => {
 
       setResponseStatus(res.status);
       setResponseOk(res.ok);
+      if (!res.ok) {
+        const message = typeof parsed === 'object' && parsed?.message
+          ? parsed.message
+          : (typeof parsed === 'string' ? parsed : `Request failed with status ${res.status}`);
+        setResponseError(message);
+      }
 
       const rows = normalizeToRows(parsed);
       if (rows.length > 0) {

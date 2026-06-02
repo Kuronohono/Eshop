@@ -75,10 +75,16 @@ const Register = () => {
         }),
       });
 
-      const data = await response.json();
+      const raw = await response.text();
+      let data = {};
+      try {
+        data = raw ? JSON.parse(raw) : {};
+      } catch {
+        data = { message: raw || "Sign-up failed. Please try again." };
+      }
 
       if (!response.ok){
-        setErrors({ api: data.message || "Sign-up fialed. Please try again."});
+        setErrors({ api: data.message || "Sign-up failed. Please try again."});
         return;
       }
 
@@ -87,7 +93,7 @@ const Register = () => {
       navigate("/verification", {state: {email: form.email}});
 
     } catch (err) {
-      setErrors({ api: "Sign-up failed. Please try again." });
+      setErrors({ api: err?.message || "Sign-up failed. Please try again." });
     } finally {
       setLoading(false);
     }

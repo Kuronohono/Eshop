@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Navbar from './components/Navbar'
 import Dashboard from './components/Pages/Dashboard'
 import Settings from './components/Pages/Settings'
 import Users from './components/Pages/Users'

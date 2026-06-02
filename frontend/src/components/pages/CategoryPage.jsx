@@ -26,6 +26,61 @@ const typeIdMap = {
     5: "JEAN",
 }
 
+const parseStock = (value) => {
+    if (typeof value === "number") return value
+    if (typeof value?.stock === "number") return value.stock
+    return 0
+}
+
+const filterByVariantSelections = async (list, selectedColors, selectedSizes) => {
+    const needsColorCheck = selectedColors.length > 0
+    const needsSizeCheck = selectedSizes.length > 0
+    if (!needsColorCheck && !needsSizeCheck) return list
+
+    const normalizedColors = selectedColors.map((c) => String(c).toLowerCase())
+    const normalizedSizes = selectedSizes.map((s) => String(s).toLowerCase())
+
+    const checks = list.map(async (product) => {
+        try {
+            const colorsRes = await fetch(`http://localhost:8085/product-variants/colors/${product.id}`)
+            if (!colorsRes.ok) return false
+            const productColors = await colorsRes.json()
+            const validColors = Array.isArray(productColors)
+                ? productColors.filter((color) => normalizedColors.includes(String(color).toLowerCase()))
+                : []
+
+            if (needsColorCheck && validColors.length === 0) return false
+            if (!needsSizeCheck) return true
+
+            const colorsToCheck = needsColorCheck ? validColors : (Array.isArray(productColors) ? productColors : [])
+            for (const color of colorsToCheck) {
+                const sizesRes = await fetch(`http://localhost:8085/product-variants/sizes/${product.id}/${color}`)
+                if (!sizesRes.ok) continue
+                const sizes = await sizesRes.json()
+                const matchingSizes = Array.isArray(sizes)
+                    ? sizes.filter((size) => normalizedSizes.includes(String(size).toLowerCase()))
+                    : []
+                if (matchingSizes.length === 0) continue
+
+                for (const size of matchingSizes) {
+                    const stockRes = await fetch(`http://localhost:8085/product-variants/stock/${product.id}?color=${encodeURIComponent(color)}&size=${encodeURIComponent(size)}`)
+                    if (!stockRes.ok) continue
+                    const stockData = await stockRes.json()
+                    if (parseStock(stockData) > 0) return true
+                }
+            }
+
+            return false
+        } catch (err) {
+            console.error("Variant filter failed:", err)
+            return false
+        }
+    })
+
+    const matches = await Promise.all(checks)
+    return list.filter((_, index) => matches[index])
+}
+
 const CategoryPage = () => {
     const { gender, category, status, brand } = useParams()
     const segment = category || status || brand
@@ -113,7 +168,7 @@ const CategoryPage = () => {
 
                     const body = { gender: gender.toUpperCase(), productType }
                     if (params.get("sizes"))      body.size = params.get("sizes").split(",")
-                    if (params.get("color"))      body.color = params.get("color")
+                    if (params.get("colors"))     body.color = params.get("colors").split(",")[0]
                     if (params.get("minPrice"))   body.minPrice = Number(params.get("minPrice"))
                     if (params.get("maxPrice"))   body.maxPrice = Number(params.get("maxPrice"))
                     if (params.get("dressStyle")) body.dressStyle = params.get("dressStyle")
@@ -126,7 +181,13 @@ const CategoryPage = () => {
                 }
 
                 const data = await res.json()
-                setProducts(data)
+                const params = new URLSearchParams(filterQuery)
+                const selectedColors = params.get("colors")?.split(",").filter(Boolean) ?? []
+                const selectedSizes = params.get("sizes")?.split(",").filter(Boolean) ?? []
+
+                // Keep backend filtering for broad criteria and apply strict variant match on top.
+                const variantFiltered = await filterByVariantSelections(data, selectedColors, selectedSizes)
+                setProducts(variantFiltered)
             } catch (err) {
                 console.error(err)
             } finally {

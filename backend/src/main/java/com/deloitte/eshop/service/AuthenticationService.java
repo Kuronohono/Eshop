@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
 
-import javax.management.RuntimeErrorException;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,10 +38,47 @@ public class AuthenticationService {
     }
 
     public User signUp(RegisterUserDto input) {
+        String username = input.getUsername() == null ? "" : input.getUsername().trim();
+        String email = input.getEmail() == null ? "" : input.getEmail().trim().toLowerCase();
+        String password = input.getPassword() == null ? "" : input.getPassword();
+
+        if (username.isBlank()) {
+            throw new RuntimeException("Username is required.");
+        }
+        if (email.isBlank()) {
+            throw new RuntimeException("Email is required.");
+        }
+        if (password.isBlank()) {
+            throw new RuntimeException("Password is required.");
+        }
+        if (password.length() < 8) {
+            throw new RuntimeException("Password must be at least 8 characters.");
+        }
+
+        Optional<User> existingByEmail = userRepository.findByEmail(email);
+        if (existingByEmail.isPresent()) {
+            User existing = existingByEmail.get();
+            if (existing.isEnabled()) {
+                throw new RuntimeException("Email already registered.");
+            }
+
+            // Allow retrying signup for unverified accounts instead of hard-failing.
+            existing.setUsername(username);
+            existing.setPassword(passwordEncoder.encode(password));
+            existing.setVerificationCode(generateVerificationCode());
+            existing.setVerificationCodeExpiration(LocalDateTime.now().plusMinutes(10));
+            existing.setEnabled(false);
+            sendVerificationEmail(existing);
+            return userRepository.save(existing);
+        }
+        if (userRepository.findByUsername(username).isPresent()) {
+            throw new RuntimeException("Username already taken.");
+        }
+
         User user = new User(
-                input.getUsername(),
-                input.getEmail(),
-                passwordEncoder.encode(input.getPassword()),
+                username,
+                email,
+                passwordEncoder.encode(password),
                 UserRole.ROLE_USER);
 
         user.setUserRole(UserRole.ROLE_USER);

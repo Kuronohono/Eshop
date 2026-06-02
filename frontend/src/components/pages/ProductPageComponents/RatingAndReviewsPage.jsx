@@ -8,7 +8,7 @@ const sortOptions = [
         { value: "latest", label: "Latest" },
     ]
 
-const RatingAndReviewsPage = ( {reviews} ) => {
+const RatingAndReviewsPage = ({ reviews, onWriteReview, userHasReview }) => {
   const [sortValue, setSortValue] = useState("latest")
   const [visibleCount, setVisibleCount] =  useState(6)
 
@@ -46,7 +46,9 @@ const RatingAndReviewsPage = ( {reviews} ) => {
                 <div className="hidden lg:flex bg-[#F0F0F0] px-5 pt-2 pb-3 rounded-[25px] items-center justify-center">
                   <ComboBox value={sortValue} onChange={handleSortChange} options={sortOptions}/>
                 </div>
-                <button className="writeAReviewBtn">Write a Review</button>
+                <button className="writeAReviewBtn" onClick={onWriteReview}>
+                  {userHasReview ? "Edit Your Review" : "Write a Review"}
+                </button>
             </div>
         </div>
 

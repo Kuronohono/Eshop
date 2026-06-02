@@ -10,6 +10,7 @@ import { FaPlus } from "react-icons/fa6";
 import ProductDetailsPage from './ProductPageComponents/ProductDetailsPage'
 import RatingAndReviewsPage from './ProductPageComponents/RatingAndReviewsPage'
 import FAQsPage from './ProductPageComponents/FAQsPage'
+import ReviewModal from './ProductPageComponents/ReviewModal'
 import Carousel from '../OtherComponents/FilterComponents/Carousel'
 import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa"
@@ -41,6 +42,8 @@ const ProductPage = () => {
     const [isAuthenticated, setAuthenticated] = useState(false)
     const [lightboxOpen, setLightBoxOpen] = useState(false)
     const [variantStock, setVariantStock] = useState(null)
+    const [reviewModalOpen, setReviewModalOpen] = useState(false)
+    const [myReview, setMyReview] = useState(null)
 
     const toggleWishlist = async () => {
         if(isAuthenticated){
@@ -79,7 +82,19 @@ const ProductPage = () => {
 
     const tabContent = {
         tab1: <ProductDetailsPage product={product}/>,
-        tab2: <RatingAndReviewsPage reviews={reviews}/>,
+        tab2: (
+            <RatingAndReviewsPage
+                reviews={reviews}
+                onWriteReview={() => {
+                    if (!isAuthenticated) {
+                        window.location.replace("/login")
+                        return
+                    }
+                    setReviewModalOpen(true)
+                }}
+                userHasReview={!!myReview}
+            />
+        ),
         tab3: <FAQsPage product={product}/>
     }
 
@@ -212,18 +227,55 @@ const ProductPage = () => {
         return 99
     }
 
-    /* Get Reviews */
+    const loadReviews = async (id) => {
+        if (!id) return
+        try {
+            const res = await fetch(`http://localhost:8085/reviews/product/${id}`)
+            const data = await res.json()
+            setReviews(Array.isArray(data) ? data : [])
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    const loadMyReview = async (id) => {
+        if (!id || !localStorage.getItem("token")) {
+            setMyReview(null)
+            return
+        }
+        try {
+            const token = localStorage.getItem("token")
+            const res = await fetch(`http://localhost:8085/reviews/product/${id}/me`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            const data = await res.json()
+            setMyReview(data?.id ? data : null)
+        } catch (err) {
+            console.error(err)
+            setMyReview(null)
+        }
+    }
+
+    const refreshProductAndReviews = async () => {
+        if (!productId) return
+        try {
+            const productRes = await fetch(`http://localhost:8085/products/${productId}`)
+            if (productRes.ok) {
+                const latestProduct = await productRes.json()
+                setProduct(latestProduct)
+            }
+        } catch (err) {
+            console.error(err)
+        }
+        await loadReviews(productId)
+        await loadMyReview(productId)
+    }
+
     useEffect(() => {
-        fetch(`http://localhost:8085/reviews/product/${product.id}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setReviews(data);
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    }, [])
+        if (!product?.id) return
+        loadReviews(product.id)
+        loadMyReview(product.id)
+    }, [product?.id, isAuthenticated])
 
     const increase = () => setQuantity((prev) => Math.min(getMaxQuantity(), prev + 1))
     const decrease = () => setQuantity((prev) => Math.max(0, prev - 1))
@@ -284,6 +336,29 @@ const ProductPage = () => {
             setQuantity(0)
         } catch (e) {
             setAddError(e?.message || "Failed to add to cart")
+        }
+    }
+
+    const handleReviewSubmit = async ({ rating, description }) => {
+        if (!product?.id) return false
+        try {
+            const token = localStorage.getItem("token")
+            const res = await fetch(`http://localhost:8085/reviews/product/${product.id}/me`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({ rating, description })
+            })
+            if (!res.ok) return false
+            setReviewModalOpen(false)
+            await refreshProductAndReviews()
+            window.location.reload()
+            return true
+        } catch (err) {
+            console.error(err)
+            return false
         }
     }
 
@@ -464,6 +539,12 @@ const ProductPage = () => {
                     </button>
                 </div>
             )}
+            <ReviewModal
+                open={reviewModalOpen}
+                onClose={() => setReviewModalOpen(false)}
+                onSubmit={handleReviewSubmit}
+                initialReview={myReview}
+            />
         </div>
 
         

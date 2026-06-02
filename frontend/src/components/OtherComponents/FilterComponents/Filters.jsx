@@ -20,12 +20,30 @@ const DressStyles = [
     { id: 9, name: "Gym" },
 ]
 
-const FilterContent = ({ selectedSizes, setSelectedSizes, activeType, setActiveType, activeDressStyle, setDressStyle, onApply, onClose }) => {
+const FilterContent = ({
+    selectedSizes,
+    setSelectedSizes,
+    activeType,
+    setActiveType,
+    activeDressStyle,
+    setDressStyle,
+    selectedColors,
+    setSelectedColors,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+    onApply,
+    onClose
+}) => {
     
     
     const handleApply = () => {
         const params = new URLSearchParams()
         if (selectedSizes.length > 0) params.set("sizes", selectedSizes.join(","))
+        if (selectedColors.length > 0) params.set("colors", selectedColors.join(","))
+        if (Number.isFinite(minPrice)) params.set("minPrice", String(minPrice))
+        if (Number.isFinite(maxPrice)) params.set("maxPrice", String(maxPrice))
         if (activeDressStyle)          params.set("dressStyle", activeDressStyle)
         if (activeType)                 params.set("type", activeType)
         onApply?.(params.toString())
@@ -47,10 +65,13 @@ const FilterContent = ({ selectedSizes, setSelectedSizes, activeType, setActiveT
                 ))}
             </div>
             <Accordion text="Price">
-                <PriceRangeSlider />
+                <PriceRangeSlider onRangeChange={([min, max]) => {
+                    setMinPrice(min)
+                    setMaxPrice(max)
+                }} />
             </Accordion>
             <Accordion text="Colors">
-                <ColorButtonGroup />
+                <ColorButtonGroup selectedColors={selectedColors} onChange={setSelectedColors} />
             </Accordion>
             <Accordion text="Size">
                 <SizesComponent onChange={setSelectedSizes} />
@@ -78,7 +99,7 @@ const Filters = ({ onApply, mobileOpen, setMobileOpen }) => {
     const [selectedSizes, setSelectedSizes] = useState([])
     const [activeType, setActiveType] = useState(null)
     const [activeDressStyle, setDressStyle] = useState(null)
-    const [color, setColor] = useState(null)
+    const [selectedColors, setSelectedColors] = useState([])
     const [minPrice, setMinPrice] = useState(null)
     const [maxPrice, setMaxPrice] = useState(null)
     const [animating, setAnimating] = useState(false)
@@ -101,7 +122,7 @@ const Filters = ({ onApply, mobileOpen, setMobileOpen }) => {
         selectedSizes, setSelectedSizes,
         activeType, setActiveType,
         activeDressStyle, setDressStyle,
-        color, setColor,
+        selectedColors, setSelectedColors,
         minPrice, setMinPrice,
         maxPrice, setMaxPrice,
         onApply,

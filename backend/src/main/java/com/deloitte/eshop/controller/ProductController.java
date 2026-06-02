@@ -87,7 +87,7 @@ public class ProductController {
     @PatchMapping("/{productId}")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product,
             @PathVariable("productId") String productId) {
-        return ResponseEntity.ok(productService.updateProduct(product));
+        return ResponseEntity.ok(productService.updateProduct(productId, product));
     }
 
     @DeleteMapping("/{productId}")

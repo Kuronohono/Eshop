@@ -1,7 +1,5 @@
 package com.deloitte.eshop.dto;
 
-import org.hibernate.annotations.SecondaryRow;
-
 import lombok.Getter;
 import lombok.Setter;
 
