@@ -33,4 +33,12 @@ public class ProductVariantController {
         return productVariantServiceImpl.getProductVariantsSizes(product_id, color);
     }
 
+    @GetMapping("/stock/{productId}")
+    public ResponseEntity<Integer> getVariantStock(
+            @PathVariable String productId,
+            @RequestParam String color,
+            @RequestParam String size) {
+        return ResponseEntity.ok(productVariantServiceImpl.getVariantStock(productId, color, size));
+    }
+
 }

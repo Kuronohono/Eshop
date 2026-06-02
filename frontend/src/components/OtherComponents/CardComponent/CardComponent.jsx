@@ -5,9 +5,11 @@ import NoImageAvailable from '../../../assets/No_Image_Available.jpg'
 import {Link} from "react-router-dom"
 
 const CardComponent = ({ product, crumbs }) => {
+
   const nextCrumbs = Array.isArray(crumbs) && crumbs.length > 0
     ? [...crumbs, { label: product?.name ?? String(product?.id ?? "Product"), to: `/${product.id}` }]
     : undefined
+
 
   return (
     <Link
@@ -15,14 +17,14 @@ const CardComponent = ({ product, crumbs }) => {
       state={{ product, crumbs: nextCrumbs }}
       className="flex flex-col gap-2 hover:scale-105 transition-all active:scale-100 cursor-pointer w-full touch-pan-x"
     >
-      <div className='w-full h-70 sm:h-70 md:h-75 lg:h-80 xl:h-85 2xl:h-90 overflow-hidden rounded-2xl bg-[#F0F0F0]'>
+      <div className='card_div'>
         <img 
         src={product?.imageUrls?.[0] || NoImageAvailable} 
         onError = {(e) =>{
             e.currentTarget.src = NoImageAvailable
         }}
         alt="product"
-        className={`w-full h-full object-cover object-top`}/>
+        className={`w-full h-full object-contain lg:object-cover object-top rounded-2xl`}/>
         </div>
                             <div className="flex flex-col gap-1">
                                 <h3 className="font-satoshibold text-16px md:text-[20px] truncate">{product?.name}</h3>

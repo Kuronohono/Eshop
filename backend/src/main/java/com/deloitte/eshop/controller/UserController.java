@@ -7,9 +7,6 @@ import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.Sizes;
 import com.deloitte.eshop.entity.User;
 import com.deloitte.eshop.service.UserService;
-
-import org.apache.catalina.connector.Response;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +46,11 @@ public class UserController {
     @GetMapping("/me/cart")
     public ResponseEntity<List<CartProduct>> getCart() {
         return ResponseEntity.ok(userService.getCart());
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<String> handleStockError(IllegalStateException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
     @PostMapping("/me/cart/{productId}")

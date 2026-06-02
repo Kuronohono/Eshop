@@ -12,32 +12,25 @@ const reviews = [
 
 const TestimonialCarousel = () => {
     const [index, setIndex] = useState(0)
-    const [visibleCount, setVisibleCount] = useState(3)
+    const [isDesktop, setIsDesktop] = useState(false)
 
     useEffect(() => {
-        const updateVisibleCount = () => {
-            const isDesktop = window.matchMedia("(min-width: 1024px)").matches
-            const count = isDesktop ? 3 : 1
-            setVisibleCount(count)
-            setIndex((i) => Math.min(i, Math.max(0, reviews.length - count)))
+        const mq = window.matchMedia("(min-width: 1024px)")
+        const update = () => {
+            setIsDesktop(mq.matches)
+            if (!mq.matches) setIndex(i => Math.min(i, reviews.length - 1))
+            else setIndex(i => Math.min(i, Math.max(0, reviews.length - 3)))
         }
-        updateVisibleCount()
-        window.addEventListener("resize", updateVisibleCount)
-        return () => window.removeEventListener("resize", updateVisibleCount)
+        update()
+        mq.addEventListener("change", update)
+        return () => mq.removeEventListener("change", update)
     }, [])
 
-    const isDesktop = visibleCount === 3
+    const visibleCount = isDesktop ? 3 : 1
     const maxIndex = Math.max(0, reviews.length - visibleCount)
 
     const prev = () => setIndex(i => Math.max(0, i - 1))
     const next = () => setIndex(i => Math.min(maxIndex, i + 1))
-
-    const trackStyle = isDesktop
-        ? { transform: `translateX(calc(-${index} * (100% / ${visibleCount} + 6px)))` }
-        : {
-              width: `${reviews.length * 100}%`,
-              transform: `translateX(-${(index / reviews.length) * 100}%)`,
-          }
 
     return (
         <div className="flex flex-col w-full gap-6 h-full">
@@ -62,38 +55,52 @@ const TestimonialCarousel = () => {
             </div>
 
             {/* Cards */}
-            <div className='h-full'>
+            <div className=" h-full overflow-hidden lg:overflow-visible">
 
-                {/* Left blur fade */}
+                {/* Left blur fade — desktop only */}
                 <div className="hidden lg:block pointer-events-none absolute left-0 top-0 h-full w-16 z-10"
-                    style={{ background: "linear-gradient(to right, white 10%, transparent 100%)", opacity: index > 0 ? 1 : 0, transition: "opacity 0.3s" }}/>
+                    style={{ background: "linear-gradient(to right, white 10%, transparent 100%)", opacity: index > 0 ? 1 : 0, transition: "opacity 0.3s" }} />
 
-                {/* Right blur fade */}
+                {/* Right blur fade — desktop only */}
                 <div className="hidden lg:block pointer-events-none absolute right-0 top-0 h-full w-32 z-10"
-                    style={{ background: "linear-gradient(to left, white 10%, transparent 100%)", opacity: index < maxIndex ? 1 : 0, transition: "opacity 0.3s" }}/>
+                    style={{ background: "linear-gradient(to left, white 10%, transparent 100%)", opacity: index < maxIndex ? 1 : 0, transition: "opacity 0.3s" }} />
 
-                <div
-                    className="flex flex-nowrap gap-5 duration-500 lg:ease-in-out transition-transform"
-                    style={trackStyle}>
-                    {reviews.map((review, i) => {
-                        const isFaded = isDesktop && (i < index || i >= index + visibleCount)
-                        return (
-                            <div key={review.username}
-                                className={isDesktop
-                                    ? "min-w-[calc(33.333%-14px)] transition-all duration-300"
-                                    : "shrink-0 transition-all duration-300"}
-                                style={isDesktop
-                                    ? isFaded ? { filter: "blur(2px)", opacity: 0.5 } : undefined
-                                    : { width: `${100 / reviews.length}%` }}>
+                {isDesktop ? (
+                    /* ── Desktop: 3-up sliding track ── */
+                    <div
+                        className="flex flex-nowrap gap-5 transition-transform duration-500 ease-in-out"
+                        style={{ transform: `translateX(calc(-${index} * (100% / 3 + 6px)))` }}>
+                        {reviews.map((review, i) => {
+                            const isFaded = i < index || i >= index + 3
+                            return (
+                                <div key={review.username}
+                                    className="min-w-[calc(33.333%-14px)] transition-all duration-300"
+                                    style={isFaded ? { filter: "blur(2px)", opacity: 0.5 } : undefined}>
+                                    <ReviewCard
+                                        username={review.username}
+                                        reviewStar={review.reviewStar}
+                                        reviewText={review.reviewText}
+                                    />
+                                </div>
+                            )
+                        })}
+                    </div>
+                ) : (
+                    /* ── Mobile: 1-up, each card exactly fills the container ── */
+                    <div
+                        className="flex transition-transform duration-500 ease-in-out"
+                        style={{ transform: `translateX(calc(-${index} * 100%))` }}>
+                        {reviews.map((review) => (
+                            <div key={review.username} className="w-full shrink-0">
                                 <ReviewCard
                                     username={review.username}
                                     reviewStar={review.reviewStar}
                                     reviewText={review.reviewText}
                                 />
                             </div>
-                        )
-                    })}
-                </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     )

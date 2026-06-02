@@ -10,39 +10,35 @@ import com.deloitte.eshop.entity.ProductVariant;
 import com.deloitte.eshop.entity.Sizes;
 import com.deloitte.eshop.repo.ProductVariantRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
-public class ProductVariantServiceImpl implements ProductVariantService {
+public class ProductVariantServiceImpl {
 
     @Autowired
     private ProductVariantRepository productVariantRepository;
 
-    @Override
     public List<ProductVariant> getProductVariants() {
         return (List<ProductVariant>) productVariantRepository.findAll();
     }
 
-    @Override
     public ProductVariant addProductVariant(ProductVariant variant) {
         return productVariantRepository.save(variant);
     }
 
-    @Override
     public ProductVariant updateProductVariant(ProductVariant variant) {
         return productVariantRepository.save(variant);
     }
 
-    @Override
     public String deleteProductVariant(ProductVariant variant) {
         productVariantRepository.delete(variant);
         return "Product Variant Deleted";
     }
 
-    @Override
     public List<ProductVariant> getProductVariantsByProductId(String product_id) {
         return productVariantRepository.findByProductId(product_id);
     }
 
-    @Override
     public List<String> getProductVariantColors(String product_id) {
         return productVariantRepository.findByProductId(product_id)
                 .stream()
@@ -51,16 +47,6 @@ public class ProductVariantServiceImpl implements ProductVariantService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public List<Integer> getProductVariantsStock(String product_id) {
-        return productVariantRepository.findByProductId(product_id)
-                .stream()
-                .map(ProductVariant::getStock)
-                .collect(Collectors.toList());
-
-    }
-
-    @Override
     public List<Sizes> getProductVariantsSizes(String product_id, String color) {
         return productVariantRepository.findByProductId(product_id)
                 .stream()
@@ -68,6 +54,39 @@ public class ProductVariantServiceImpl implements ProductVariantService {
                 .flatMap(v -> v.getSizes().stream())
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    public int getVariantStock(String productId, String color, String size) {
+        Sizes sizeEnum = Sizes.valueOf(size); // converts the string param to your enum
+        return productVariantRepository
+                .findByProductIdAndColor(productId, color)
+                .filter(v -> v.getSizes().contains(sizeEnum))
+                .map(ProductVariant::getStock)
+                .orElse(0);
+    }
+
+    @Transactional
+    public void decreaseStock(String productId, String color, int quantity) {
+        ProductVariant variant = productVariantRepository
+                .findByProductIdAndColor(productId, color)
+                .orElseThrow(() -> new RuntimeException("Variant not found"));
+
+        if (variant.getStock() < quantity) {
+            throw new IllegalStateException("Not enough stock available");
+        }
+
+        variant.setStock(variant.getStock() - quantity);
+        productVariantRepository.save(variant);
+    }
+
+    @Transactional
+    public void increaseStock(String productId, String color, int quantity) {
+        ProductVariant variant = productVariantRepository
+                .findByProductIdAndColor(productId, color)
+                .orElseThrow(() -> new RuntimeException("Variant not found"));
+
+        variant.setStock(variant.getStock() + quantity);
+        productVariantRepository.save(variant);
     }
 
 }

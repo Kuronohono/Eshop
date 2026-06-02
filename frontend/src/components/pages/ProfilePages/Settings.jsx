@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-const Tabs = [
-    { id: "tab1", label: "Personal Information" },
-    { id: "tab2", label: "Addresses" },
-    { id: "tab3", label: "Payment Methods"}
-]
-
 const Settings = ({ userData, onUserUpdated }) => {
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 })
   const [activeTab, setActiveTab] = useState("tab1")
@@ -20,16 +14,6 @@ const Settings = ({ userData, onUserUpdated }) => {
     setUsername(userData?.username || "")
     setUserEmail(userData?.email || "")
   }, [userData?.username, userData?.email])
-
-      useEffect(() => {
-        const activeBtn = tabRefs.current[activeTab]
-        if (activeBtn) {
-          setIndicatorStyle({
-          width: activeBtn.offsetWidth,
-          left: activeBtn.offsetLeft
-          })
-        }
-      }, [activeTab])
 
   const handleSave = async () => {
     setError("")
@@ -88,68 +72,6 @@ const Settings = ({ userData, onUserUpdated }) => {
     }
   }
 
-  const tabContent = {
-        tab1: 
-        <div className='flex h-full w-full flex-col my-5 justify-center gap-10 lg:gap-20'>
-          
-          <div className='flex flex-col gap-5'>
-
-          {/* Username */}
-        
-          <div className='flex flex-col'>
-            <h2 className='mx-2'>Username</h2>
-            
-            <div className="input_outerDiv w-full lg:w-[40%]">
-                <input
-                    name="username"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Enter username"
-                    required
-                    className={`input_field pl-2 ${username.trim() === "" ? "border-red-500" : ""}`}
-                />
-            </div>
-            {username.trim() === "" && (
-                    <span className="text-red-500 text-sm">Username cannot be empty</span>
-                )}  
-          </div>
-
-          {/* Email */}
-             <div className='flex flex-col'>
-            <h2 className='mx-2'>Email</h2>
-            
-            <div className="input_outerDiv w-full lg:w-[40%]">
-                <input
-                    name="email"
-                    type="email"
-                    value={userEmail}
-                    onChange={(e) => setUserEmail(e.target.value)}
-                    placeholder="Enter email"
-                    required
-                    className={`input_field pl-2 ${username.trim() === "" ? "border-red-500" : ""}`}
-                />
-            </div>
-                            {username.trim() === "" && (
-                    <span className="text-red-500 text-sm">Email cannot be empty</span>
-                )}  
-          </div>
-
-          </div>
-
-          <button className='saveChangesBtn' onClick={handleSave} disabled={saving}>
-            {saving ? "Saving..." : "Save Changes"}
-          </button>
-
-          {error && <p className="font-satoshi text-sm text-red-500 mt-3">{error}</p>}
-          {success && <p className="font-satoshi text-sm text-green-600 mt-3">{success}</p>}
-
-        </div>,
-        tab2: <div></div>,
-        tab3: <div></div>
-    }
-
-
   return (
     <div className='w-full gap-5 flex flex-col'>
       <h1 className='page_header'>Settings</h1>
@@ -157,26 +79,64 @@ const Settings = ({ userData, onUserUpdated }) => {
         <div className="flex flex-col w-full lg:mx-0 mt-5 flex-1">
                     <div className="relative flex border-b border-black/10">
 
-                        <div
-                            className="absolute bottom-0 h-0.5 bg-black transition-all duration-300 ease-in-out"
-                            style={{ width: indicatorStyle.width, left: indicatorStyle.left }}
-                        />
+                     <div className='flex h-full w-full flex-col my-5 justify-center gap-10 lg:gap-20'>
+          
+                    <div className='flex flex-col gap-5'>
 
-                        {Tabs.map((tab) => (
-                            <button
-                                key={tab.id}
-                                ref={el => tabRefs.current[tab.id] = el}
-                                className={`product_tabs ${
-                                    activeTab === tab.id ? "text-black" : "text-black/50 hover:text-black/70"
-                                }`}
-                                onClick={() => setActiveTab(tab.id)}>
-                                {tab.label}
-                            </button>
-                        ))}
+                    {/* Username */}
+                  
+                    <div className='flex flex-col'>
+                      <h2 className='mx-2'>Username</h2>
+                      
+                      <div className="input_outerDiv w-full lg:w-[40%]">
+                          <input
+                              name="username"
+                              type="text"
+                              value={username}
+                              onChange={(e) => setUsername(e.target.value)}
+                              placeholder="Enter username"
+                              required
+                              className={`input_field pl-2 ${username.trim() === "" ? "border-red-500" : ""}`}
+                          />
+                      </div>
+                      {username.trim() === "" && (
+                              <span className="text-red-500 text-sm">Username cannot be empty</span>
+                          )}  
                     </div>
-                    <div className='flex-1'>{tabContent[activeTab]}</div>
+
+                    {/* Email */}
+                      <div className='flex flex-col'>
+                      <h2 className='mx-2'>Email</h2>
+                      
+                      <div className="input_outerDiv w-full lg:w-[40%]">
+                          <input
+                              name="email"
+                              type="email"
+                              value={userEmail}
+                              onChange={(e) => setUserEmail(e.target.value)}
+                              placeholder="Enter email"
+                              required
+                              className={`input_field pl-2 ${username.trim() === "" ? "border-red-500" : ""}`}
+                          />
+                      </div>
+                                      {username.trim() === "" && (
+                              <span className="text-red-500 text-sm">Email cannot be empty</span>
+                          )}  
+                    </div>
+
+                    </div>
+
+                    <button className='saveChangesBtn' onClick={handleSave} disabled={saving}>
+                      {saving ? "Saving..." : "Save Changes"}
+                    </button>
+
+                    {error && <p className="font-satoshi text-sm text-red-500 mt-3">{error}</p>}
+                    {success && <p className="font-satoshi text-sm text-green-600 mt-3">{success}</p>}
+
+                  </div>
                 </div>
 
+    </div>
     </div>
   )
 }

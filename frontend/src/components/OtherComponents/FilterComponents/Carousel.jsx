@@ -26,7 +26,7 @@ const Carousel = ({ items = fallbackItems, crumbs }) => {
         {safeItems.map((item) => (
           <div
             key={item.id}
-          className="snap-start flex-shrink-0 flex-grow-0 w-[75%] sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)] lg:w-[calc(25%-0.75rem)]"
+          className="snap-start shrink-0 grow-0 w-[75%] sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)] lg:w-[calc(25%-0.75rem)]"
           >
             <CardComponent product={item} crumbs={crumbs}/>
           </div>

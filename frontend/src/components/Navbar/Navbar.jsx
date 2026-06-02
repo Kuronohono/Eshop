@@ -13,11 +13,11 @@ import SearchBar from './SearchBar';
 const Menu = [
     { id: 1, name: "On Sale", link: "/Status/On_Sale" },
     { id: 2, name: "New Arrivals", link: "/Status/New_Arrivals" },
-    { id: 3, name: "Brands", link: "/brands" }
+    { id: 3, name: "Brands", link: "/Brands" }
 ]
 
 const ShopLinks = [
-    { id: 1, name: "T-shirts", link: "/T-shirts" },
+    { id: 1, name: "T-shirts", link: "T-shirts" },
     { id: 2, name: "Shorts", link: "/Shorts" },
     { id: 3, name: "Shirts", link: "/Shirts" },
     { id: 4, name: "Hoodie", link: "/Hoodies" },
@@ -80,7 +80,6 @@ const Navbar = () => {
             <nav className="w-full">
                 <div className="container justify-between h-12 mt-15.5 pr-2 sm:pr-4 mx-auto gap-2 sm:gap-6 flex items-center">
 
-                    {/* Logo + Hamburger — fades out when search is active on mobile */}
                     <div
                         className={`flex items-center gap-4 sm:gap-8 transition-all duration-500 ease-in-out
                             ${searchActive
@@ -99,16 +98,16 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* Desktop Menu — fades out when search expands */}
+                    
                     <div
                         className={`hidden min-[1280px]:block transition-all duration-500 ease-in-out
-                            ${searchActive ? 'opacity-0 pointer-events-none w-0 overflow-hidden' : 'opacity-100'}`}
-                    >
+                            ${searchActive ? 'opacity-0 pointer-events-none w-0 overflow-hidden' : 'opacity-100'}`}>
                         <ul className="flex items-center gap-6">
                             <ShopMenu />
                             {Menu.map((item) => (
                                 <li key={item.id}>
-                                    <Link className="text-[16px] hover:bg-[#F2F0F1] rounded-lg p-1" to={item.link}>
+                                    <Link className="text-[16px] hover:bg-[#F2F0F1] rounded-lg p-1" 
+                                    to={item.link} >
                                         {item.name}
                                     </Link>
                                 </li>
@@ -140,7 +139,7 @@ const Navbar = () => {
                                 {/* Search icon — acts as trigger when collapsed */}
                                 <button
                                     onClick={searchActive ? undefined : handleSearchOpen}
-                                    className={`flex-shrink-0 text-gray-500 transition-all duration-200
+                                    className={`shrink-0 text-gray-500 transition-all duration-200
                                         ${searchActive ? 'cursor-default' : 'hover:bg-[#e6e6e6] rounded-full p-2 cursor-pointer active:scale-95'}`}
                                     aria-label="Open search"
                                 >
@@ -183,7 +182,7 @@ const Navbar = () => {
                                 }`}
                         >
                             <Link
-                                to={"/cart"}
+                                to={"/Cart"}
                                 className="relative text-2xl hover:bg-[#e6e6e6] rounded-full p-2 cursor-pointer transition-all active:scale-95"
                             >
                                 <FiShoppingCart size={24} />

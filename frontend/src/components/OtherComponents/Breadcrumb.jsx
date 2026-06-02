@@ -1,6 +1,9 @@
 import React, { useMemo } from 'react'
 import { useLocation, Link } from "react-router-dom"
 
+
+const nonClickableCrumbs = ["Shop", "Men", "Women", "Unisex", "Status"];
+
 const Breadcrumb = () => {
     const location = useLocation()
     const pathnames = useMemo(
@@ -8,8 +11,6 @@ const Breadcrumb = () => {
       [location.pathname]
     )
 
-    // Optional crumb trail passed via Link state.
-    // Example: [{ label: "Home", to: "/home" }, { label: "Men", to: "/men" }, ...]
     const stateCrumbs = location.state?.crumbs
     const productName = location.state?.product?.name
 
@@ -20,12 +21,17 @@ const Breadcrumb = () => {
               stateCrumbs.map((c, idx) => {
                 const last = idx === stateCrumbs.length - 1
                 return (
-                  <li key={c.to ?? `${c.label}-${idx}`}>
+                  <li key={`${c.label}-${idx}`}>
                     {idx !== 0 && <span className="mx-2 text-black opacity-60">{'>'}</span>}
-                    {last ? (
-                      <span className="font-satoshi text-black opacity-90">{c.label}</span>
+                   {last || !c.to ? (
+                      <span className="font-satoshi text-black opacity-60">
+                        {c.label}
+                      </span>
                     ) : (
-                      <Link to={c.to} className="font-satoshi text-black opacity-60 hover:underline">
+                      <Link
+                        to={c.to}
+                        className="font-satoshi text-black opacity-60 hover:underline"
+                      >
                         {c.label}
                       </Link>
                     )}

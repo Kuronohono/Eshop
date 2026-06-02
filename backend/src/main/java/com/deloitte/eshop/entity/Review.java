@@ -1,4 +1,7 @@
 package com.deloitte.eshop.entity;
+
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +22,7 @@ public class Review {
     private String description;
 
     @Column(nullable = false)
-    private int rating;
+    private double rating;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
@@ -29,8 +32,15 @@ public class Review {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    //------Constructors---------//
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime craetedAt;
 
+    // ------Constructors---------//
+
+    @PrePersist
+    protected void onCreate() {
+        this.craetedAt = LocalDateTime.now();
+    }
 
     public Review(String description, int rating, Product products) {
         this.description = description;

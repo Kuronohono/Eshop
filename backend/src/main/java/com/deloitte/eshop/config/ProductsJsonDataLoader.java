@@ -83,7 +83,6 @@ public class ProductsJsonDataLoader implements ApplicationRunner {
                 .description(dto.description())
                 .price(dto.price())
                 .discount(dto.discount())
-                .stock(dto.stock())
                 .gender(Gender.valueOf(dto.gender()))
                 .productType(ProductType.valueOf(dto.productType()))
                 .dressStyle(DressStyle.valueOf(dto.dressStyle()))

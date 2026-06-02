@@ -2,6 +2,7 @@ import React from 'react'
 import CardComponent from '../../OtherComponents/CardComponent/CardComponent'
 
 const Wishlist = ({ userData }) => {
+  
   if (!userData) {
     return (
       <div>
@@ -14,8 +15,12 @@ const Wishlist = ({ userData }) => {
   const wishlist = userData.wishlist ?? []
 
   return (
-    <div>
-      <h1 className="page_header">Wishlist</h1>
+    <div className='flex flex-col gap-10'>
+      
+      <div className='flex justify-between'>
+        <h1 className="page_header">Wishlist</h1>
+
+      </div>
 
       {wishlist.length === 0 ? (
         <p className="font-satoshi text-gray-500 mt-5">Your wishlist is empty. Try adding in some products.</p>

@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@font-face{
+    font-family: 'IntegralCF';
+    src: url("./assets/fonts/IntegralCF-Bold.otf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Satoshi';
+    src: url("./assets/fonts/Satoshi-Variable.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'SatoshiSemiBold';
+    src: url("./assets/fonts/Satoshi-Variable.ttf") format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'SatoshiBold';
+    src: url("./assets/fonts/Satoshi-Variable.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@theme{
+    --font-integralcf: 'IntegralCF', sans-serif;
+}
+
+@theme{
+    --font-satoshi: 'Satoshi', sans-serif;
+}
+
+@theme{
+    --font-satoshi: 'SatoshiSemiBold', sans-serif;
+}
+
+@theme{
+    --font-satoshibold: 'SatoshiBold', sans-serif;
+}
+
+/*------------ NavBar Styling-----------*/
+.navbar{
+    @apply  bg-blue-900 flex flex-col justify-center w-[15%] h-screen items-center;
+}
+
+
+/*---------- Global ----------------*/
+.screen_adapt{
+    @apply flex flex-col py-[2%] gap-10;
+}
+
+.page_header{
+    @apply font-satoshibold text-[1.5em] md:text-[2em];
+}
+
+
+.table_section{
+    @apply border border-black/60 grid  gap-10;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    min-width: max-content;
+}
+
+.table_section > .row:first-child {
+    @apply bg-blue-900; 
+}
+
+.td_item{
+    @apply px-4 py-2 border-b border-black/20 border;
+}
+
+/*----------- Login Form --------------*/
+.input_outerDiv{
+    @apply flex items-center justify-center rounded-[62px] my-3 h-12 bg-[#F0F0F0] px-2;
+}
+
+.input_field{
+    @apply border-none bg-[#F0F0F0] outline-none w-full;
+}
+
+.auth_button{
+    @apply font-satoshi bg-black w-full h-13 mt-4 rounded-[62px] text-white
+                     py-3.5 lg:px-13.5 gap-3 hover:bg-[#202020] cursor-pointer transition-all active:scale-95;
+}

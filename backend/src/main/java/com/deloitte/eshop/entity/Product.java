@@ -47,10 +47,6 @@ public class Product {
     @Column(name = "arrival_date", updatable = false)
     private LocalDate arrivalDate;
 
-    // Product Stock
-    @Column(nullable = false)
-    private int stock;
-
     // Image Url Collection
     @ElementCollection
     @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
@@ -155,7 +151,7 @@ public class Product {
             return 0.0;
 
         double average = reviews.stream()
-                .mapToInt(Review::getRating)
+                .mapToDouble(Review::getRating)
                 .average()
                 .orElse(0.0);
 

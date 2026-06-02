@@ -45,7 +45,7 @@
 }
 
 .screen-adapt{
-    @apply flex flex-col items-center justify-center mt-5 md:mt-8 w-full px-[6%] sm:px-[7%] md:px-[6%] lg:px-[7%] xl:px-[7%] 2xl:px-[12%] ;
+    @apply flex flex-col items-center justify-center mt-5 md:mt-8 w-full px-[6%] sm:px-[7%] md:px-[6%] lg:px-[7%] xl:px-[7%] 2xl:px-[8%] ;
 }
 
 
@@ -56,7 +56,7 @@
 }
 
 .brand-logo{
-    @apply  object-contain cursor-pointer hover:opacity-80 transition-all duration-200 active:scale-95 h-[20px] w-auto
+    @apply  object-contain cursor-pointer hover:opacity-80 transition-all duration-200 active:scale-95 h-[1.25em] w-auto
     sm:h-[30px] md:h-[40px];
 }
 
@@ -64,20 +64,20 @@
     .brand_container {
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
-        column-gap: 20px;
+        column-gap: 1.25em;
         row-gap: 14px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 1.25em;
+        padding-right: 1.25em;
     }
 
-    .brand_container a:nth-child(-n+3) {
+    .brand_container > div:nth-child(-n+3) {
         grid-column: span 2 / span 2;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .brand_container a:nth-child(n+4) {
+    .brand_container > div:nth-child(n+4) {
         grid-column: span 3 / span 3;
         display: flex;
         justify-content: center;
@@ -85,10 +85,19 @@
     }
 
     .brand_container .brand-logo {
-        height: 32px;
+        height: 1.5em;
         width: auto;
         max-width: 100%;
     }
+}
+
+
+.hero_pHeader{
+  @apply  font-satoshibold text-[24px] lg:text-[40px] font-bold leading-tight;
+}
+
+.hero_pText{
+    @apply font-satoshi text-[12px] lg:text-[16px] opacity-60;
 }
 /*------------ Default Star Rating Style---------------*/
 
@@ -102,15 +111,15 @@
 
 /*------------- Default Product Price Style -------------*/
 .pricing_div{
- @apply flex items-center gap-1 md:gap-3;
+ @apply flex items-center gap-1 gap-3;
 }
 
 .newPrice{
-    @apply font-satoshibold text-[20px] md:text-[24px];
+    @apply font-satoshibold text-[1.25em] md:text-[1.5em];
 }
 
 .oldPrice{
-    @apply font-satoshibold text-[20px] md:text-[24px] opacity-40 line-through;
+    @apply font-satoshibold text-[1.25em] md:text-[1.5em] opacity-40 line-through;
 }
 
 .discountPer{
@@ -122,7 +131,7 @@
 }
 
 .home_banner{
-    @apply font-integralcf text-[32px] lg:text-[48px];
+    @apply font-integralcf text-[2em] lg:text-[48px];
 }
 
 .footer_options{
@@ -141,7 +150,7 @@
 }
 
 .filter_header{
-    @apply font-satoshibold text-[20px];
+    @apply font-satoshibold text-[1.25em];
 }
 
 .price_slider{
@@ -181,7 +190,7 @@
 
 /*----------- Cart -----------------*/
 .cart_item_title{
-    @apply font-satoshibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px];
+    @apply font-satoshibold text-[16px] sm:text-[18px] md:text-[1.25em] lg:text-[22px];
 }
 
 .cart_item_details{
@@ -189,19 +198,19 @@
 }
 
 .cart_header{
-    @apply font-satoshibold text-[20px] lg:text-[24px];
+    @apply font-satoshibold text-[1.25em] lg:text-[1.5em];
 }
 
 .cart_details{
-    @apply font-satoshi text-[16px] lg:text-[20px] opacity-60;
+    @apply font-satoshi text-[16px] lg:text-[1.25em] opacity-60;
 }
 
 .cart_details_data{
-     @apply font-satoshibold text-[16px] lg:text-[20px];
+     @apply font-satoshibold text-[16px] lg:text-[1.25em];
 }
 
 .cart_details_data_disc{
-     @apply font-satoshibold text-[16px] lg:text-[20px] text-red-600;
+     @apply font-satoshibold text-[16px] lg:text-[1.25em] text-red-600;
 }
 
 .cart_coupon_btn{
@@ -218,7 +227,7 @@
 }
 
 .item_container{
-    @apply flex flex-col border rounded-[20px] border-black/20;
+    @apply flex flex-col border rounded-[1.25em] border-black/20 h-fit;
 }
 
 .profile_menu_icon{
@@ -226,7 +235,7 @@
 }
 
 .page_header{
-    @apply font-satoshibold text-[24px] md:text-[32px];
+    @apply font-satoshibold text-[1.5em] md:text-[2em];
 }
 
 .slider_component{
@@ -282,7 +291,7 @@
 }
 
 .style_card {
-    @apply relative rounded-[20px] overflow-hidden cursor-pointer hover:scale-103 active:scale-100 transition-all;
+    @apply relative rounded-[1.25em] overflow-hidden cursor-pointer hover:scale-103 active:scale-100 transition-all;
 }
 
 .style_card-md {
@@ -294,14 +303,14 @@
 }
 
 .browse_style_par{
-    @apply absolute top-4 left-4 text-[24px] 2xl:text-[36px] font-bold text-black;
+    @apply absolute top-4 left-4 text-[1.5em] 2xl:text-[36px] font-bold text-black;
 }
 
 /*---------------Brands Page---------------*/
 
 
 .brand_image{
-    @apply object-cover w-75 h-50 sm:w-100 sm:h-65 md:w-120 md:h-85 lg:w-100 lg:h-75 2xl:w-110 2xl:h-90 rounded-[20px] cursor-pointer;
+    @apply object-cover w-75 h-50 sm:w-100 sm:h-65 md:w-120 md:h-85 lg:w-100 lg:h-75 2xl:w-110 2xl:h-90 rounded-[1.25em] cursor-pointer;
 }
 
 
@@ -369,7 +378,7 @@
 
 /*--------------- Product Page ---------------*/
 .product_header{
-    @apply font-integralcf text-[24px] sm:text-[28px] md:text-[35px] lg:text-[40px];
+    @apply font-integralcf text-[1.5em] sm:text-[28px] md:text-[35px] lg:text-[40px];
 }
 
 .product_description{
@@ -397,19 +406,27 @@
 }
 
 .product_tabs{
-    @apply cursor-pointer relative py-3 font-satoshi text-[16px] lg:text-[20px] transition-colors duration-200 px-3 lg:flex-1;
+    @apply cursor-pointer relative py-3 font-satoshi text-[16px] lg:text-[1.25em] transition-colors duration-200 px-3 lg:flex-1;
 }
 
 .newPrice_proPage{
-    @apply font-satoshibold text-[24px] lg:text-[32px];
+    @apply font-satoshibold text-[1.5em] md:text-[2em];
 }
 
 .oldPrice_proPage{
-      @apply font-satoshibold text-[24px] md:text-[32px] opacity-40 line-through;
+      @apply font-satoshibold text-[1.5em] md:text-[2em] opacity-40 line-through;
 }
 
 .discountPer_proPage{
-    @apply font-satoshi text-[#FF3333] bg-[rgba(255,51,51,0.1)] px-3 py-1 rounded-[20px] text-[12px] md:text-[16px];
+    @apply font-satoshi text-[#FF3333] bg-[rgba(255,51,51,0.1)] px-3 py-1 rounded-[1.25em] text-[12px] md:text-[16px];
+}
+
+.wishlist_button{
+    @apply absolute top-4 right-4 text-red-400 
+    w-7 h-7
+    flex items-center justify-center
+    rounded-full cursor-pointer
+    backdrop-blur-sm transition-all duration-200;
 }
 
 /*---------------Reviews Page--------------*/
@@ -457,17 +474,17 @@
 
 /*----------------- Settings Page--------------------*/
 .saveChangesBtn{
-    @apply lg:self-end bg-black text-white px-[4%] py-[1%] rounded-[10px] lg:rounded-[20px]
-    hover:bg-[#121212] cursor-pointer active:scale-98 transition-all;
+    @apply lg:self-end bg-black text-white px-[4%] py-[1%] rounded-[1.3em] lg:rounded-[1.25em]
+    hover:bg-[#121212] cursor-pointer active:scale-98 transition-all h-12;
 }
 
 /*---------------- Card Component -------------------*/
+
+
 .card_div{
-    @apply object-cover object-top rounded-2xl bg-[#F0F0F0] aspect-[3/4]
-    /* Temporarily */
-    border 
+    @apply rounded-2xl bg-[#F0F0F0] 
     /*Default*/
-    h-70 w-full
+    h-60 w-full
     /* Small Screen*/
     sm:h-70
     /* Medium Screen*/
@@ -481,4 +498,17 @@
     ;
 }
 
+/*--------------------- Checkout ----------------------*/
+.checkout_h1{
+    @apply font-satoshi text-[1.1em] flex-wrap;
+}
 
+
+/*---------------- Order Item------------------------*/
+.order_itemDiv{
+    @apply flex flex-col border border-black/50 rounded-[1em] px-[2%] py-[2%] gap-7;
+}
+
+.order_itemImg{
+    @apply object-cover w-20 h-20 md:w-25 md:h-25;
+}

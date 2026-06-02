@@ -15,6 +15,7 @@ import com.deloitte.eshop.dto.LoginUserDto;
 import com.deloitte.eshop.dto.RegisterUserDto;
 import com.deloitte.eshop.dto.VerifyUserDto;
 import com.deloitte.eshop.entity.User;
+import com.deloitte.eshop.entity.UserRole;
 import com.deloitte.eshop.repo.UserRepository;
 
 import jakarta.mail.MessagingException;
@@ -39,7 +40,13 @@ public class AuthenticationService {
     }
 
     public User signUp(RegisterUserDto input) {
-        User user = new User(input.getUsername(), input.getEmail(), passwordEncoder.encode(input.getPassword()));
+        User user = new User(
+                input.getUsername(),
+                input.getEmail(),
+                passwordEncoder.encode(input.getPassword()),
+                UserRole.ROLE_USER);
+
+        user.setUserRole(UserRole.ROLE_USER);
         user.setVerificationCode(generateVerificationCode());
         user.setVerificationCodeExpiration(LocalDateTime.now().plusMinutes(10));
         user.setEnabled(false);

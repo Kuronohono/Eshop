@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import com.deloitte.eshop.entity.ProductStatus;
 import com.deloitte.eshop.entity.ProductType;
@@ -26,5 +27,7 @@ public interface ProductRepository extends JpaRepository<Product, String>, JpaSp
     List<Product> findByProductTypeAndGender(ProductType productType, Gender gender);
 
     List<Product> findByProductBrand(Brands productBrand);
+
+    Optional<Product> findById(String id);
 
 }

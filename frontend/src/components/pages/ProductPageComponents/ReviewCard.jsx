@@ -3,7 +3,18 @@ import StarRating from '../../OtherComponents/ProductComponents/StarRating'
 import { FaCheckCircle } from "react-icons/fa"
 import { BsThreeDots } from "react-icons/bs";
 
-const ReviewCard = ({username, reviewText, reviewStar}) => {
+const ReviewCard = ({username, reviewText, reviewStar, dateStr}) => {
+
+  const formatDate = (str) => {
+    const date = new Date(str)
+    const day = date.getDate()
+    const suffix = day % 10 === 1 && day !== 11 ? "st"
+                 : day % 10 === 2 && day !== 12 ? "nd"
+                 : day % 10 === 3 && day !== 13 ? "rd" : "th"
+    return `${day}${suffix} ${date.toLocaleString("en-GB", { month: "long" })} ${date.getFullYear()}`
+
+  }
+
   return (
     <div className="flex flex-col w=full border border-black/10 rounded-[20px] px-7 py-7 gap-4 h-full">
         <div className="flex items-center gap-2 md:gap-4 justify-between">
@@ -17,7 +28,7 @@ const ReviewCard = ({username, reviewText, reviewStar}) => {
         <p className="font-satoshi flex flex-wrap text-black/50 text-[14px] lg:text-[16px]">{reviewText}</p>
 
         </div>
-        <span className="font-satoshi text-[14px] lg:text-[16px] opacity-60">Posted on August 14, 2023</span>
+        <span className="font-satoshi text-[14px] lg:text-[16px] opacity-60">Posted on {formatDate(dateStr)}</span>
     </div>
   )
 }

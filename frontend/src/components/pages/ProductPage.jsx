@@ -11,6 +11,8 @@ import ProductDetailsPage from './ProductPageComponents/ProductDetailsPage'
 import RatingAndReviewsPage from './ProductPageComponents/RatingAndReviewsPage'
 import FAQsPage from './ProductPageComponents/FAQsPage'
 import Carousel from '../OtherComponents/FilterComponents/Carousel'
+import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa"
 
 const Tabs = [
     { id: "tab1", label: "Product Details" },
@@ -34,15 +36,54 @@ const ProductPage = () => {
     const [activeTab, setActiveTab] = useState("tab1")
     const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 })
     const tabRefs = useRef({})
+    const [wishlisted, setWishlisted] = useState(false)
+    const [reviews, setReviews] = useState([])
+    const [isAuthenticated, setAuthenticated] = useState(false)
+    const [lightboxOpen, setLightBoxOpen] = useState(false)
+    const [variantStock, setVariantStock] = useState(null)
+
+    const toggleWishlist = async () => {
+        if(isAuthenticated){
+             if (!product?.id) return;
+
+            // Determine target URL and HTTP Method based on current status
+            const method = wishlisted ? "DELETE" : "POST";
+            const url = `http://localhost:8085/users/me/wishlist/${product.id}`;
+
+            const token = localStorage.getItem("token");
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                if (!res.ok) {
+                    throw new Error(`Failed to ${wishlisted ? "remove from" : "add to"} wishlist`);
+                }
+
+                // Optimistically flip the UI state upon a successful backend response
+                setWishlisted((prev) => !prev);
+            } catch (err) {
+                console.error(err);
+                setAddError(err.message || "Something went wrong updating your wishlist.");
+            }
+        }
+        else{
+            window.location.replace("/login");
+        }
+    }
+
+    useEffect(() => {
+    setAuthenticated(!!localStorage.getItem("token"))
+    }, [state])
 
     const tabContent = {
         tab1: <ProductDetailsPage product={product}/>,
-        tab2: <RatingAndReviewsPage product={product}/>,
+        tab2: <RatingAndReviewsPage reviews={reviews}/>,
         tab3: <FAQsPage product={product}/>
     }
 
     useEffect(() => {
-        // When navigating to another product from suggestions, reset UI and scroll like a page reload.
         window.scrollTo({ top: 0, behavior: "instant" })
         setActiveTab("tab1")
         setAddError("")
@@ -145,15 +186,44 @@ const ProductPage = () => {
                 setSelectedSize(null)
                 setAddError("")
                 setQuantity(0)
+                setVariantStock(null)
             })
             .catch(err => console.error("Failed to fetch sizes:", err))
     }, [selectedColor, product?.id])
 
+
+    /* Get Product Variant Stock */
+    useEffect(() => {
+    if (!selectedColor || !selectedSize || !product?.id) return
+
+    fetch(`http://localhost:8085/product-variants/stock/${product.id}?color=${selectedColor}&size=${selectedSize}`)
+        .then(res => res.json())
+        .then(data => {
+            setVariantStock(data.stock ?? data ?? null)
+            setQuantity(0)
+        })
+        .catch(err => console.error("Failed to fetch variant stock:", err))
+    }, [selectedColor, selectedSize, product?.id])
+
+
+    /* Calculate Max Variant Stock */
     const getMaxQuantity = () => {
-            const stock = product?.stock
-        if (typeof stock === "number" && stock > 0) return stock
+        if(typeof variantStock === "number" && variantStock > 0) return variantStock
         return 99
     }
+
+    /* Get Reviews */
+    useEffect(() => {
+        fetch(`http://localhost:8085/reviews/product/${product.id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setReviews(data);
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }, [])
 
     const increase = () => setQuantity((prev) => Math.min(getMaxQuantity(), prev + 1))
     const decrease = () => setQuantity((prev) => Math.max(0, prev - 1))
@@ -165,13 +235,13 @@ const ProductPage = () => {
             setAddError("Please select a color and size first.")
             return
         }
+
         if (quantity <= 0) {
             setAddError("Please select a quantity.")
             return
         }
 
-        const token = localStorage.getItem("token")
-        if (!token) {
+        if (!isAuthenticated) {
             setAddError("Please log in to add items to your cart.")
             return
         }
@@ -182,10 +252,15 @@ const ProductPage = () => {
                 color: selectedColor,
                 quantity: String(quantity),
             })
+
+            const token = localStorage.getItem("token");
+
+            // Try to add the item
             const res = await fetch(`http://localhost:8085/users/me/cart/${product.id}?${params.toString()}`, {
                 method: "POST",
                 headers: { Authorization: `Bearer ${token}` },
             })
+
             if (!res.ok) {
                 const text = await res.text()
                 throw new Error(text || "Failed to add to cart")
@@ -195,10 +270,15 @@ const ProductPage = () => {
             const cartRes = await fetch("http://localhost:8085/users/me/cart", {
                 headers: { Authorization: `Bearer ${token}` },
             })
+            
             if (cartRes.ok) {
-                const cartItems = await cartRes.json()
-                localStorage.setItem("cartCount", String(Array.isArray(cartItems) ? cartItems.length : 0))
+                const text = await cartRes.text()
+                if(text){
+                    const cartItems = JSON.parse(text)
+                    localStorage.setItem("cartCount", String(Array.isArray(cartItems) ? cartItems.length : 0))
+                }
             }
+
             window.dispatchEvent(new Event("cartUpdated"))
 
             setQuantity(0)
@@ -206,6 +286,33 @@ const ProductPage = () => {
             setAddError(e?.message || "Failed to add to cart")
         }
     }
+
+    
+    /* Check if the product is already in the user's wishlist */
+    useEffect(() => {
+
+        const token = localStorage.getItem("token");
+        if (!token || !product?.id) {
+            setWishlisted(false);
+            return;
+        }
+
+        fetch("http://localhost:8085/users/me/wishlist", {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error("Failed to fetch wishlist");
+                return res.json();
+            })
+            .then((wishlistItems) => {
+                // Check if the current product's ID exists in the fetched wishlist array
+                const isItemWishlisted = Array.isArray(wishlistItems) && 
+                    wishlistItems.some(item => String(item.id) === String(product.id));
+                
+                setWishlisted(isItemWishlisted);
+            })
+            .catch((err) => console.error("Error verifying wishlist status:", err));
+    }, [product?.id]);
 
     return (
         <div className="screen-adapt w-full gap-10">
@@ -220,31 +327,46 @@ const ProductPage = () => {
 
                     {/* Images Section */}
                     <div className="flex flex-col-reverse gap-3 sm:flex-row ">
-                        <div className="flex sm:flex-col w-full overflow-x-auto overflow-y-hidden lg:overflow-x-hidden lg:overflow-y-scroll justify-between sm:justify-normal items-center max-h-132.5 2xl:max-h-187.5 lg:w-30">
+                        <div className="flex sm:flex-col w-full overflow-x-auto overflow-y-hidden lg:overflow-x-hidden lg:overflow-y-scroll sm:justify-normal items-center max-h-132.5 2xl:max-h-187.5 lg:w-30">
                             {images.map((image, index) => (
-                                <img
-                                    onClick={() => setMainImage(image)}
-                                    src={image}
+                                <div
                                     key={index}
-                                    className={`w-[24%] sm:w-full sm:mb-3 mx-2 shrink-0 cursor-pointer rounded-[10%] ${mainImage === image ? "border border-black" : "border-0"}`}
-                                />
+                                    onClick={() => setMainImage(image)}
+                                    className={`w-[24%] sm:w-full shrink-0 mx-2 sm:mx-0 sm:mb-3 rounded-[10%] overflow-hidden cursor-pointer aspect-square ${mainImage === image ? "border border-black" : "border-0"}`}
+                                >
+                                    <img
+                                        src={image}
+                                        className="w-full h-full object-contain object-top"
+                                    />
+                                </div>
                             ))}
                         </div>
 
-                        <div className="w-full sm:w-[80%]">
-                            <img src={mainImage} className="w-full h-full max-h-132.5 2xl:max-h-187.5 object-contain object-top hover:cursor-zoom-in rounded-[20px]"/>
+                        <div className="relative w-full sm:w-[80%]">
+                            <img src={mainImage} className="w-full h-full max-h-132.5 2xl:max-h-187.5 object-contain object-top hover:cursor-zoom-in rounded-[20px]" onClick={() => setLightBoxOpen(true)}/>
+                            <button
+                            onClick={toggleWishlist}
+                            aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"} 
+                            className={`wishlist_button`}>
+                                {
+                                    wishlisted?
+                                    <FaHeart  className='w-full h-full'/>
+                                    :
+                                    <FaRegHeart className='w-full h-full'/>
+                                }
+                            </button>
                         </div>
                     </div>
 
                     {/* Options and Shopping Section */}
-                    <div className="flex flex-col gap-2 divide-y divide-black/10">
+                    <div className="flex flex-col gap-2 divide-y divide-black/10 lg:ml-2">
 
                         <div className="flex flex-col gap-3">
                             <h1 className="product_header">{product.name}</h1>
 
                             <div className="flex items-center gap-2 md:gap-4">
                                 <StarRating rating={product.productRating} starClassName="product_star_rate" divClassName="product_star_divClass"/>
-                                <h4 className="font-satoshi text-[12px] md:text-[15px]">{product.productRating}/5</h4>
+                                <h4 className="font-satoshi text-[0.9em]">{product.productRating}/5</h4>
                             </div>
 
                             <ProductPrice price={product.price} sale_per={product.discount} pricingDivClass="pricing_div" newPriceClass="newPrice_proPage" oldPriceClass="oldPrice_proPage" discountClass="discountPer_proPage"/>
@@ -322,7 +444,29 @@ const ProductPage = () => {
                 </div>
 
             </div>
+
+
+            {lightboxOpen && (
+                <div 
+                    className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+                    onClick={() => setLightBoxOpen(false)}
+                >
+                    <img 
+                        src={mainImage} 
+                        className="max-h-screen max-w-full object-contain rounded-xl"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                    <button 
+                        className="absolute top-4 right-4 text-white text-3xl font-bold cursor-pointer"
+                        onClick={() => setLightBoxOpen(false)}
+                    >
+                        ✕
+                    </button>
+                </div>
+            )}
         </div>
+
+        
     )
 }
 

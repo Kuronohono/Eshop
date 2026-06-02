@@ -3,6 +3,7 @@ package com.deloitte.eshop.config;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.Review;
 import com.deloitte.eshop.entity.User;
+import com.deloitte.eshop.entity.UserRole;
 import com.deloitte.eshop.repo.ProductRepository;
 import com.deloitte.eshop.repo.ReviewRepository;
 import com.deloitte.eshop.repo.UserRepository;
@@ -127,9 +128,10 @@ public class ReviewsJsonDataLoader implements ApplicationRunner {
             User u = User.builder()
                     .username(username)
                     .email(email)
-                    // Seed users are only for demo data; use a simple placeholder password.
+                    // Seed users are only for demo data; using a simple placeholder password.
                     .password("password")
                     .enabled(true)
+                    .userRole(UserRole.ROLE_USER)
                     .build();
             users.add(userRepository.save(u));
         }

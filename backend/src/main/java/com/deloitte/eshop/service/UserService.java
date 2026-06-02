@@ -24,12 +24,15 @@ public class UserService {
     private final CartProductRepository cartProductRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final ProductVariantServiceImpl productVariantService;
 
     public UserService(UserRepository userRepository, EmailService emailService, ProductRepository productRepository,
-            CartProductRepository cartProductRepository) {
+            CartProductRepository cartProductRepository,
+            ProductVariantServiceImpl productVariantService) {
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.cartProductRepository = cartProductRepository;
+        this.productVariantService = new ProductVariantServiceImpl();
     }
 
     public List<User> allUsers() {

@@ -9,7 +9,7 @@ import { IoMdClose } from "react-icons/io";
 const Menu = [
   { id: 1, name: "On Sale", link: "/Status/On_Sale" },
   { id: 2, name: "New Arrivals", link: "/Status/New_Arrivals" },
-  { id: 3, name: "Brands", link: "/brands" },
+  { id: 3, name: "Brands", link: "/Brands" },
 ];
 
 const ShopLinks = [
@@ -90,17 +90,17 @@ const ResponsiveMenu = ({ open, onClose }) => {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", stiffness: 280, damping: 32 }}
-            className="fixed top-0 left-0 z-50 h-dvh w-[84vw] max-w-[340px] bg-white shadow-xl min-[1280px]:hidden"
+            className="fixed top-0 left-0 z-50 h-dvh w-[84vw] max-w-85 bg-white shadow-xl min-[1280px]:hidden"
           >
             <div className="flex h-full flex-col">
               <div className="flex items-center justify-between border-b border-black/10 px-4 py-4">
                 {screen === "main" ? (
-                  <span className="font-satoshibold text-[18px]">{title}</span>
+                  <span className="font-satoshibold text-[1.125em]">{title}</span>
                 ) : (
                   <button
                     type="button"
                     onClick={goBack}
-                    className="flex items-center gap-1 rounded-md px-1 py-1 font-satoshi text-[16px] hover:bg-[#F2F0F1]"
+                    className="flex items-center gap-1 rounded-md px-1 py-1 font-satoshi text-[1em] hover:bg-[#F2F0F1]"
                   >
                     <IoIosArrowBack size={18} />
                     Back
@@ -109,7 +109,7 @@ const ResponsiveMenu = ({ open, onClose }) => {
                 <button
                   type="button"
                   onClick={onClose}
-                  className="rounded-md px-2 py-1 font-satoshi text-[15px] hover:bg-[#F2F0F1]"
+                  className="rounded-md px-2 py-1 font-satoshi text-[0.938em] hover:bg-[#F2F0F1]"
                 >
                   <IoMdClose />
                 </button>
@@ -132,7 +132,7 @@ const ResponsiveMenu = ({ open, onClose }) => {
                         <button
                           type="button"
                           onClick={goToShop}
-                          className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-satoshi text-[17px] hover:bg-[#F2F0F1]"
+                          className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-satoshi text-[1.063] hover:bg-[#F2F0F1]"
                         >
                           Shop
                           <IoIosArrowForward size={18} />
@@ -143,7 +143,7 @@ const ResponsiveMenu = ({ open, onClose }) => {
                           <Link
                             to={item.link}
                             onClick={handleLinkClick}
-                            className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-satoshi text-[17px] hover:bg-[#F2F0F1]"
+                            className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-satoshi text-[1.063] hover:bg-[#F2F0F1]"
                           >
                             {item.name}
                           </Link>
@@ -168,7 +168,7 @@ const ResponsiveMenu = ({ open, onClose }) => {
                           <button
                             type="button"
                             onClick={() => goToGender(gender)}
-                            className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-satoshi text-[17px] hover:bg-[#F2F0F1]"
+                            className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-satoshi text-[1.063] hover:bg-[#F2F0F1]"
                           >
                             {gender.name}
                             <IoIosArrowForward size={18} />
@@ -194,9 +194,9 @@ const ResponsiveMenu = ({ open, onClose }) => {
                       {ShopLinks.map((item) => (
                         <li key={`${selectedGender}-${item.id}`}>
                           <Link
-                            to={`/${selectedGender}${item.link}`}
+                            to={`/${selectedGender.name}${item.link}`}
                             onClick={handleLinkClick}
-                            className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-satoshi text-[17px] hover:bg-[#F2F0F1]"
+                            className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-satoshi text-[1.063em] hover:bg-[#F2F0F1]"
                           >
                             {item.name}
                           </Link>

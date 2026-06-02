@@ -35,11 +35,15 @@ public class JWTService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        Map<String, Object> claims = new HashMap<>();
+        userDetails.getAuthorities().stream()
+                .findFirst()
+                .ifPresent(auth -> claims.put("role", auth.getAuthority()));
+        return generateToken(claims, userDetails); // calls two-arg ✅
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return buildToken(extraClaims, userDetails, jwtExpiration);
+        return buildToken(extraClaims, userDetails, jwtExpiration); // calls buildToken, NOT generateToken ✅
     }
 
     public long getExpirationTime() {

@@ -10,6 +10,8 @@ import Guess from '../../assets/brand_images/guess.jpg'
 import Polo from '../../assets/brand_images/polo.jpg'
 import Other from '../../assets/brand_images/other.jpg'
 import {Link} from "react-router-dom"
+import { motion } from "framer-motion"
+import { SlideLeft, SlideRight, SlideRightParagraph, FadeIn } from '../../utils/animation'
 
 const Brands_Data = [
 {
@@ -68,11 +70,17 @@ const Brands = () => {
       <h1 className="page_header">Brands</h1>
       <div className="flex flex-wrap gap-5 items-center justify-center lg:justify-start">
         {
-        Brands_Data.map( (brand) => (
-          <Link key={brand.id} to={`/brands/${brand.name}`} className="flex flex-col items-center hover:scale-104 active:scale-100 transition-all" >
-            <img className="brand_image" src={brand.img}/>
-            <h2 className="font-satoshibold text-[22px]">{brand.name}</h2>
-          </Link>
+        Brands_Data.map( (brand, index) => (
+          <motion.div
+            key={brand.id}
+              variants={FadeIn(0 + index * 0.3)}
+              initial="hidden"
+              animate = "visible">
+              <Link to={`/brands/${brand.name}`} className="flex flex-col items-center hover:scale-104 active:scale-100 transition-all" >
+                <img className="brand_image" src={brand.img}/>
+                <h2 className="font-satoshibold text-[22px]">{brand.name}</h2>
+            </Link>
+          </motion.div>
         ))
         } 
       </div>

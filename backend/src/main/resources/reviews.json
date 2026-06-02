@@ -386,5 +386,385 @@
   {
     "description": "Soft, stretchy, and very flattering. Love it.",
     "rating": 5
+  },
+  {
+    "description": "Very soft fabric and feels great against the skin.",
+    "rating": 5
+  },
+  {
+    "description": "Looks stylish, but the sleeves are a little longer than expected.",
+    "rating": 4
+  },
+  {
+    "description": "Great quality overall and fits perfectly.",
+    "rating": 5
+  },
+  {
+    "description": "Nice everyday item. Comfortable and easy to wear.",
+    "rating": 4.5
+  },
+  {
+    "description": "Material feels slightly stiff at first.",
+    "rating": 3.5
+  },
+  {
+    "description": "Excellent craftsmanship and attention to detail.",
+    "rating": 5
+  },
+  {
+    "description": "The color is exactly as shown online.",
+    "rating": 4.5
+  },
+  {
+    "description": "Comfortable fit but slightly tight in the chest.",
+    "rating": 3.5
+  },
+  {
+    "description": "Very impressed with the quality for the price.",
+    "rating": 5
+  },
+  {
+    "description": "Looks good and feels durable.",
+    "rating": 4.5
+  },
+  {
+    "description": "Not bad, but the fabric wrinkles easily.",
+    "rating": 3
+  },
+  {
+    "description": "Fits true to size and washes well.",
+    "rating": 5
+  },
+  {
+    "description": "The material feels premium and substantial.",
+    "rating": 5
+  },
+  {
+    "description": "Good purchase overall. Would recommend.",
+    "rating": 4
+  },
+  {
+    "description": "Slightly thinner than expected but still nice.",
+    "rating": 3.5
+  },
+  {
+    "description": "Looks expensive and feels well-made.",
+    "rating": 5
+  },
+  {
+    "description": "The fit is relaxed and very comfortable.",
+    "rating": 4.5
+  },
+  {
+    "description": "Color is nice but a little brighter than photos.",
+    "rating": 3.5
+  },
+  {
+    "description": "Great addition to my wardrobe.",
+    "rating": 5
+  },
+  {
+    "description": "Good quality stitching throughout.",
+    "rating": 4.5
+  },
+  {
+    "description": "Runs small in the shoulders.",
+    "rating": 3
+  },
+  {
+    "description": "Extremely comfortable for all-day wear.",
+    "rating": 5
+  },
+  {
+    "description": "Fabric breathes well and stays comfortable.",
+    "rating": 5
+  },
+  {
+    "description": "A decent item, though the fit isn't ideal for me.",
+    "rating": 3.5
+  },
+  {
+    "description": "Looks sharp and works with many outfits.",
+    "rating": 5
+  },
+  {
+    "description": "The material softened nicely after washing.",
+    "rating": 4
+  },
+  {
+    "description": "Excellent value and great construction.",
+    "rating": 5
+  },
+  {
+    "description": "The cut is slightly boxier than expected.",
+    "rating": 3.5
+  },
+  {
+    "description": "Very happy with the purchase overall.",
+    "rating": 5
+  },
+  {
+    "description": "Feels lightweight but still durable.",
+    "rating": 4.5
+  },
+  {
+    "description": "The zipper feels a little cheap.",
+    "rating": 3
+  },
+  {
+    "description": "Looks fantastic and fits perfectly.",
+    "rating": 5
+  },
+  {
+    "description": "Great casual piece for everyday use.",
+    "rating": 4.5
+  },
+  {
+    "description": "Expected slightly better fabric quality.",
+    "rating": 3
+  },
+  {
+    "description": "The design is modern and flattering.",
+    "rating": 5
+  },
+  {
+    "description": "Very versatile and easy to style.",
+    "rating": 4.5
+  },
+  {
+    "description": "Shrank a little after washing.",
+    "rating": 3
+  },
+  {
+    "description": "Excellent fit and quality materials.",
+    "rating": 5
+  },
+  {
+    "description": "Comfortable enough but not exceptional.",
+    "rating": 3.5
+  },
+  {
+    "description": "Looks exactly as advertised.",
+    "rating": 4.5
+  },
+  {
+    "description": "The texture feels premium and durable.",
+    "rating": 5
+  },
+  {
+    "description": "A little loose around the waist.",
+    "rating": 3.5
+  },
+  {
+    "description": "Very satisfied with the craftsmanship.",
+    "rating": 5
+  },
+  {
+    "description": "Good quality and arrived in perfect condition.",
+    "rating": 4.5
+  },
+  {
+    "description": "The fabric could be softer.",
+    "rating": 3
+  },
+  {
+    "description": "Fits wonderfully and feels great.",
+    "rating": 5
+  },
+  {
+    "description": "Great for layering during cooler weather.",
+    "rating": 4.5
+  },
+  {
+    "description": "The color variation between batches is noticeable.",
+    "rating": 2.5
+  },
+  {
+    "description": "Very comfortable and stylish.",
+    "rating": 5
+  },
+  {
+    "description": "Nice details and quality finishing.",
+    "rating": 4.5
+  },
+  {
+    "description": "Runs a bit large, consider sizing down.",
+    "rating": 3.5
+  },
+  {
+    "description": "Excellent purchase. Would buy again.",
+    "rating": 5
+  },
+  {
+    "description": "Feels sturdy and built to last.",
+    "rating": 4.5
+  },
+  {
+    "description": "The fit is slightly awkward around the arms.",
+    "rating": 3
+  },
+  {
+    "description": "Looks great even after several washes.",
+    "rating": 5
+  },
+  {
+    "description": "Comfortable enough for daily wear.",
+    "rating": 4
+  },
+  {
+    "description": "Not quite as pictured, but still acceptable.",
+    "rating": 3
+  },
+  {
+    "description": "High-quality fabric and excellent fit.",
+    "rating": 5
+  },
+  {
+    "description": "Very breathable and lightweight.",
+    "rating": 4.5
+  },
+  {
+    "description": "The seams could be finished more neatly.",
+    "rating": 3
+  },
+  {
+    "description": "Perfect balance of comfort and style.",
+    "rating": 5
+  },
+  {
+    "description": "Looks clean and professional.",
+    "rating": 4.5
+  },
+  {
+    "description": "A bit expensive for what it offers.",
+    "rating": 3.5
+  },
+  {
+    "description": "The quality exceeded my expectations.",
+    "rating": 5
+  },
+  {
+    "description": "Fits nicely and feels comfortable all day.",
+    "rating": 4.5
+  },
+  {
+    "description": "Color is slightly muted compared to photos.",
+    "rating": 3.5
+  },
+  {
+    "description": "Excellent everyday essential.",
+    "rating": 5
+  },
+  {
+    "description": "Fabric weight is perfect for the season.",
+    "rating": 4.5
+  },
+  {
+    "description": "Not the best fit, but quality is decent.",
+    "rating": 3
+  },
+  {
+    "description": "Very flattering and comfortable.",
+    "rating": 5
+  },
+  {
+    "description": "The material has held up well so far.",
+    "rating": 4.5
+  },
+  {
+    "description": "Slight pilling after a few washes.",
+    "rating": 3
+  },
+  {
+    "description": "Looks premium and feels luxurious.",
+    "rating": 5
+  },
+  {
+    "description": "Great product and fair pricing.",
+    "rating": 4.5
+  },
+  {
+    "description": "Could use a little more stretch.",
+    "rating": 3.5
+  },
+  {
+    "description": "Very comfortable for travel and daily wear.",
+    "rating": 5
+  },
+  {
+    "description": "The fit is spot on and very flattering.",
+    "rating": 5
+  },
+  {
+    "description": "Average quality but good enough.",
+    "rating": 3.5
+  },
+  {
+    "description": "Excellent durability and construction.",
+    "rating": 5
+  },
+  {
+    "description": "Feels soft and premium.",
+    "rating": 4.5
+  },
+  {
+    "description": "The buttons seem a little fragile.",
+    "rating": 3
+  },
+  {
+    "description": "Very happy with the overall look.",
+    "rating": 5
+  },
+  {
+    "description": "A practical and versatile piece.",
+    "rating": 4
+  },
+  {
+    "description": "Sizing chart was slightly inaccurate.",
+    "rating": 3
+  },
+  {
+    "description": "The fabric drapes really well.",
+    "rating": 5
+  },
+  {
+    "description": "Great quality and excellent comfort.",
+    "rating": 5
+  },
+  {
+    "description": "Looks even better in person.",
+    "rating": 4.5
+  },
+  {
+    "description": "Not as soft as I had hoped.",
+    "rating": 3.5
+  },
+  {
+    "description": "One of the best purchases I've made recently.",
+    "rating": 5
+  },
+  {
+    "description": "The fit is modern without being too slim.",
+    "rating": 5
+  },
+  {
+    "description": "A few loose threads on arrival.",
+    "rating": 2.5
+  },
+  {
+    "description": "Comfortable, stylish, and well-priced.",
+    "rating": 5
+  },
+  {
+    "description": "Good balance of quality and affordability.",
+    "rating": 4.5
+  },
+  {
+    "description": "Would like more color options.",
+    "rating": 3.5
+  },
+  {
+    "description": "Fantastic quality and highly recommended.",
+    "rating": 5
   }
 ]

@@ -1,5 +1,10 @@
 {
   "devDependencies": {
     "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "jwt-decode": "^4.0.0",
+    "lucide-react": "^1.17.0",
+    "react-router-dom": "^7.16.0"
   }
 }

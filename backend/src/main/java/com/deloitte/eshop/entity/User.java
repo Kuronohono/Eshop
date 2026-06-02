@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
@@ -48,6 +49,14 @@ public class User implements UserDetails {
         @Column(name = "verification_expiration")
         private LocalDateTime verificationCodeExpiration;
 
+        @Enumerated(EnumType.STRING)
+        @Column(name = "user_role", nullable = false)
+        private UserRole userRole;
+
+        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+        @Builder.Default
+        private List<Address> addresses = new ArrayList<>();
+
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
         @Builder.Default
         private List<CartProduct> products_cart = new ArrayList<>();
@@ -67,15 +76,16 @@ public class User implements UserDetails {
 
         // Contrsuctors
 
-        public User(String username, String email, String password) {
+        public User(String username, String email, String password, UserRole userRole) {
                 this.username = username;
                 this.email = email;
                 this.password = password;
+                this.userRole = userRole;
         }
 
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
-                return List.of();
+                return List.of(new SimpleGrantedAuthority(userRole.name()));
         }
 
         @Override
@@ -96,6 +106,16 @@ public class User implements UserDetails {
         @Override
         public boolean isEnabled() {
                 return enabled;
+        }
+
+        public void addAddress(Address address) {
+                addresses.add(address);
+                address.setUser(this);
+        }
+
+        public void removeAddress(Address address) {
+                addresses.remove(address);
+                address.setUser(null);
         }
 
 }

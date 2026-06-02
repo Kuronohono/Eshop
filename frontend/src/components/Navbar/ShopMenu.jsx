@@ -15,7 +15,7 @@ const ShopLinks = [
     { id: 1, name: "T-shirts", link: "/T-shirts"},
     { id: 2, name: "Shorts", link: "/Shorts"},
     { id: 3, name: "Shirts", link: "/Shirts"},
-    { id: 4, name: "Hoodie", link: "/Hoodies"},
+    { id: 4, name: "Hoodies", link: "/Hoodies"},
     { id: 5, name: "Jeans", link: "/Jeans"},
 ]
 
@@ -33,9 +33,8 @@ const ShopMenu = () => {
                 <IoIosArrowDown className={`transition-all duration-200 ${isOpen ? "rotate-180" : ""}`}/>
             </span>
         </div>
-
-        {isOpen && (
-            <div className="fixed z-9999 left-0 w-screen bg-white text-black shadow-md">
+            <div className={`fixed z-9999 left-0 w-screen bg-white text-black shadow-md transition-all duration-200
+                    ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
                 <div className="max-w-3xl mx-auto py-4">
                     <div className="grid grid-cols-3 gap-10 divide-x divide-black/10">
                         {ShopCategories.map((gender) => (
@@ -47,6 +46,14 @@ const ShopMenu = () => {
                                         <li key={data.id}>
                                             <Link
                                                 to={`/${gender.name}${data.link}`}
+                                                state={{
+                                                    crumbs: [
+                                                        { label: "Home", to: "/" },
+                                                        { label: "Shop" },
+                                                        { label: gender.name },           // no `to` → not clickable
+                                                        { label: data.name, to: `/${gender.name}${data.link}` },
+                                                    ]
+                                                }}
                                                 className="inline-block w-full rounded-md p-2 hover:bg-[#F2F0F1]"
                                                 onClick={() => setIsOpen(false)} 
                                             >
@@ -60,7 +67,7 @@ const ShopMenu = () => {
                     </div>
                 </div>
             </div>
-        )}
+
     </li>
   )
 }
