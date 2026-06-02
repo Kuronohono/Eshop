@@ -15,12 +15,14 @@ Go to Application.java in backend and Run Java
 - Backoffice
 ```bash
 cd eshop-backoffice
+npm install
 npm run dev
 ```
 
 -Frontend
 ```bash
 cd frontend
+npm install
 npm run dev
 ```
 
