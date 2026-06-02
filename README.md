@@ -4,12 +4,20 @@
 This project simulates a real-world eshop platform with full stack architecture, secure authentication, and responsive design. It demonstrates modern web development by using React for frontend and Spring Boot for backend services.
 
 ## How to run (Tested in Visual Studio Code)
-- Go to Application.java in backend and Run Java
+Install Dependencies
+```bash
+npm install
+```
+
+-Backend
+Go to Application.java in backend and Run Java
+
 - Backoffice
 ```bash
 cd eshop-backoffice
 npm run dev
 ```
+
 -Frontend
 ```bash
 cd frontend
