@@ -109,6 +109,11 @@ It is in charge of creating and handling the databaase, its entities, services, 
 - HOLIDAY15
 - ESHOP20
 
+## Hosts (Local)
+- Frontend: http://localhost:5173/
+- BackOffice: http://localhost:5174/
+- Backend: http://localhost:8085/
+
 ## Problems and Issues
 Here are the things I didn't get to do in time.
 - Wishlist -> Cart
