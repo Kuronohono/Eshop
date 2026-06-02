@@ -318,6 +318,10 @@ const ProductPage = () => {
                 throw new Error(text || "Failed to add to cart")
             }
 
+             setVariantStock(prev =>
+                    typeof prev === "number" ? Math.max(0, prev - quantity) : prev
+                )
+
             // Sync cart count from backend so navbar stays accurate.
             const cartRes = await fetch("http://localhost:8085/users/me/cart", {
                 headers: { Authorization: `Bearer ${token}` },

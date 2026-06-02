@@ -222,7 +222,6 @@ export const Products = () => {
       
       <div className='flex w-full justify-between'>
         <h1 className="page_header">Products</h1>
-        <button className='font-satoshi border px-[0.8em] py-[0.4em] rounded-[1em] cursor-pointer'>Helper</button>
       </div>
 
       {/* ── Quick Endpoints ── */}

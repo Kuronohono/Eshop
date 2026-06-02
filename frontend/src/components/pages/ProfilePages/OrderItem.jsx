@@ -31,9 +31,7 @@ const OrderItem = ( {order} ) => {
         ) : (
             items.map((item, index) => (
                 <div key={`${order?.id}-${item?.productId}-${index}`}
-                    className='flex gap-3 cursor-pointer'
-                    onClick={() => item?.productId && navigate(`/${item.productId}`)}
-                >
+                    className='flex gap-3 cursor-pointer'>
                     <img src={item?.imageUrl || NoImageAvailable} className="order_itemImg"/>
                     <div className='flex flex-col justify-between gap-1'>
                         <h1 className='font-satoshibold'>{item?.productName ?? "Product"}</h1>

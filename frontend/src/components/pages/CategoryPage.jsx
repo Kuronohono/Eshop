@@ -82,8 +82,8 @@ const filterByVariantSelections = async (list, selectedColors, selectedSizes) =>
 }
 
 const CategoryPage = () => {
-    const { gender, category, status, brand } = useParams()
-    const segment = category || status || brand
+    const { gender, category, status, brand, dressStyle } = useParams()
+    const segment = category || status || brand || dressStyle
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     const [pageHeader, setPageHeader] = useState(category)
     const [sortValue, setSortValue] = useState("popular")
@@ -156,7 +156,12 @@ const CategoryPage = () => {
                     const brandEnum = brand.replace(/ /g, "_")
                     res = await fetch(`http://localhost:8085/products/brands/${brandEnum}`)
 
-                } else {
+                }else  if (dressStyle) {
+                        const styleEnum = dressStyle.toUpperCase().replace(/-/g, "_")
+
+                        res = await fetch(`http://localhost:8085/products/dress-style/${styleEnum}`)
+}
+                else {
                     const categoryType = typeMap[category.toLowerCase()]
                     if (!categoryType) return
 

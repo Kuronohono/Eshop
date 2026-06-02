@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { HiTrash } from "react-icons/hi2";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
@@ -8,6 +8,31 @@ import ProductPrice from './ProductPrice';
 const CartProduct = ({product, onNavigate, onRemove}) => {
     const imageSrc = product.img ?? product.imageUrls?.[0] ?? NoImageAvailable
     const title = product.title ?? product.name
+    const [qty, setQty] = useState(product.quantity || 1);
+
+    useEffect(() => {
+    setQty(product.quantity || 1);
+}, [product.quantity]);
+
+const updateQuantity = async (newQty) => {
+    const token = localStorage.getItem("token");
+
+    if (newQty < 1) return;
+
+    const res = await fetch(`http://localhost:8085/users/me/cart/${product.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ quantity: newQty })
+    });
+
+    if (res.ok) {
+        setQty(newQty);
+        window.dispatchEvent(new Event("cartUpdated"));
+    }
+};
 
     const removeProductFromCart = async () => {
         const token = localStorage.getItem("token")
@@ -58,11 +83,22 @@ const CartProduct = ({product, onNavigate, onRemove}) => {
             <HiTrash size={24} className=" text-red-500 hover:text-red-400 cursor-pointer active:scale-90"
             onClick={removeProductFromCart}/>
 
-            {/*Quanitty Counter */}
+            {/*Quantity Counter */}
             <div className="flex bg-[#F0F0F0] rounded-[62px] gap-4 md:gap-6 items-center py-1 md:py-3 px-4 md:px-5">
-                <button className="active:scale-80 cursor-pointer"><FaMinus size={10}/></button>
-                <span className="text-[14px]">{product.quantity}</span>
-                <button className="active:scale-80 cursor-pointer"><FaPlus size={12}/></button>
+                <button
+                        onClick={() => updateQuantity(qty - 1)}
+                        disabled={qty <= 1}
+                        className="active:scale-80 cursor-pointer disabled:opacity-40"
+                    >
+                        <FaMinus size={10}/>
+                    </button>
+                <span className="text-[14px]">{qty}</span>
+                <button
+                onClick={() => updateQuantity(qty + 1)}
+                className="active:scale-80 cursor-pointer"
+                >
+                <FaPlus size={12}/>
+                </button>
             </div>
         </div>
 

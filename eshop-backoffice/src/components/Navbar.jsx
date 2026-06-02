@@ -12,9 +12,9 @@ import { BiCategory } from "react-icons/bi";
 const Menu = [
   { id: 1, name: 'Dashboard', link: '/Dashboard', icon: <MdDashboard size={20} /> },
   { id: 2, name: 'Products',  link: '/Products',  icon: <MdInventory size={20} /> },
-  { id: 3, name: 'Product Variants',  link: '#',  icon: <MdOutlineSubject  size={20} /> },
+  { id: 3, name: 'Product Variants',  link: '/ProductVariants',  icon: <MdOutlineSubject  size={20} /> },
   { id: 4, name: 'Users',     link: '/Users',     icon: <MdPeople size={20} /> },
-  { id: 5, name: 'Orders',  link: '#',  icon: <FaShoppingCart size={20} /> },
+  { id: 5, name: 'Orders',  link: '/Orders',  icon: <FaShoppingCart size={20} /> },
   { id: 6, name: 'Categories',  link: '#',  icon: <BiCategory  size={20} /> },
 ]
 

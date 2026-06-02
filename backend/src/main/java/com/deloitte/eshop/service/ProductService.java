@@ -2,11 +2,13 @@ package com.deloitte.eshop.service;
 
 import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.entity.Brands;
+import com.deloitte.eshop.entity.DressStyle;
 import com.deloitte.eshop.entity.Gender;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
 import com.deloitte.eshop.entity.ProductType;
 
+import java.text.ListFormat.Style;
 import java.util.List;
 import org.springframework.data.domain.Page;
 
@@ -37,4 +39,6 @@ public interface ProductService {
     List<Product> getRandomProducts(int limit);
 
     List<Product> getByMenuCategory(ProductType productType, Gender gender);
+
+    List<Product> findByDressStyle(DressStyle style);
 }

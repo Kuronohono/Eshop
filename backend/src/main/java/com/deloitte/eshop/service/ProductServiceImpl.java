@@ -3,6 +3,7 @@ package com.deloitte.eshop.service;
 import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.dto.ProductSpecification;
 import com.deloitte.eshop.entity.Brands;
+import com.deloitte.eshop.entity.DressStyle;
 import com.deloitte.eshop.entity.Gender;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.text.ListFormat.Style;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -130,5 +132,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getByMenuCategory(ProductType productType, Gender gender) {
         return productRepository.findByProductTypeAndGender(productType, gender);
+    }
+
+    @Override
+    public List<Product> findByDressStyle(DressStyle style) {
+        return productRepository.findByDressStyle(style);
     }
 }

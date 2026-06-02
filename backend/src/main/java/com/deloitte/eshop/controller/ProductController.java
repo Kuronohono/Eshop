@@ -2,6 +2,7 @@ package com.deloitte.eshop.controller;
 
 import com.deloitte.eshop.dto.ProductFilter;
 import com.deloitte.eshop.entity.Brands;
+import com.deloitte.eshop.entity.DressStyle;
 import com.deloitte.eshop.entity.Gender;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
@@ -16,8 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/products")
@@ -88,6 +87,11 @@ public class ProductController {
     public ResponseEntity<Product> updateProduct(@RequestBody Product product,
             @PathVariable("productId") String productId) {
         return ResponseEntity.ok(productService.updateProduct(productId, product));
+    }
+
+    @GetMapping("/dress-style/{style}")
+    public List<Product> getByDressStyle(@PathVariable DressStyle style) {
+        return productService.findByDressStyle(style);
     }
 
     @DeleteMapping("/{productId}")

@@ -1,6 +1,7 @@
 package com.deloitte.eshop.repo;
 
 import com.deloitte.eshop.entity.Brands;
+import com.deloitte.eshop.entity.DressStyle;
 import com.deloitte.eshop.entity.Gender;
 import com.deloitte.eshop.entity.Product;
 import org.springframework.stereotype.Repository;
@@ -27,6 +28,8 @@ public interface ProductRepository extends JpaRepository<Product, String>, JpaSp
     List<Product> findByProductTypeAndGender(ProductType productType, Gender gender);
 
     List<Product> findByProductBrand(Brands productBrand);
+
+    List<Product> findByDressStyle(DressStyle dressStyle);
 
     Optional<Product> findById(String id);
 
