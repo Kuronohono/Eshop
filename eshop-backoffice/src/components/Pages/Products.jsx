@@ -136,18 +136,23 @@ export const Products = () => {
 
     try {
       const headers = { 'Content-Type': 'application/json' };
-      if (authToken && !authToken.startsWith('No ')) {
-        headers['Authorization'] = `Bearer ${authToken}`;
-      }
-      if (extraHeaders.trim()) {
-        try {
-          const extra = JSON.parse(extraHeaders);
-          Object.assign(headers, extra);
-        } catch {}
-      }
+
+      const tokenToUse = (authToken && !authToken.startsWith('No '))
+        ? authToken
+        : localStorage.getItem('admin_token') || '';
+
+        if (tokenToUse) {
+          headers['Authorization'] = `Bearer ${tokenToUse}`;
+        }
+
+        if (extraHeaders.trim()) {
+          try {
+            const extra = JSON.parse(extraHeaders);
+            Object.assign(headers, extra);
+          } catch {}
+        }
 
       let finalPath = selected.path;
-      console.log(finalPath);
 
       try {
         const vars = JSON.parse(pathParams || '{}');
@@ -175,6 +180,14 @@ export const Products = () => {
 
       const res = await fetch(url, options);
       const text = await res.text();
+
+      if(!text.trim()){
+        if(!res.ok){
+          throw new Error(`Request failed with status ${res.status} (empty response)`);
+        }
+        return;
+      }
+
       let parsed;
       try { parsed = JSON.parse(text); } catch { parsed = text; }
 

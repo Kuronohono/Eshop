@@ -38,8 +38,8 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<User>> allUsers() {
-        List<User> users = userService.allUsers();
+    public ResponseEntity<List<UserProfileDto>> allUsers() {
+        List<UserProfileDto> users = userService.allUsers();
         return ResponseEntity.ok(users);
     }
 

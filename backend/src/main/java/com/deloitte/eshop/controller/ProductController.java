@@ -1,6 +1,7 @@
 package com.deloitte.eshop.controller;
 
 import com.deloitte.eshop.dto.ProductFilter;
+import com.deloitte.eshop.dto.ProductRequestDto;
 import com.deloitte.eshop.entity.Brands;
 import com.deloitte.eshop.entity.DressStyle;
 import com.deloitte.eshop.entity.Gender;
@@ -32,8 +33,8 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-        return ResponseEntity.ok(productService.addProduct(product));
+    public ResponseEntity<Product> addProduct(@RequestBody ProductRequestDto dto) {
+        return ResponseEntity.ok(productService.addProduct(dto));
     }
 
     @PostMapping("/bulk")

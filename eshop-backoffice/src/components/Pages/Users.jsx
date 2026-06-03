@@ -13,10 +13,7 @@ const BASE = "http://localhost:8085";
 
 const USER_ACTIONS = [
   { id: 7,  method: "GET",    label: "All Users",    path: "/users",                                body: false },
-  { id: 8,  method: "POST",   label: "Add product",     path: "/products",                                body: true,  defaultBody: '{\n  "name": "New Product",\n  "description": "Description",\n  "price": 99.99,\n  "discount": 0,\n  "soldCount": 0,\n  "imageUrls": ["https://picsum.photos/600/800"],\n  "gender": "MEN",\n  "productType": "T_SHIRT",\n  "dressStyle": "CASUAL",\n  "productBrand": "Zara",\n  "variants": []\n}' },
-  { id: 9, method: "POST",   label: "Bulk add",        path: "/products/bulk",                           body: true,  defaultBody: '[\n  { "name": "", "price": 0 }\n]' },
-  { id: 10, method: "PATCH",  label: "Update product",  path: "/products/{id}",                           body: true,  defaultBody: '{\n  "name": "Updated Product Name",\n  "description": "Updated description",\n  "price": 59.99,\n  "discount": 10,\n  "soldCount": 50,\n  "imageUrls": ["https://picsum.photos/600/800"],\n  "gender": "MEN",\n  "productType": "T_SHIRT",\n  "dressStyle": "CASUAL",\n  "productBrand": "Zara",\n  "variants": []\n}' },
-  { id: 11, method: "DELETE", label: "Delete product",  path: "/products/{id}",                           body: false },
+  { id: 8,  method: "POST",   label: "Add User",     path: "/users",                                body: true,  defaultBody: '{\n  "name": "New Product",\n  "description": "Description",\n  "price": 99.99,\n  "discount": 0,\n  "soldCount": 0,\n  "imageUrls": ["https://picsum.photos/600/800"],\n  "gender": "MEN",\n  "productType": "T_SHIRT",\n  "dressStyle": "CASUAL",\n  "productBrand": "Zara",\n  "variants": []\n}' },
 ];
 
 const METHOD_COLORS = {
@@ -24,6 +21,21 @@ const METHOD_COLORS = {
   POST:   { bg: "bg-[#22c55e]", text: "text-white" },
   PATCH:  { bg: "bg-[#f59e0b]", text: "text-white" },
   DELETE: { bg: "bg-[#ef4444]", text: "text-white" },
+};
+
+// Normalize any response shape into a row array
+const normalizeToRows = (data) => {
+  if (!data) return [];
+  if (Array.isArray(data)) return data;
+  if (typeof data === 'object') return [data];
+  return [];
+};
+
+// Derive table columns from the union of all keys in the rows
+const deriveColumns = (rows) => {
+  const keys = new Set();
+  rows.forEach(row => Object.keys(row).forEach(k => keys.add(k)));
+  return Array.from(keys);
 };
 
 
@@ -52,11 +64,22 @@ const Users = () => {
      const [page2, setPage2] = useState(0); // separate page for response table
    
      useEffect(() => {
-       fetch(`${BASE}/users`)
-         .then(res => res.json())
-         .then(data => setUsers(data))
-         .catch(err => console.error(err));
-     }, []);
+      const token = localStorage.getItem('admin_token') || '';
+      const headers = { 'Content-Type': 'application/json'};
+
+      const cleanToken = token.trim();
+      if (cleanToken && !cleanToken.startsWith('No ')) {
+        headers['Authorization'] = `Bearer ${cleanToken}`;
+      }
+
+      fetch(`${BASE}/users`, { headers })
+          .then(res => {
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            return res.json();
+          })
+          .then(data => setUsers(data))
+          .catch(err => console.error("Initial load failed:", err));
+      }, []);
    
      useEffect(() => {
        const token = localStorage.getItem('admin_token') || '';
@@ -111,9 +134,16 @@ const Users = () => {
    
        try {
          const headers = { 'Content-Type': 'application/json' };
-         if (authToken && !authToken.startsWith('No ')) {
-           headers['Authorization'] = `Bearer ${authToken}`;
-         }
+
+         const tokenToUse = (authToken && !authToken.startsWith('No '))
+          ? authToken
+          : localStorage.getItem('admin_token') || '';
+
+          if (tokenToUse) {
+          headers['Authorization'] = `Bearer ${tokenToUse}`;
+          }
+         
+
          if (extraHeaders.trim()) {
            try {
              const extra = JSON.parse(extraHeaders);
@@ -122,7 +152,6 @@ const Users = () => {
          }
    
          let finalPath = selected.path;
-         console.log(finalPath);
    
          try {
            const vars = JSON.parse(pathParams || '{}');
@@ -150,6 +179,14 @@ const Users = () => {
    
          const res = await fetch(url, options);
          const text = await res.text();
+
+         if(!text.trim()){
+            if(!res.ok){
+              throw new Error(`Request failed with status ${res.status} (empty response)`);
+            }
+            return;
+          }
+
          let parsed;
          try { parsed = JSON.parse(text); } catch { parsed = text; }
    
@@ -398,19 +435,13 @@ const Users = () => {
                       ))}
                     </tr>
                   ))
-                : defaultPaginated.map((product, index) => (
-                    <tr key={product.id} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="td_item">{product.id}</td>
-                      <td className="td_item">{product.name}</td>
-                      <td className="td_item">{product.description}</td>
-                      <td className="td_item">{product.price}</td>
-                      <td className="td_item">{product.arrivalDate}</td>
-                      <td className="td_item">{product.discount}%</td>
-                      <td className="td_item">{product.soldCount}</td>
-                      <td className="td_item">{product.gender}</td>
-                      <td className="td_item">{product.productType}</td>
-                      <td className="td_item">{product.dressStyle}</td>
-                      <td className="td_item">{product.productBrand}</td>
+                : defaultPaginated.map((user, index) => (
+                    <tr key={user.id} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                      <td className="td_item">{user.id}</td>
+                      <td className="td_item">{user.username}</td>
+                      <td className="td_item">{user.email}</td>
+                      <td className="td_item">{user.password}</td>
+                      <td className="td_item">{user.enabled}</td>
                     </tr>
                   ))
               }

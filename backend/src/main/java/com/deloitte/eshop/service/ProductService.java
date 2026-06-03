@@ -1,6 +1,7 @@
 package com.deloitte.eshop.service;
 
 import com.deloitte.eshop.dto.ProductFilter;
+import com.deloitte.eshop.dto.ProductRequestDto;
 import com.deloitte.eshop.entity.Brands;
 import com.deloitte.eshop.entity.DressStyle;
 import com.deloitte.eshop.entity.Gender;
@@ -18,7 +19,7 @@ public interface ProductService {
 
     Product getProductById(String product_id);
 
-    Product addProduct(Product product);
+    Product addProduct(ProductRequestDto dto);
 
     List<Product> addProducts(List<Product> products);
 

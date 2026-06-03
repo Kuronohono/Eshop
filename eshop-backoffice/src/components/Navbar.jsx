@@ -166,7 +166,6 @@ const NavBar = () => {
       {/* Footer */}
       <button
        onClick={logout}
-       disabled={true}
        className="font-satoshibold px-4 py-4 border-t border-black/10 text-[1.1em] text-gray-300 cursor-pointer hover:text-gray-200 active:text-gray-100 active:bg-[#25396c] transition-colors duration-200">
         Logout
       </button>

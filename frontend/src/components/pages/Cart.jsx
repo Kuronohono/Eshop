@@ -169,7 +169,7 @@ const Cart = () => {
                         </div>
                         {console.log(promoDiscount)}
                         {console.log({promoDiscount})}
-                        <Link to={"/Checkout"} state={{promoDiscount}} className="cart_checkout_btn">Go to Checkout<FaArrowRightLong size={20}/></Link> 
+                        <Link to={"/Checkout"} state={{promoDiscount}} className={`cart_checkout_btn ${cart_products.length === 0 ? "disabled:cursor-not-allowed" : "enabled:cursor-pointer"}`}>Go to Checkout<FaArrowRightLong size={20}/></Link> 
                     </div>
                    
 

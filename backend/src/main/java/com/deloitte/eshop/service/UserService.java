@@ -40,10 +40,13 @@ public class UserService {
         this.productVariantService = new ProductVariantServiceImpl();
     }
 
-    public List<User> allUsers() {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
-        return users;
+    public List<UserProfileDto> allUsers() {
+        List<UserProfileDto> dtos = new ArrayList<>();
+
+        userRepository.findAll().forEach(user -> {
+            dtos.add(UserProfileDto.from(user));
+        });
+        return dtos;
     }
 
     public User getCurrentUser() {

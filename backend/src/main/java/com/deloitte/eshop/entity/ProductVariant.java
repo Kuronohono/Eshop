@@ -54,6 +54,6 @@ public class ProductVariant {
     private Set<Sizes> sizes = new HashSet<>();
 
     @Column(nullable = false)
-    private int stock;
+    private Integer stock;
 
 }

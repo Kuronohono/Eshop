@@ -26,6 +26,7 @@ public class ProductVariantServiceImpl {
     }
 
     public ProductVariant addProductVariant(ProductVariant variant) {
+        System.out.println("Product Variant Service reached.");
         return productVariantRepository.save(variant);
     }
 

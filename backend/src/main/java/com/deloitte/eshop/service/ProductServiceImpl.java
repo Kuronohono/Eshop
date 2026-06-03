@@ -1,6 +1,7 @@
 package com.deloitte.eshop.service;
 
 import com.deloitte.eshop.dto.ProductFilter;
+import com.deloitte.eshop.dto.ProductRequestDto;
 import com.deloitte.eshop.dto.ProductSpecification;
 import com.deloitte.eshop.entity.Brands;
 import com.deloitte.eshop.entity.DressStyle;
@@ -8,6 +9,8 @@ import com.deloitte.eshop.entity.Gender;
 import com.deloitte.eshop.entity.Product;
 import com.deloitte.eshop.entity.ProductStatus;
 import com.deloitte.eshop.entity.ProductType;
+import com.deloitte.eshop.entity.Sizes;
+import com.deloitte.eshop.entity.ProductVariant;
 import com.deloitte.eshop.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.text.ListFormat.Style;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,13 +42,41 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product addProduct(Product product) {
-        product.getVariants().forEach(variant -> variant.setProduct(product));
+    public Product addProduct(ProductRequestDto dto) {
+        Product product = Product.builder()
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .price(dto.getPrice())
+                .discount(dto.getDiscount() != null ? dto.getDiscount() : 0)
+                .gender(Gender.valueOf(dto.getGender()))
+                .productType(ProductType.valueOf(dto.getProductType()))
+                .dressStyle(DressStyle.valueOf(dto.getDressStyle()))
+                .productBrand(Brands.valueOf(dto.getProductBrand()))
+                .imageUrls(dto.getImageUrls())
+                .build();
+        if (dto.getVariants() != null) {
+            List<ProductVariant> variants = dto.getVariants().stream()
+                    .map(v -> {
+                        Set<Sizes> sizes = v.getSize().stream()
+                                .map(Sizes::valueOf)
+                                .collect(Collectors.toSet());
+                        return ProductVariant.builder()
+                                .color(v.getColor())
+                                .sizes(sizes)
+                                .stock(v.getStock())
+                                .product(product)
+                                .build();
+                    })
+                    .collect(Collectors.toList());
+            product.setVariants(variants);
+        }
+
         return productRepository.save(product);
     }
 
     @Override
     public List<Product> addProducts(List<Product> products) {
+        System.out.println("Service Reached");
         products.forEach(product -> product.getVariants().forEach(variant -> variant.setProduct(product)));
         return (List<Product>) productRepository.saveAll(products);
     }

@@ -2,6 +2,8 @@ package com.deloitte.eshop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import tools.jackson.databind.deser.jdk.NumberDeserializers.IntegerDeserializer;
+
 import org.hibernate.annotations.UuidGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -54,10 +56,10 @@ public class Product {
     private List<String> imageUrls;
 
     @Column(name = "discount_percentage")
-    private int discount;
+    private Integer discount;
 
     @Column(name = "sold_count", nullable = false)
-    private int soldCount;
+    private Integer soldCount;
 
     // --------------------- Categories -------------------//
 
@@ -118,8 +120,13 @@ public class Product {
 
     private void updateStatus() {
         statuses.clear();
-        // Check if the product is a new arrival. New Arrival = has arrived less than a
-        // month ago
+        // New arrival, 30 days old max
+
+        if (soldCount != null && soldCount >= 100)
+            statuses.add(ProductStatus.TOP_SELLING);
+        if (discount != null && discount > 0)
+            statuses.add(ProductStatus.ON_SALE);
+
         boolean isNewArrival = arrivalDate != null && arrivalDate.isAfter(LocalDate.now().minusMonths(1));
 
         if (isNewArrival)

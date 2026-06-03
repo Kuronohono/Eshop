@@ -4,11 +4,14 @@ import java.util.List;
 
 import com.deloitte.eshop.entity.CartProduct;
 import com.deloitte.eshop.entity.User;
+import com.deloitte.eshop.entity.UserRole;
 
 public record UserProfileDto(
         String id,
         String username,
         String email,
+        boolean enabled,
+        UserRole userRole,
         List<CartProductDto> cart,
         List<ProductVariantDto> wishlist,
         List<OrderDto> orders) {
@@ -18,6 +21,8 @@ public record UserProfileDto(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
+                user.isEnabled(),
+                user.getUserRole(),
                 user.getProducts_cart().stream().map(CartProductDto::from).toList(),
                 user.getUserWishList().stream().map(ProductVariantDto::from).toList(),
                 user.getUser_orders().stream().map(OrderDto::from).toList());
