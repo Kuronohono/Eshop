@@ -75,6 +75,10 @@
     @apply px-4 py-2 border-b border-black/20 border;
 }
 
+.paginationBtn{
+  @apply px-3 py-1 border rounded disabled:opacity-40 cursor-pointer;
+}
+
 /*----------- Login Form --------------*/
 .input_outerDiv{
     @apply flex items-center justify-center rounded-[62px] my-3 h-12 bg-[#F0F0F0] px-2;

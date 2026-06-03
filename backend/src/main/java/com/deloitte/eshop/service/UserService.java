@@ -4,10 +4,12 @@ import com.deloitte.eshop.dto.UpdateUserDto;
 import com.deloitte.eshop.dto.UserProfileDto;
 import com.deloitte.eshop.entity.CartProduct;
 import com.deloitte.eshop.entity.Product;
+import com.deloitte.eshop.entity.ProductVariant;
 import com.deloitte.eshop.entity.Sizes;
 import com.deloitte.eshop.entity.User;
 import com.deloitte.eshop.repo.CartProductRepository;
 import com.deloitte.eshop.repo.ProductRepository;
+import com.deloitte.eshop.repo.ProductVariantRepository;
 import com.deloitte.eshop.repo.UserRepository;
 
 import java.util.ArrayList;
@@ -24,14 +26,17 @@ public class UserService {
     private final CartProductRepository cartProductRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final ProductVariantRepository productVariantRepository;
     private final ProductVariantServiceImpl productVariantService;
 
     public UserService(UserRepository userRepository, EmailService emailService, ProductRepository productRepository,
             CartProductRepository cartProductRepository,
+            ProductVariantRepository productVariantRepository,
             ProductVariantServiceImpl productVariantService) {
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.cartProductRepository = cartProductRepository;
+        this.productVariantRepository = productVariantRepository;
         this.productVariantService = new ProductVariantServiceImpl();
     }
 
@@ -136,10 +141,10 @@ public class UserService {
     @Transactional
     public void addToWishlist(String productId) {
         User user = getCurrentUser();
-        Product product = productRepository.findById(productId)
+        ProductVariant productVariant = productVariantRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
-        if (!user.getUserWishList().contains(product)) {
-            user.getUserWishList().add(product);
+        if (!user.getUserWishList().contains(productVariant)) {
+            user.getUserWishList().add(productVariant);
             userRepository.save(user);
         }
     }

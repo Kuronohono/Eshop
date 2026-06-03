@@ -25,6 +25,7 @@ const listVariants = {
 }
 
 
+
 const ResponsiveMenu = ({ open, onClose }) => (
   <AnimatePresence>
     {open && (
@@ -43,7 +44,7 @@ const ResponsiveMenu = ({ open, onClose }) => (
           animate={{ x: 0 }}
           exit={{ x: '-100%' }}
           transition={{ type: 'spring', stiffness: 280, damping: 32 }}
-          className="fixed top-0 left-0 z-50 h-dvh w-[84vw] max-w-85 bg-white shadow-xl min-[1280px]:hidden flex flex-col"
+          className="fixed top-0 left-0 z-50 h-dvh w-[84vw] max-w-85 bg-[#0d235b] shadow-xl min-[1280px]:hidden flex flex-col"
         >
           {/* Header */}
           <div className="flex items-center justify-between border-b border-black/10 px-4 py-4">
@@ -77,7 +78,7 @@ const ResponsiveMenu = ({ open, onClose }) => (
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.2 }}
-                className="absolute inset-0 flex flex-col gap-1 p-3"
+                className="absolute inset-0 flex flex-col gap-1 p-3 text-white"
               >
                 {Menu.map((item) => (
                   <li key={item.id}>
@@ -91,6 +92,15 @@ const ResponsiveMenu = ({ open, onClose }) => (
                     </Link>
                   </li>
                 ))}
+                {/* Footer */}
+                  <button
+                  onClick={ () => {
+                    localStorage.removeItem('admin_token');
+                    window.location.href = "/Admin/Login";
+                  }}
+                  className="font-satoshibold px-4 py-4 border-t border-black/10 text-[1.1em] text-gray-300 cursor-pointer hover:text-gray-200 active:text-gray-100 active:bg-[#25396c] transition-colors duration-200">
+                    Logout
+                  </button>
               </motion.ul>
             </AnimatePresence>
           </div>
@@ -156,6 +166,7 @@ const NavBar = () => {
       {/* Footer */}
       <button
        onClick={logout}
+       disabled={true}
        className="font-satoshibold px-4 py-4 border-t border-black/10 text-[1.1em] text-gray-300 cursor-pointer hover:text-gray-200 active:text-gray-100 active:bg-[#25396c] transition-colors duration-200">
         Logout
       </button>
@@ -173,7 +184,7 @@ const Navbar = () => {
       <NavBar />
 
       {/* Mobile top bar */}
-      <header className="min-[1280px]:hidden w-full h-14 bg-white border-b border-black/10 flex items-center px-4 gap-4 sticky top-0 z-30">
+      <header className="min-[1280px]:hidden w-full h-14 bg-[#0d235b] border-b border-black/10 flex items-center px-4 gap-4 sticky top-0 z-30">
         <button
           type="button"
           onClick={() => setOpen(true)}
@@ -182,7 +193,7 @@ const Navbar = () => {
         >
           <RxHamburgerMenu size={22} />
         </button>
-        <span className="font-bold text-lg tracking-tight">Admin Panel</span>
+        <span className="font-bold text-lg tracking-tight text-white">Admin Panel</span>
         <div className="ml-auto">
           <FaCircleUser className="text-[1.75em] text-gray-400" />
         </div>

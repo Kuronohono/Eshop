@@ -1,5 +1,5 @@
 import React from 'react'
-import CardComponent from '../../OtherComponents/CardComponent/CardComponent'
+import WishlistComponent from '../../OtherComponents/CardComponent/WishlistComponent'
 
 const Wishlist = ({ userData }) => {
   
@@ -28,7 +28,7 @@ const Wishlist = ({ userData }) => {
         <div className="grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 lg:gap-7 mt-5">
           {wishlist.map((product) => (
             <div key={product.id}>
-              <CardComponent product={product} />
+              <WishlistComponent product={product} />
             </div>
           ))}
         </div>

@@ -10,7 +10,7 @@ public record UserProfileDto(
         String username,
         String email,
         List<CartProductDto> cart,
-        List<ProductDto> wishlist,
+        List<ProductVariantDto> wishlist,
         List<OrderDto> orders) {
 
     public static UserProfileDto from(User user) {
@@ -19,7 +19,7 @@ public record UserProfileDto(
                 user.getUsername(),
                 user.getEmail(),
                 user.getProducts_cart().stream().map(CartProductDto::from).toList(),
-                user.getUserWishList().stream().map(ProductDto::from).toList(),
+                user.getUserWishList().stream().map(ProductVariantDto::from).toList(),
                 user.getUser_orders().stream().map(OrderDto::from).toList());
     }
 

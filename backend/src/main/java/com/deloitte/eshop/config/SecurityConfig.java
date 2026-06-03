@@ -52,6 +52,14 @@ public class SecurityConfig {
                                                 .requestMatchers("/cart/**").hasAuthority("ROLE_USER")
                                                 .requestMatchers("/orders/**").hasAuthority("ROLE_USER")
                                                 .requestMatchers("/reviews/**").hasAuthority("ROLE_USER")
+                                                .requestMatchers(HttpMethod.GET, "/users/me", "/users/me/**")
+                                                .hasAuthority("ROLE_USER")
+                                                .requestMatchers(HttpMethod.POST, "/users/me", "/users/me/**")
+                                                .hasAuthority("ROLE_USER")
+                                                .requestMatchers(HttpMethod.DELETE, "/users/me", "/users/me/**")
+                                                .hasAuthority("ROLE_USER")
+                                                .requestMatchers(HttpMethod.PATCH, "/users/me", "/users/me/**")
+                                                .hasAuthority("ROLE_USER")
 
                                                 // BACKOFFICE (ADMIN ONLY AREA)
                                                 .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
@@ -67,6 +75,7 @@ public class SecurityConfig {
                                                 .hasAuthority("ROLE_ADMIN")
                                                 .requestMatchers(HttpMethod.DELETE, "/product-variants/**")
                                                 .hasAuthority("ROLE_ADMIN")
+                                                .requestMatchers("/users", "/users/**").hasAuthority("ROLE_ADMIN")
 
                                                 // FALLBACK
                                                 .anyRequest().authenticated())

@@ -3,7 +3,7 @@ package com.deloitte.eshop.controller;
 import com.deloitte.eshop.dto.UserProfileDto;
 import com.deloitte.eshop.dto.UpdateUserDto;
 import com.deloitte.eshop.entity.CartProduct;
-import com.deloitte.eshop.entity.Product;
+import com.deloitte.eshop.entity.ProductVariant;
 import com.deloitte.eshop.entity.Sizes;
 import com.deloitte.eshop.entity.User;
 import com.deloitte.eshop.service.UserService;
@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/me/wishlist")
-    public ResponseEntity<List<Product>> getWishlist() {
+    public ResponseEntity<List<ProductVariant>> getWishlist() {
         return ResponseEntity.ok(userService.getCurrentUser().getUserWishList());
     }
 

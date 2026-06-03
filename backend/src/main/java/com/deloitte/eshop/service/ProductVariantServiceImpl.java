@@ -5,7 +5,10 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import com.deloitte.eshop.dto.ProductVariantDto;
 import com.deloitte.eshop.entity.ProductVariant;
 import com.deloitte.eshop.entity.Sizes;
 import com.deloitte.eshop.repo.ProductVariantRepository;
@@ -87,6 +90,13 @@ public class ProductVariantServiceImpl {
 
         variant.setStock(variant.getStock() + quantity);
         productVariantRepository.save(variant);
+    }
+
+    public ResponseEntity<ProductVariantDto> getVariantByProductIdAndColor(String productId, String color) {
+        return productVariantRepository.findByProductIdAndColor(productId, color)
+                .map(ProductVariantDto::from)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }

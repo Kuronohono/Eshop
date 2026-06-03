@@ -1,5 +1,6 @@
 package com.deloitte.eshop.controller;
 
+import com.deloitte.eshop.dto.ProductVariantDto;
 import com.deloitte.eshop.entity.ProductVariant;
 import com.deloitte.eshop.entity.Sizes;
 import com.deloitte.eshop.service.ProductVariantServiceImpl;
@@ -27,6 +28,13 @@ public class ProductVariantController {
     @GetMapping("/all")
     public ResponseEntity<List<ProductVariant>> getAllVariants() {
         return ResponseEntity.ok(productVariantServiceImpl.getProductVariants());
+    }
+
+    @GetMapping("/variant/{productId}")
+    public ResponseEntity<ProductVariantDto> getVariantByProductAndColor(
+            @PathVariable String productId,
+            @RequestParam String color) {
+        return productVariantServiceImpl.getVariantByProductIdAndColor(productId, color);
     }
 
     @GetMapping("/colors/{productId}")

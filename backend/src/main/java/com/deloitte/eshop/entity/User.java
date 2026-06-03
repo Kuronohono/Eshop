@@ -72,7 +72,7 @@ public class User implements UserDetails {
         @ManyToMany
         @JoinTable(name = "user_wishlist", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
         @Builder.Default
-        private List<Product> userWishList = new ArrayList<>();
+        private List<ProductVariant> userWishList = new ArrayList<>();
 
         // Contrsuctors
 

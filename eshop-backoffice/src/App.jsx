@@ -6,6 +6,7 @@ import { Products } from './components/Pages/Products'
 import ProtectedRoute from './components/ProtectedRoute'
 import AdminLogin from './components/Authentication.jsx/AdminLogin'
 import { ProductVariant } from './components/Pages/ProductVariant'
+import Orders from './components/Pages/Orders'
 
 const App = () => {
    return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Products"  element={<Products />} />
           <Route path="/Users"     element={<Users />} />
+          <Route path="/Orders"     element={<Orders />} />
           <Route path="ProductVariants" element={<ProductVariant/>}/>
           <Route path="/Settings"  element={<Settings />} />
         </Route>

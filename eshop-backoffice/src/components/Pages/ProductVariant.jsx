@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 
 const PRODUCT_VARIANT_ACTIONS = [
-  { id: 13, method: "GET",    label: "All variants",    path: "/product-variants/all",                  body: false },
-  { id: 13, method: "GET",    label: "Get Colors",    path: "/product-variants/colors/{productId}",                  body: false },
-  { id: 14, method: "POST",   label: "Add variant",     path: "/products/{id}/variants",                  body: true, defaultBody: '{\n  "size": "M",\n  "color": "red"\n}' },
-  { id: 15, method: "PATCH",  label: "Update variant",  path: "/products/{id}/variants/{variantId}",      body: true, defaultBody: '{\n  "size": "L"\n}' },
-  { id: 16, method: "DELETE", label: "Delete variant",  path: "/products/{id}/variants/{variantId}",      body: false },
+  { id: 10, method: "GET",    label: "All variants",    path: "/product-variants/all",                  body: false },
+  { id: 11, method: "GET",    label: "Get Colors",    path: "/product-variants/colors/{productId}",                  body: false },
+  { id: 12, method: "POST",   label: "Add variant",     path: "/products/{id}/variants",                  body: true, defaultBody: '{\n  "size": "M",\n  "color": "red"\n}' },
+  { id: 13, method: "PATCH",  label: "Update variant",  path: "/products/{id}/variants/{variantId}",      body: true, defaultBody: '{\n  "size": "L"\n}' },
+  { id: 14, method: "DELETE", label: "Delete variant",  path: "/products/{id}/variants/{variantId}",      body: false },
 
 ]
 
@@ -214,7 +214,8 @@ export const ProductVariant = () => {
      <div className="screen_adapt">
        
        <div className='flex w-full justify-between'>
-         <h1 className="page_header">Products</h1>
+         <h1 className="page_header">Product Variants</h1>
+         <button>Help</button>
        </div>
  
        {/* ── Quick Endpoints ── */}
@@ -363,7 +364,7 @@ export const ProductVariant = () => {
        <div className="flex items-center justify-between mb-2">
          <div className="flex items-center gap-2">
            <span className="text-sm font-semibold text-gray-600">
-             {isResponseMode ? `Response — ${tableRows.length} row(s)` : 'Products'}
+             {isResponseMode ? `Response — ${tableRows.length} row(s)` : 'Product Variants'}
            </span>
            {responseError && (
              <span className="text-xs text-red-500 font-mono">{responseError}</span>
@@ -374,7 +375,7 @@ export const ProductVariant = () => {
              onClick={handleResetTable}
              className="text-xs px-3 py-1 border rounded text-gray-500 hover:text-gray-800 hover:border-gray-400"
            >
-             ← Back to products
+             ← Back to product variants
            </button>
          )}
        </div>
@@ -425,11 +426,11 @@ export const ProductVariant = () => {
  
        {/* ── Pagination ── */}
        <div className="flex items-center gap-2 mt-4 w-full justify-center">
-         <button onClick={() => setCurrentPage(0)} disabled={currentPage === 0} className="px-3 py-1 border rounded disabled:opacity-40 ">«</button>
-         <button onClick={() => setCurrentPage(p => p - 1)} disabled={currentPage === 0} className="px-3 py-1 border rounded disabled:opacity-40">‹ Previous</button>
+         <button onClick={() => setCurrentPage(0)} disabled={currentPage === 0} className=" paginationBtn">«</button>
+         <button onClick={() => setCurrentPage(p => p - 1)} disabled={currentPage === 0} className="paginationBtn">‹ Previous</button>
          <span className="text-sm">Page {currentPage + 1} of {totalPages || 1}</span>
-         <button onClick={() => setCurrentPage(p => p + 1)} disabled={currentPage >= totalPages - 1} className="px-3 py-1 border rounded disabled:opacity-40">Next ›</button>
-         <button onClick={() => setCurrentPage(totalPages - 1)} disabled={currentPage >= totalPages - 1} className="px-3 py-1 border rounded disabled:opacity-40">»</button>
+         <button onClick={() => setCurrentPage(p => p + 1)} disabled={currentPage >= totalPages - 1} className="paginationBtn">Next ›</button>
+         <button onClick={() => setCurrentPage(totalPages - 1)} disabled={currentPage >= totalPages - 1} className="paginationBtn">»</button>
        </div>
      </div>
    );

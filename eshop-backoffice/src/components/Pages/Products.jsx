@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import HelpPopUp from './HelpPopUp';
 
 const TABLE_HEAD_DATA = [
   { id: 1, label: "ID" },
@@ -35,6 +36,7 @@ const METHOD_COLORS = {
   PATCH:  { bg: "bg-[#f59e0b]", text: "text-white" },
   DELETE: { bg: "bg-[#ef4444]", text: "text-white" },
 };
+
 // Normalize any response shape into a row array
 const normalizeToRows = (data) => {
   if (!data) return [];
@@ -69,6 +71,7 @@ export const Products = () => {
   const [pathParams, setPathParams] = useState('');
   const [pathVariables, setPathVariables] = useState('{}');
   const [queryParams, setQueryParams] = useState('');
+  const [showHelp, setShowHelp] = useState(false)
 
   const PAGE_SIZE = 20;
   const [page2, setPage2] = useState(0); // separate page for response table
@@ -222,7 +225,14 @@ export const Products = () => {
       
       <div className='flex w-full justify-between'>
         <h1 className="page_header">Products</h1>
+        <button onClick={() => setShowHelp(true)}>Help</button>
       </div>
+
+      {
+        showHelp && (
+          <HelpPopUp onClose={() => setShowHelp(false)}/>
+        )
+      }
 
       {/* ── Quick Endpoints ── */}
       <div className="overflow-x-auto mb-2">
@@ -437,11 +447,11 @@ export const Products = () => {
 
       {/* ── Pagination ── */}
       <div className="flex items-center gap-2 mt-4 w-full justify-center">
-        <button onClick={() => setCurrentPage(0)} disabled={currentPage === 0} className="px-3 py-1 border rounded disabled:opacity-40 ">«</button>
-        <button onClick={() => setCurrentPage(p => p - 1)} disabled={currentPage === 0} className="px-3 py-1 border rounded disabled:opacity-40">‹ Previous</button>
+        <button onClick={() => setCurrentPage(0)} disabled={currentPage === 0} className="paginationBtn ">«</button>
+        <button onClick={() => setCurrentPage(p => p - 1)} disabled={currentPage === 0} className="paginationBtn">‹ Previous</button>
         <span className="text-sm">Page {currentPage + 1} of {totalPages || 1}</span>
-        <button onClick={() => setCurrentPage(p => p + 1)} disabled={currentPage >= totalPages - 1} className="px-3 py-1 border rounded disabled:opacity-40">Next ›</button>
-        <button onClick={() => setCurrentPage(totalPages - 1)} disabled={currentPage >= totalPages - 1} className="px-3 py-1 border rounded disabled:opacity-40">»</button>
+        <button onClick={() => setCurrentPage(p => p + 1)} disabled={currentPage >= totalPages - 1} className="paginationBtn">Next ›</button>
+        <button onClick={() => setCurrentPage(totalPages - 1)} disabled={currentPage >= totalPages - 1} className="paginationBtn">»</button>
       </div>
     </div>
   );

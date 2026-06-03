@@ -51,6 +51,7 @@ const UserProfilePage = () => {
   };
 
   const handleMenuClick = (id) => {
+    console.log(userData);
     setSelected(id);
     setActiveTab(id);
     setMobileSlid(true); // slide forward on mobile

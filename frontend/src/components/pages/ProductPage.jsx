@@ -44,14 +44,35 @@ const ProductPage = () => {
     const [variantStock, setVariantStock] = useState(null)
     const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [myReview, setMyReview] = useState(null)
+    const [selectedVariantId, setSelectedVariantId] = useState(null)
 
     const toggleWishlist = async () => {
         if(isAuthenticated){
-             if (!product?.id) return;
+            fetch(`http://localhost:8085/product-variants/variant/${product.id}?color=${selectedColor}`)
+                .then(res => res.json())
+                .then(data => {
+                    setSelectedVariantId(data.id)
+                })
+
+              if (!selectedVariantId) {
+                setAddError("Please select a color first.")
+                return
+             }
+             setAddError("")
+
+             console.log("Mark 1")
+
+            //Check If the user has selected a color and size
+            if (!selectedColor || !selectedSize) {
+            setAddError("Please select a color and size first.")
+            return
+            }
+
+            console.log("Mark 2")
 
             // Determine target URL and HTTP Method based on current status
             const method = wishlisted ? "DELETE" : "POST";
-            const url = `http://localhost:8085/users/me/wishlist/${product.id}`;
+            const url = `http://localhost:8085/users/me/wishlist/${selectedVariantId.id}`;
 
             const token = localStorage.getItem("token");
             try {
@@ -197,7 +218,8 @@ const ProductPage = () => {
         fetch(`http://localhost:8085/product-variants/sizes/${product.id}/${selectedColor}`)
             .then(res => res.json())
             .then(data => {
-                setSizes(sortSizes(data))
+                setSelectedVariantId(data.id)
+                setSizes(sortSizes(data.sizes ?? data))
                 setSelectedSize(null)
                 setAddError("")
                 setQuantity(0)
@@ -386,7 +408,7 @@ const ProductPage = () => {
             .then((wishlistItems) => {
                 // Check if the current product's ID exists in the fetched wishlist array
                 const isItemWishlisted = Array.isArray(wishlistItems) && 
-                    wishlistItems.some(item => String(item.id) === String(product.id));
+                    wishlistItems.some(item => String(item.product_id) === String(product.id));
                 
                 setWishlisted(isItemWishlisted);
             })
