@@ -363,6 +363,28 @@
 }
 
 /*-----------Navigation Menu--------------*/
+
+.nav_container{
+    @apply flex items-center container justify-between h-12 gap-2 mt-[1.5em] mx-auto;
+}
+
+.nav_hamburger_container{
+    @apply min-[80em]:hidden ml-5; 
+}
+
+.nav_searchBar{
+    @apply hidden min-[1280px]:block flex-1 w-full
+}
+
+.nav_icons{
+    @apply relative rounded-full p-2 transition-all active:scale-95 hover:bg-[#e6e6e6];
+}
+
+.nav_logo{
+    @apply font-integralcf text-[1.563em] lg:text-[2em] flex items-center 
+        font-bold hover:bg-[#F0F0F0] active:bg-[#f5f5f5] 
+        rounded-[0.625em] px-2;
+}
 .nav_genderheader{
     @apply font-satoshibold pl-2;
 }

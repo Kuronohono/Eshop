@@ -16,11 +16,13 @@ import ScrollToTop from './components/ScrollToTop'
 import StatusPage from './components/pages/StatusPage'
 import Checkout from './components/pages/Checkout'
 import Payment from './components/pages/Payment'
+import AnnouncementBar from './components/AnnouncementBar'
 
 const App = () => {
   return (
     <BrowserRouter>
     <ScrollToTop/>
+    <AnnouncementBar/>
     <Navbar/>
     <Routes>
       <Route path="/login" element={<Login/>}/>
