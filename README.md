@@ -29,10 +29,21 @@ This project simulates a production style e-commerce platform that covers browsi
 ### Database
 - H2 (in memory, development)
 
-# Architecture
+### Architecture
 The application contains three different services
 | Service | Description | Port  |
 |:--------:|:------------:|:-----:|
 |Frontend |Customer-facing storefront| 5173
 |Backoffice |Admin panel for management| 5174
 |Backend| REST API + database| 8085
+
+Guests can browse the storefront without an account. Meanwhile, authenticated users can wish list items, add them to cart, checkout and check order history. Admin accounts on the other hand, are restricted to the backoffice only, admin credentials cannot access the guest and user features and vice versa.
+
+# Getting Started 
+
+## Prerequisites
+- Node.js and npm
+- Java (JDK 17+) and a Java IDE (e.g IntelliJ)
+
+## Backend 
+Open Application.java in the [`Application.java']
