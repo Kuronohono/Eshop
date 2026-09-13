@@ -8,7 +8,8 @@ Built as a collaboration between International Hellenic University(IHU) and Delo
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Features](#features)
-- [Project-Structure](#project-structure)
+- [Project Structure](#project-structure)
+- [Known Limitations](#known-limitations)
 
 
 ## Overview
@@ -108,3 +109,38 @@ Built with React and Taiwlind. Handles all customer facing navigation and intera
 - Checkout flow
 - API integration
 - Protected routes (user/admin separation)
+
+## Backend
+Handles core business logic, security and data access.
+
+### Responsibilities
+- REST API endpoints
+- Authentication & authorization (Spring Security + JWT)
+- Password encryption and user security
+- Order processing and tracking
+- Product and user management
+- Database initialization and configuration
+- JSON-based data seeding for initial admin setup
+
+## Authentication System
+- JWT based authentication
+- Secure login/register flow
+- Role-based access control (USER/ADMIN)
+- Protected API endpoints via Spring Security filters
+
+## Database
+Manages entities, services, repos and controllers. Config classes parse JSON files to seed initial data
+
+- H2 in memory database for development
+- JPA entities define the relational structure
+- Repositories handle the data access layer
+
+# Known Limitations
+The following are know gaps, not yet implemented
+
+- Moving items from wishlist to cart
+- Re ordering a previously placed order
+- Create/update actions in the backoffice occasionally return errors despite being implemented
+- Order status updates from backoffice
+- Increasing/decreasing product quantity directly in the cart
+- User and order management view in the backoffice
