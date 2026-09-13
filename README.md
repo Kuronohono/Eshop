@@ -7,6 +7,8 @@ Built as a collaboration between International Hellenic University(IHU) and Delo
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
+- [Features](#features)
+- [Project-Structure](#project-structure)
 
 
 ## Overview
@@ -72,3 +74,37 @@ Password: P@ssword!
 > These are demo-only credentials for
 > local evaluation and are not intended
 > for production use
+
+## Discount Codes
+For testing cart discount feature:
+- SUMMER10
+- HOLIDAY15
+- ESHOP20
+
+# Features
+
+## User
+- Registration, Login and Logout
+- Password encryption
+- Email and username updates
+- Wishlist management
+- Order Placement
+- Order status tracking
+
+## Admin
+- Quick actions for CRUD operations
+- Strict authentication and access control
+- Full access to all entities and fields in the database
+
+# Project Structure
+
+## Frontend
+Built with React and Taiwlind. Handles all customer facing navigation and interaction.
+
+### Responsibilities
+-User interface and navigation
+-Product browsing and filtering
+-Cart and wishlist management
+-Checkout flow
+-API integration
+-Protected routes (user/admin separation)
