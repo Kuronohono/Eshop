@@ -6,7 +6,7 @@ Built as a collaboration between International Hellenic University(IHU) and Delo
 ## Table of Contents
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
-- [Getting Started]
+- [Getting Started](#getting-started)
 
 
 ## Overview
@@ -46,4 +46,11 @@ Guests can browse the storefront without an account. Meanwhile, authenticated us
 - Java (JDK 17+) and a Java IDE (e.g IntelliJ)
 
 ## Backend 
-Open Application.java in the [`Application.java`]
+Open Application.java in the `Application.java` in the backend module and run it from your IDE.
+
+## Backoffice
+```bash
+cd eshop-backoffice
+npm install
+npm run dev
+```
