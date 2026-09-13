@@ -32,7 +32,7 @@ This project simulates a production style e-commerce platform that covers browsi
 # Architecture
 The application contains three different services
 | Service | Description | Port  |
-|:--------|------------:|:-----:|
-|Frontend | Customer-facing storefront| 5173
-| Backoffice | 
-|
+|:--------:|:------------:|:-----:|
+|Frontend |Customer-facing storefront| 5173
+|Backoffice |Admin panel for management| 5174
+|Backend| REST API + database| 8085
