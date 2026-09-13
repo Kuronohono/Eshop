@@ -54,3 +54,11 @@ cd eshop-backoffice
 npm install
 npm run dev
 ```
+
+## Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Once all three services are running, the app is available at the ports listed in [Architecture](#architecture)
