@@ -102,9 +102,9 @@ For testing cart discount feature:
 Built with React and Taiwlind. Handles all customer facing navigation and interaction.
 
 ### Responsibilities
--User interface and navigation
--Product browsing and filtering
--Cart and wishlist management
--Checkout flow
--API integration
--Protected routes (user/admin separation)
+- User interface and navigation
+- Product browsing and filtering
+- Cart and wishlist management
+- Checkout flow
+- API integration
+- Protected routes (user/admin separation)
