@@ -46,4 +46,4 @@ Guests can browse the storefront without an account. Meanwhile, authenticated us
 - Java (JDK 17+) and a Java IDE (e.g IntelliJ)
 
 ## Backend 
-Open Application.java in the [`Application.java']
+Open Application.java in the [`Application.java`]
