@@ -1,13 +1,16 @@
-# Deloitte Eshop Web Application
+# Deloitte E-Commerce Web Application
 
-A full-stack e-commerce platforb built with React and Spring Boot, featuring secure JWT based authentication, role based access control, product catalogue management and a complete checkout flow.
+A full-stack e-commerce platform built with React and Spring Boot, featuring secure JWT based authentication, role based access control, product catalogue management and a complete checkout flow.
 Built as a collaboration between International Hellenic University(IHU) and Deloitte.
 
 ## Table of Contents
-- [Overview]
-- [Tech Stack]
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)
 - [Getting Started]
 
+
+## Overview
+This project simulates a production style e-commerce platform that covers browsing, filtering, cart, checkout, order history and wish list. Alongside a separate backoffice application for admin operations such as product, category, order and user management.
 
 ## Tech Stack
 
@@ -25,5 +28,11 @@ Built as a collaboration between International Hellenic University(IHU) and Delo
 
 ### Database
 - H2 (in memory, development)
-- 
 
+# Architecture
+The application contains three different services
+| Service | Description | Port  |
+|:--------|------------:|:-----:|
+|Frontend | Customer-facing storefront| 5173
+| Backoffice | 
+|
