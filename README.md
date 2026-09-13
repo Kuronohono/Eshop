@@ -69,6 +69,6 @@ An admin account is seeded on the first run. Credentials are printed to the back
 Email:    admin@eshop.com
 Password: P@ssword!
 ```
-/* This is a commentfdjsalkfafla;fj;sfe
-fjalkfjel;fdjskf a;lefj
-fejaflk;dsjafo;ew -------> */
+> These are demo-only credentials for
+> local evaluation and are not intended
+> for production use
