@@ -62,3 +62,10 @@ npm install
 npm run dev
 ```
 Once all three services are running, the app is available at the ports listed in [Architecture](#architecture)
+
+## Demo Credentials
+An admin account is seeded on the first run. Credentials are printed to the backend console. If they are not visible, use: 
+```bash
+Email:    admin@eshop.com
+Password: P@ssword!
+```
